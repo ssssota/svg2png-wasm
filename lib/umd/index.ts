@@ -10,7 +10,7 @@ export type ConvertOptions = {
 };
 
 export const svg2png = async (svg: string, opts?: ConvertOptions) => {
-  if (wasm === undefined) wasm = await init('./svg2png_wasm_bg.wasm');
+  if (wasm === undefined) wasm = await init(process.env.SVG2PNG_WASM_URL);
   const converter = createConverter();
   opts?.fonts?.forEach(converter.registerFont);
   const result = converter.convert(svg, opts?.scale, opts?.width, opts?.height);

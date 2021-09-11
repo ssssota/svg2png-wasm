@@ -17,7 +17,7 @@
     img:
     <img id="i">
   </p>
-  <script src="https://unpkg.com/svg2png-wasm"></script>
+  <script src="/umd/index.js"></script>
   <script>
     const main = async () => {
       const buf = await SVG2PNG.svg2png(document.getElementById('source').outerHTML);
