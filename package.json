@@ -11,7 +11,8 @@
     "clean": "rimraf dist pkg umd cjs",
     "demo": "sirv .",
     "copy-wasm:cjs": "copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
-    "copy-wasm:esm": "copyfiles -f pkg/svg2png_wasm_bg.wasm esm"
+    "copy-wasm:esm": "copyfiles -f pkg/svg2png_wasm_bg.wasm esm",
+    "prepare": "run-s clean build"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   ],
   "files": [
     "umd",
-    "cjs"
+    "cjs",
+    "esm"
   ],
   "author": "ssssota",
   "license": "MPL-2.0",
