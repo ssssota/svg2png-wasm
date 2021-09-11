@@ -37,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ matrix.node-version }}-${{ github.sha }}
 
       - name: Build packages
-        run: pnpm prepare
+        run: pnpm make
 
   lint:
     runs-on: ubuntu-latest
