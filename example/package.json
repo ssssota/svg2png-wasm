@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "svg2png": "link:.."
+    "svg2png-wasm": "link:.."
   },
   "author": "ssssota",
   "license": "MPL-2.0"

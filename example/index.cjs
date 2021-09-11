@@ -1,4 +1,4 @@
-const { svg2png } = require('svg2png');
+const { svg2png } = require('svg2png-wasm');
 const { writeFileSync } = require('fs');
 
 svg2png(`

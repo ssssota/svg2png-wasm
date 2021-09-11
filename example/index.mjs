@@ -1,4 +1,4 @@
-import { svg2png } from 'svg2png';
+import { svg2png } from 'svg2png-wasm';
 import { writeFileSync, readFileSync } from 'fs';
 
 svg2png(

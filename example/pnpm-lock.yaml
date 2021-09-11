@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  svg2png: link:..
+  svg2png-wasm: link:..
 
 dependencies:
-  svg2png: link:..
+  svg2png-wasm: link:..
