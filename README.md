@@ -16,7 +16,14 @@ npm install svg2png-wasm
 
 #### Browser
 
-`🚧 WIP`
+Using a script tag in the browser and load from unpkg.
+
+```html
+<script src="https://unpkg.com/svg2png-wasm@0.1.6/umd/index.js"></script>
+
+<!-- Or, latest -->
+<script src="https://unpkg.com/svg2png-wasm"></script>
+```
 
 ### Example
 
@@ -31,20 +38,37 @@ import { readFileSync, writeFileSync } from 'fs';
 const png = await svg2png(
   '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
   {
-    scale: 2,     // optional
-    width: 400,   // optional
-    height: 400,  // optional
-    fonts: [      // optional
-      readFileSync('./Roboto.otf'), // require, If you use text in svg
+    scale: 2, // optional
+    width: 400, // optional
+    height: 400, // optional
+    fonts: [
+      // optional
+      readFileSync('./Roboto.ttf'), // require, If you use text in svg
     ],
-  }
+  },
 );
 writeFileSync('./output.png', png);
 ```
 
 #### Browser
 
-`🚧 WIP`
+```js
+const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
+/** @type {Uint8Array} */
+const png = await SVG2PNG.svg2png(
+  '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
+  {
+    scale: 2, // optional
+    width: 400, // optional
+    height: 400, // optional
+    fonts: [
+      // optional
+      new Uint8Array(font), // require, If you use text in svg
+    ],
+  },
+);
+writeFileSync('./output.png', png);
+```
 
 ### API
 
@@ -56,6 +80,6 @@ function svg2png(
     width?: number;
     height?: number;
     fonts?: Uint8Array[];
-  }
-): Promise<Uint8Array>
+  },
+): Promise<Uint8Array>;
 ```
