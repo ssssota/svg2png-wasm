@@ -1,0 +1,31 @@
+name: Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: npm version ?
+        required: true
+        default: patch
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.7
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Setup git
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Version up
+        run: npm version ${{ github.event.inputs.version }}
+      - run: git push origin --tags
