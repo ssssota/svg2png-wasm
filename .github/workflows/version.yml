@@ -27,13 +27,20 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Version up
-        run: npm version ${{ github.event.inputs.version }}
+        id: version
+        run: |
+          CURRENT_TAG=$(npm version ${{ github.event.inputs.version }})
+          echo "CURRENT_TAG: $CURRENT_TAG"
+          echo ::set-output name=CURRENT_TAG::$CURRENT_TAG
       - run: |
           git push origin
           git push origin --tags
+    outputs:
+      version: ${{ steps.version.outputs.CURRENT_TAG }}
 
   release:
     runs-on: ubuntu-latest
+    needs: [version]
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
@@ -69,14 +76,8 @@ jobs:
             target
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
 
-      - name: Tag
-        id: tag
-        run: |
-          CURRENT_TAG=$(git describe --tags)
-          echo "CURRENT_TAG: $CURRENT_TAG"
-          echo ::set-output name=CURRENT_TAG::$CURRENT_TAG
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ steps.tag.outputs.CURRENT_TAG }}
+          tag: ${{ needs.version.outputs.CURRENT_TAG }}
           files: pkg-node/svg2png_wasm_bg.wasm
