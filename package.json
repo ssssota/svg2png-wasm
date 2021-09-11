@@ -7,12 +7,14 @@
   "unpkg": "umd/index.js",
   "scripts": {
     "build": "run-s build:*",
-    "build:umd": "webpack",
-    "build:node": "wasm-pack build --target nodejs && rollup -c && run-p copy-wasm:*",
-    "clean": "rimraf dist pkg umd cjs",
+    "build:umd": "wasm-pack build --target web --out-dir pkg-umd",
+    "build:node": "wasm-pack build --target nodejs --out-dir pkg-node",
+    "postbuild": "rollup -c && run-p copy-wasm:*",
+    "clean": "rimraf dist pkg-umd pkg-node umd cjs",
     "demo": "sirv --dev example",
-    "copy-wasm:cjs": "copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
-    "copy-wasm:esm": "copyfiles -f pkg/svg2png_wasm_bg.wasm esm",
+    "copy-wasm:cjs": "copyfiles -f pkg-node/svg2png_wasm_bg.wasm cjs",
+    "copy-wasm:esm": "copyfiles -f pkg-node/svg2png_wasm_bg.wasm esm",
+    "copy-wasm:umd": "copyfiles -f pkg-umd/svg2png_wasm_bg.wasm umd",
     "prepare": "run-s clean build"
   },
   "repository": {
@@ -39,7 +41,6 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "^8.2.5",
-    "@wasm-tool/wasm-pack-plugin": "^1.5.0",
     "copyfiles": "^2.4.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
@@ -49,8 +50,6 @@
     "sirv-cli": "^1.0.14",
     "ts-loader": "^9.2.5",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.3",
-    "webpack": "^5.52.1",
-    "webpack-cli": "^4.8.0"
+    "typescript": "^4.4.3"
   }
 }

@@ -2,7 +2,7 @@
 Cargo.lock
 dist
 node_modules
-pkg
+/pkg*
 /umd
 /cjs
 /esm

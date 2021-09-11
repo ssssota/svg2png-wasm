@@ -1,4 +1,4 @@
-import { createConverter } from '../../pkg';
+import { createConverter } from '../../pkg-node';
 
 export type ConvertOptions = {
   scale?: number;

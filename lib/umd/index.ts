@@ -1,4 +1,6 @@
-const mod = import('../../pkg');
+import init, { createConverter, InitOutput } from '../../pkg-umd/svg2png_wasm';
+
+let wasm: InitOutput | undefined;
 
 export type ConvertOptions = {
   scale?: number;
@@ -8,7 +10,7 @@ export type ConvertOptions = {
 };
 
 export const svg2png = async (svg: string, opts?: ConvertOptions) => {
-  const { createConverter } = await mod;
+  if (wasm === undefined) wasm = await init('./svg2png_wasm_bg.wasm');
   const converter = createConverter();
   opts?.fonts?.forEach(converter.registerFont);
   const result = converter.convert(svg, opts?.scale, opts?.width, opts?.height);

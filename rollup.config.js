@@ -31,4 +31,18 @@ export default defineConfig([
       terser(),
     ],
   },
+  {
+    input: 'lib/umd/index.ts',
+    output: {
+      dir: 'umd',
+      format: 'umd',
+      name: 'SVG2PNG',
+    },
+    plugins: [
+      commonjs(),
+      nodeResolve(),
+      typescript({ rootDir: 'lib/umd', outDir: 'umd' }),
+      terser(),
+    ],
+  },
 ]);
