@@ -1,4 +1,4 @@
-const mod = import('./pkg');
+const mod = import('../../pkg');
 
 export type ConvertOptions = {
   scale?: number;

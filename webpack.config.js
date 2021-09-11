@@ -3,7 +3,7 @@ const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './index.umd.ts',
+  entry: './lib/umd/index.ts',
   output: {
     path: path.resolve(__dirname, 'umd'),
     filename: 'index.js',
