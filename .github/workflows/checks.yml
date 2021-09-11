@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
+
+      - name: WASM target
+        run: rustup target add wasm32-unknown-unknown
       - name: Install deps
         run: pnpm install
 
