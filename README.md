@@ -2,6 +2,8 @@
 
 SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crates/resvg).
 
+See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support status.
+
 ## Usage
 
 ### Installation
