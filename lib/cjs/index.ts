@@ -9,7 +9,7 @@ export type ConvertOptions = {
 
 export const svg2png = async (svg: string, opts?: ConvertOptions) => {
   const converter = createConverter();
-  opts?.fonts?.forEach(converter.registerFont);
+  opts?.fonts?.forEach((f) => converter.registerFont(f));
   const result = converter.convert(svg, opts?.scale, opts?.width, opts?.height);
   converter.free();
   return result;

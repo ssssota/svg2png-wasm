@@ -1,32 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo</title>
-</head>
-<body>
-  <p>
-    SVG:
-    <svg id="source" width="100px" height="100px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="100"/>
-    </svg>
-  </p>
-  <p id="dist">
-    img:
-    <img id="i">
-  </p>
-  <script src="https://unpkg.com/svg2png-wasm"></script>
-  <script>
-    const main = async () => {
-      const buf = await SVG2PNG.svg2png(document.getElementById('source').outerHTML);
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <section>
+      <p>
+        SVG:
+        <svg
+          id="source1"
+          width="100px"
+          height="100px"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="100" cy="100" r="100" />
+        </svg>
+      </p>
+      <p id="dist">
+        img:
+        <img id="i1" />
+      </p>
+    </section>
+    <section>
+      <p>
+        SVG:
+        <svg
+          id="source2"
+          width="100px"
+          height="100px"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <text x="0" y="180" font-size="180" font-family="Roboto Thin">
+            A!
+          </text>
+        </svg>
+      </p>
+      <p id="dist">
+        img:
+        <img id="2" />
+      </p>
+    </section>
+    <script src="https://unpkg.com/svg2png-wasm"></script>
+    <script>
+      const main = async () => {
+        const roboto = await fetch('/Roboto-Thin.ttf').then((res) =>
+          res.arrayBuffer(),
+        );
 
-      document.getElementById('i').src = URL.createObjectURL(
-        new Blob([buf.buffer], { type: 'image/png' }),
-      );
-    };
-    document.addEventListener('DOMContentLoaded', main);
-  </script>
-</body>
+        document.getElementById('i1').src = URL.createObjectURL(
+          new Blob(
+            [
+              (
+                await SVG2PNG.svg2png(
+                  document.getElementById('source1').outerHTML,
+                )
+              ).buffer,
+            ],
+            { type: 'image/png' },
+          ),
+        );
+        document.getElementById('i2').src = URL.createObjectURL(
+          new Blob(
+            [
+              (
+                await SVG2PNG.svg2png(
+                  document.getElementById('source2').outerHTML,
+                  {
+                    fonts: [new Uint8Array(roboto)],
+                  },
+                )
+              ).buffer,
+            ],
+            { type: 'image/png' },
+          ),
+        );
+      };
+      document.addEventListener('DOMContentLoaded', main);
+    </script>
+  </body>
 </html>
