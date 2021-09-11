@@ -1,6 +1,6 @@
 {
   "name": "svg2png-wasm",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A svg to png converter made with wasm.",
   "main": "cjs/index.js",
   "module": "esm/index.js",
