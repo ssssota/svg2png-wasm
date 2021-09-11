@@ -2,11 +2,11 @@
   "name": "svg2png-wasm",
   "version": "0.1.0",
   "description": "A svg to png converter made with wasm.",
-  "main": "dist/bundle.js",
+  "main": "cjs/index.js",
   "scripts": {
     "build:umd": "webpack",
-    "build:node": "wasm-pack build --target nodejs",
-    "clean": "rimraf dist pkg umd",
+    "build:node": "wasm-pack build --target nodejs && rollup -c && copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
+    "clean": "rimraf dist pkg umd cjs",
     "demo": "sirv ."
   },
   "repository": {
@@ -28,11 +28,18 @@
   },
   "homepage": "https://github.com/ssssota/svg2png-wasm#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
     "@wasm-tool/wasm-pack-plugin": "^1.5.0",
+    "copyfiles": "^2.4.1",
     "prettier": "^2.4.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-terser": "^7.0.2",
     "sirv-cli": "^1.0.14",
     "ts-loader": "^9.2.5",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.3",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0"
