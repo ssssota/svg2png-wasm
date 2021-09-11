@@ -15,7 +15,7 @@
     "copy-wasm:cjs": "copyfiles -f pkg-node/svg2png_wasm_bg.wasm cjs",
     "copy-wasm:esm": "copyfiles -f pkg-node/svg2png_wasm_bg.wasm esm",
     "copy-wasm:umd": "copyfiles -f pkg-umd/svg2png_wasm_bg.wasm umd",
-    "prepare": "run-s clean build postbuild",
+    "prepack": "run-s clean build postbuild",
     "format": "run-p format:*",
     "format:all": "prettier --write .",
     "format:rust": "cargo fmt",
