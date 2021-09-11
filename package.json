@@ -10,7 +10,7 @@
     "build:umd": "webpack",
     "build:node": "wasm-pack build --target nodejs && rollup -c && run-p copy-wasm:*",
     "clean": "rimraf dist pkg umd cjs",
-    "demo": "sirv .",
+    "demo": "sirv --dev example",
     "copy-wasm:cjs": "copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
     "copy-wasm:esm": "copyfiles -f pkg/svg2png_wasm_bg.wasm esm",
     "prepare": "run-s clean build"
