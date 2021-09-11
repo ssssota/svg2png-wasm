@@ -28,4 +28,6 @@ jobs:
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Version up
         run: npm version ${{ github.event.inputs.version }}
-      - run: git push origin --tags
+      - run: |
+          git push origin
+          git push origin --tags
