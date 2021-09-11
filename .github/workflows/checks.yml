@@ -1,0 +1,87 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.7
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: WASM target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Install deps
+        run: pnpm install
+
+      - name: Cache build files
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-files
+        with:
+          path: |
+            umd
+            cjs
+            esm
+            target
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+
+      - name: Build packages
+        run: pnpm make
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14.7
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Install deps
+        run: pnpm install
+
+      - name: Restore build files
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-files
+        with:
+          path: |
+            umd
+            cjs
+            esm
+            target
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+
+      - name: Lint
+        run: pnpm lint

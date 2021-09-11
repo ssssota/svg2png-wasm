@@ -43,12 +43,12 @@ impl Converter {
         let pixmap_size = tree.svg_node().size;
 
         let mut pixmap = Pixmap::new(
-            (width.unwrap_or(pixmap_size.width()) * (scale as f64)).ceil() as u32,
-            (height.unwrap_or(pixmap_size.height()) * (scale as f64)).ceil() as u32,
+            (width.unwrap_or_else(|| pixmap_size.width()) * (scale as f64)).ceil() as u32,
+            (height.unwrap_or_else(|| pixmap_size.height()) * (scale as f64)).ceil() as u32,
         )?;
 
         resvg::render(&tree, FitTo::Zoom(scale), pixmap.as_mut());
-        Some(pixmap.encode_png().ok()?)
+        pixmap.encode_png().ok()
     }
 }
 
@@ -57,7 +57,7 @@ pub fn create_converter() -> Converter {
     Converter { fonts: Vec::new() }
 }
 
-pub fn load_fonts(fonts: &Vec<Vec<u8>>) -> Database {
+pub fn load_fonts(fonts: &[Vec<u8>]) -> Database {
     let mut db = Database::new();
     for font in fonts {
         db.load_font_data(font.to_vec());
