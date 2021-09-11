@@ -1,6 +1,9 @@
-dist
 node_modules
 src
 target
 Cargo.lock
 pnpm-lock.yaml
+/pkg*
+/umd
+/cjs
+/esm
