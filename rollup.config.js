@@ -3,7 +3,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import { defineConfig } from 'rollup';
-import { terser } from 'rollup-plugin-terser';
 const pkg = require('./package.json');
 
 export default defineConfig([
@@ -17,7 +16,6 @@ export default defineConfig([
       commonjs(),
       nodeResolve(),
       typescript({ rootDir: 'lib/cjs', outDir: 'cjs' }),
-      terser(),
     ],
   },
   {
@@ -30,7 +28,6 @@ export default defineConfig([
       commonjs(),
       nodeResolve(),
       typescript({ rootDir: 'lib/cjs', outDir: 'esm' }),
-      terser(),
     ],
   },
   {
@@ -49,7 +46,6 @@ export default defineConfig([
       commonjs(),
       nodeResolve(),
       typescript({ rootDir: 'lib/umd', outDir: 'umd' }),
-      terser(),
     ],
   },
 ]);
