@@ -79,5 +79,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ needs.version.outputs.CURRENT_TAG }}
+          draft: true
+          tag_name: ${{ needs.version.outputs.CURRENT_TAG }}
           files: pkg-node/svg2png_wasm_bg.wasm
