@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "description": "A svg to png converter made with wasm.",
   "main": "cjs/index.js",
+  "module": "esm/index.js",
   "scripts": {
+    "build": "run-s build:*",
     "build:umd": "webpack",
-    "build:node": "wasm-pack build --target nodejs && rollup -c && copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
+    "build:node": "wasm-pack build --target nodejs && rollup -c && run-p copy-wasm:*",
     "clean": "rimraf dist pkg umd cjs",
-    "demo": "sirv ."
+    "demo": "sirv .",
+    "copy-wasm:cjs": "copyfiles -f pkg/svg2png_wasm_bg.wasm cjs",
+    "copy-wasm:esm": "copyfiles -f pkg/svg2png_wasm_bg.wasm esm"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,8 @@
     "png"
   ],
   "files": [
-    "umd"
+    "umd",
+    "cjs"
   ],
   "author": "ssssota",
   "license": "MPL-2.0",
@@ -33,6 +38,7 @@
     "@rollup/plugin-typescript": "^8.2.5",
     "@wasm-tool/wasm-pack-plugin": "^1.5.0",
     "copyfiles": "^2.4.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
