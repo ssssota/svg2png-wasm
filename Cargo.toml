@@ -1,0 +1,29 @@
+[package]
+description = "resvg wrapper for svg2png wasm module"
+edition = "2018"
+license = "MPL-2.0"
+name = "svg2png-wasm"
+version = "0.1.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+resvg = {version = "0.17.0", default-features = false}
+usvg = {version = "0.17.0", default-features = false, features = ["text"]}
+
+fontdb = "0.6.2"
+tiny-skia = "0.6.1"
+wasm-bindgen = "0.2.77"
+
+console_error_panic_hook = {version = "0.1.6", optional = true}
+wee_alloc = {version = "0.4.5", optional = true}
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+opt-level = "s"

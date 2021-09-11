@@ -1,0 +1,40 @@
+{
+  "name": "svg2png-wasm",
+  "version": "0.1.0",
+  "description": "A svg to png converter made with wasm.",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build:umd": "webpack",
+    "build:node": "wasm-pack build --target nodejs",
+    "clean": "rimraf dist pkg umd",
+    "demo": "sirv ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssssota/svg2png-wasm.git"
+  },
+  "keywords": [
+    "wasm",
+    "svg",
+    "png"
+  ],
+  "files": [
+    "umd"
+  ],
+  "author": "ssssota",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/ssssota/svg2png-wasm/issues"
+  },
+  "homepage": "https://github.com/ssssota/svg2png-wasm#readme",
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.5.0",
+    "prettier": "^2.4.0",
+    "rimraf": "^3.0.2",
+    "sirv-cli": "^1.0.14",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
