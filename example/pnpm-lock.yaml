@@ -1,0 +1,7 @@
+lockfileVersion: 5.3
+
+specifiers:
+  svg2png: file:..
+
+dependencies:
+  svg2png: link:..
