@@ -4,7 +4,7 @@ SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crate
 
 See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support status.
 
-## Usage
+## 💻 Usage
 
 ### Installation
 
@@ -21,7 +21,7 @@ npm install svg2png-wasm
 Using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.1.6/umd/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.2.7/umd/index.js"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
@@ -33,7 +33,7 @@ Using a script tag in the browser and load from unpkg.
 
 ```js
 import { svg2png } from 'svg2png-wasm';
-// const { svg2png } from 'svg2png-wasm';
+// const { svg2png } = require('svg2png-wasm');
 import { readFileSync, writeFileSync } from 'fs';
 
 /** @type {Uint8Array} */
@@ -85,3 +85,11 @@ function svg2png(
   },
 ): Promise<Uint8Array>;
 ```
+
+## 📄 LICENSE
+
+MPL-2.0 License
+
+## 🙋‍♂️ Contributing
+
+WELCOME!
