@@ -44,6 +44,8 @@ jobs:
             target
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
 
+      - name: Prebuild
+        run: cargo build --target wasm32-unknown-unknown --release
       - name: Build packages
         run: pnpm make
 
