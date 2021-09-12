@@ -43,7 +43,6 @@ jobs:
         run: pnpm make
       # fallback https://github.com/actions/cache/issues/362
       - uses: actions/upload-artifact@v2
-        if: ${{ runner.os == 'Windows' }}
         with:
           name: cjs-${{ github.sha }}
           path: cjs
