@@ -31,11 +31,11 @@ impl Converter {
     ) -> Option<Vec<u8>> {
         let fontdb = load_fonts(
             &self.fonts,
-            self.serif_family.as_ref().map(|s| s.as_str()),
-            self.sans_serif_family.as_ref().map(|s| s.as_str()),
-            self.cursive_family.as_ref().map(|s| s.as_str()),
-            self.fantasy_family.as_ref().map(|s| s.as_str()),
-            self.monospace_family.as_ref().map(|s| s.as_str()),
+            self.serif_family.as_deref(),
+            self.sans_serif_family.as_deref(),
+            self.cursive_family.as_deref(),
+            self.fantasy_family.as_deref(),
+            self.monospace_family.as_deref(),
         );
         let svg_options = OptionsRef {
             resources_dir: None,
@@ -94,10 +94,20 @@ pub fn load_fonts(
     for font in fonts {
         db.load_font_data(font.to_vec());
     }
-    default_serif_family.map(|f| db.set_serif_family(f.to_string()));
-    default_sans_serif_family.map(|f| db.set_sans_serif_family(f.to_string()));
-    default_cursive_family.map(|f| db.set_cursive_family(f.to_string()));
-    default_fantasy_family.map(|f| db.set_fantasy_family(f.to_string()));
-    default_monospace_family.map(|f| db.set_monospace_family(f.to_string()));
+    if let Some(f) = default_serif_family {
+        db.set_serif_family(f.to_string())
+    }
+    if let Some(f) = default_sans_serif_family {
+        db.set_sans_serif_family(f.to_string())
+    }
+    if let Some(f) = default_cursive_family {
+        db.set_cursive_family(f.to_string())
+    }
+    if let Some(f) = default_fantasy_family {
+        db.set_fantasy_family(f.to_string())
+    }
+    if let Some(f) = default_monospace_family {
+        db.set_monospace_family(f.to_string())
+    }
     db
 }
