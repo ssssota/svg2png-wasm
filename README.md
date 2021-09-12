@@ -47,6 +47,10 @@ const png = await svg2png(
       // optional
       readFileSync('./Roboto.ttf'), // require, If you use text in svg
     ],
+    defaultFontFamily: {
+      // optional
+      sansSerif: 'Roboto',
+    },
   },
 );
 writeFileSync('./output.png', png);
@@ -75,15 +79,26 @@ writeFileSync('./output.png', png);
 ### API
 
 ```ts
-function svg2png(
+export type DefaultFontFamily = {
+  serifFamily?: string;
+  sansSerifFamily?: string;
+  cursiveFamily?: string;
+  fantasyFamily?: string;
+  monospaceFamily?: string;
+};
+
+export type ConvertOptions = {
+  scale?: number;
+  width?: number;
+  height?: number;
+  fonts?: Uint8Array[];
+  defaultFontFamily?: DefaultFontFamily;
+};
+
+export const svg2png: (
   svg: string,
-  options?: {
-    scale?: number;
-    width?: number;
-    height?: number;
-    fonts?: Uint8Array[];
-  },
-): Promise<Uint8Array>;
+  opts?: ConvertOptions | undefined,
+) => Promise<Uint8Array>;
 ```
 
 ## 📄 LICENSE
