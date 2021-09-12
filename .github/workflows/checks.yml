@@ -41,6 +41,12 @@ jobs:
         run: cargo build --target wasm32-unknown-unknown --release
       - name: Build packages
         run: pnpm make
+      # fallback https://github.com/actions/cache/issues/362
+      - uses: actions/upload-artifact@v2
+        if: ${{ runner.os === 'Windows' }}
+        with:
+          name: cjs-${{ github.sha }}
+          path: cjs
 
   lint:
     runs-on: ubuntu-latest
@@ -94,6 +100,12 @@ jobs:
           key: '${{ env.cache-name }}-${{ github.sha }}'
           restore-keys: |
             ${{ env.cache-name }}
+
+      # fallback https://github.com/actions/cache/issues/362
+      - uses: actions/download-artifact@v2
+        if: ${{ runner.os === 'Windows' }}
+        with:
+          name: cjs-${{ github.sha }}
 
       - name: check
         run: |
