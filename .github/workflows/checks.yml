@@ -107,11 +107,5 @@ jobs:
           name: cjs-${{ github.sha }}
           path: cjs
 
-      - name: check
-        run: |
-          ls
-          ls cjs
-          node -p "fs.readFileSync('./cjs/index.js', 'utf8')"
-
       - name: Test
         run: pnpm test
