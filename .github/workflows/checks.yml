@@ -105,6 +105,7 @@ jobs:
         if: ${{ runner.os == 'Windows' }}
         with:
           name: cjs-${{ github.sha }}
+          path: cjs
 
       - name: check
         run: |
