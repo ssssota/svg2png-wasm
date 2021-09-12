@@ -43,7 +43,7 @@ jobs:
             cjs
             esm
             target
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          key: ${{ env.cache-name }}-${{ github.sha }}
 
       - name: Publish
         run: npm publish

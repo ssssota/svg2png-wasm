@@ -76,7 +76,7 @@ jobs:
             cjs
             esm
             target
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          key: ${{ env.cache-name }}-${{ github.sha }}
       - name: Build
         run: pnpm make
 

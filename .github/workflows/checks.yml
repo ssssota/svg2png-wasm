@@ -44,7 +44,7 @@ jobs:
             cjs
             esm
             target
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          key: ${{ env.cache-name }}-${{ github.sha }}
 
       - name: Prebuild
         run: cargo build --target wasm32-unknown-unknown --release
@@ -87,7 +87,7 @@ jobs:
             cjs
             esm
             target
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          key: ${{ env.cache-name }}-${{ github.sha }}
 
       - name: Lint
         run: pnpm lint
@@ -132,7 +132,7 @@ jobs:
             cjs
             esm
             target
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          key: ${{ env.cache-name }}-${{ github.sha }}
 
       - name: Test
         run: pnpm test
