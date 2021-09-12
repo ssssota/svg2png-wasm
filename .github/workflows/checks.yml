@@ -57,20 +57,6 @@ jobs:
       - name: Install deps
         run: pnpm install
 
-      - name: Restore build files
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-build-files
-        with:
-          path: |
-            pkg-umd
-            pkg-node
-            umd
-            cjs
-            esm
-            target
-          key: ${{ env.cache-name }}-${{ github.sha }}
-
       - name: Lint
         run: pnpm lint
 
@@ -106,6 +92,8 @@ jobs:
             esm
             target
           key: '${{ env.cache-name }}-${{ github.sha }}'
+          restore-keys: |
+            ${{ env.cache-name }}
 
       - name: check
         run: |
