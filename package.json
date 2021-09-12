@@ -23,7 +23,13 @@
     "format:rust": "cargo fmt",
     "lint": "run-p lint:*",
     "lint:js": "prettier --check .",
-    "lint:rust": "cargo fmt -- --check && cargo clippy"
+    "lint:rust": "cargo fmt -- --check && cargo clippy",
+    "test": "run-p vrt",
+    "vrt": "run-s vrt:gen vrt:comp",
+    "vrt:comp": "reg-cli vrt/actual vrt/expected vrt/diff",
+    "vrt:gen": "node vrt/index.mjs",
+    "vrt:update": "rimraf vrt/diff && reg-cli vrt/actual vrt/expected vrt/diff -U",
+    "vrt:clean": "rimraf vrt/diff vrt/actual"
   },
   "repository": {
     "type": "git",
@@ -50,9 +56,12 @@
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
+    "@types/glob": "^7.1.4",
     "copyfiles": "^2.4.1",
+    "glob": "^7.1.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
+    "reg-cli": "^0.17.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-terser": "^7.0.2",

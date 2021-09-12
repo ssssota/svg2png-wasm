@@ -6,3 +6,4 @@ node_modules
 /umd
 /cjs
 /esm
+reg.json
