@@ -37,6 +37,8 @@ jobs:
           cache-name: cache-build-files
         with:
           path: |
+            pkg-umd
+            pkg-node
             umd
             cjs
             esm

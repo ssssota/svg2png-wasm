@@ -38,6 +38,8 @@ jobs:
           cache-name: cache-build-files
         with:
           path: |
+            pkg-umd
+            pkg-node
             umd
             cjs
             esm
@@ -79,6 +81,8 @@ jobs:
           cache-name: cache-build-files
         with:
           path: |
+            pkg-umd
+            pkg-node
             umd
             cjs
             esm
@@ -115,8 +119,6 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install deps
         run: pnpm install
-      - name: WASM target
-        run: rustup target add wasm32-unknown-unknown
 
       - name: Restore build files
         uses: actions/cache@v2
@@ -124,13 +126,13 @@ jobs:
           cache-name: cache-build-files
         with:
           path: |
+            pkg-umd
+            pkg-node
             umd
             cjs
             esm
             target
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
-      - name: Build
-        run: pnpm make
 
       - name: Test
         run: pnpm test
