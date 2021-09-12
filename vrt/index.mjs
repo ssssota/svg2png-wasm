@@ -21,6 +21,11 @@ const main = async () => {
   const fontPaths = glob.sync(join(__dirname, 'data/**/*.@(ttf|otf)'));
   const svgs = glob.sync(join(__dirname, 'data/**/*.svg'));
 
+  /** @type {import('../cjs/index.js').DefaultFontFamily} */
+  const defaultFontFamily = {
+    sansSerifFamily: 'Roboto',
+  };
+
   const fonts = fontPaths.map((path) => {
     console.log('[font]', path);
     return new Uint8Array(readFileSync(path));
@@ -32,7 +37,10 @@ const main = async () => {
   await Promise.all(
     svgs.map(async (svgPath) => {
       console.log('[SVG]', svgPath);
-      const png = await svg2png(readFileSync(svgPath, 'utf8'), { fonts });
+      const png = await svg2png(readFileSync(svgPath, 'utf8'), {
+        fonts,
+        defaultFontFamily,
+      });
       if (png == null) throw new Error('Invalid data');
       writeFileSync(
         svgPath.replace(/\/data\//g, '/actual/').replace(/\.svg$/i, '.png'),
