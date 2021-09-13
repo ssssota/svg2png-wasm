@@ -28,7 +28,12 @@ export default defineConfig([
         format: 'cjs',
       },
     ],
-    plugins: [commonjs(), nodeResolve(), customReplacer, typescript()],
+    plugins: [
+      commonjs(),
+      nodeResolve(),
+      customReplacer,
+      typescript({ rootDir: 'lib' }),
+    ],
   },
   {
     input: 'lib/core.ts',
@@ -47,7 +52,16 @@ export default defineConfig([
         format: 'esm',
       },
     ],
-    plugins: [commonjs(), nodeResolve(), customReplacer, typescript()],
+    plugins: [
+      commonjs(),
+      nodeResolve(),
+      replace({
+        preventAssignment: true,
+        values: { 'import.meta.url': undefined },
+      }),
+      customReplacer,
+      typescript({ rootDir: 'lib' }),
+    ],
   },
   {
     input: 'lib/unpkg.ts',
@@ -66,7 +80,7 @@ export default defineConfig([
       commonjs(),
       nodeResolve(),
       customReplacer,
-      typescript(),
+      typescript({ rootDir: 'lib' }),
       terser(),
     ],
   },
