@@ -1,4 +1,10 @@
-# svg2png wasm
+# <span align="center"><img src="./logo.svg" width="150px"></span>
+
+svg2png-wasm
+
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/ssssota/svg2png-wasm/Checks/main)](https://github.com/ssssota/svg2png-wasm/actions/workflows/checks.yml)
+[![npm](https://img.shields.io/npm/v/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
+[![NPM](https://img.shields.io/npm/l/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
 
 SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crates/resvg).
 
@@ -17,7 +23,7 @@ npm install svg2png-wasm
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.4.2/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.4.3/unpkg/index.js"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
@@ -87,7 +93,7 @@ document.getElementById('output').src = URL.createObjectURL(
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.4.0/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.4.3/unpkg/index.js"></script>
 <script>
   const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
   /** @type {Uint8Array} */
