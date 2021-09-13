@@ -8,20 +8,16 @@ See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support sta
 
 ### Installation
 
-#### Node.js
-
 ```sh
 npm install svg2png-wasm
 # yarn add svg2png-wasm
 # pnpm add svg2png-wasm
 ```
 
-#### Browser
-
-Using a script tag in the browser and load from unpkg.
+Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.2.7/umd/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.4.0/unpkg/index.js"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
@@ -58,10 +54,20 @@ writeFileSync('./output.png', png);
 
 #### Browser
 
+You should create `svg2png` with the `svg2png-wasm/core` module by specifying your own WASM.
+(You can download the WASM from [Releases](https://github.com/ssssota/svg2png-wasm/releases) page and deploy to your custom assets directory!)
+
+e.g.
+
 ```js
+import { createSvg2png } from 'svg2png-wasm/core';
+
+const svg2png = createSvg2png(
+  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',
+);
 const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
 /** @type {Uint8Array} */
-const png = await SVG2PNG.svg2png(
+const png = await svg2png(
   '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
   {
     scale: 2, // optional
@@ -73,10 +79,39 @@ const png = await SVG2PNG.svg2png(
     ],
   },
 );
-writeFileSync('./output.png', png);
+document.getElementById('output').src = URL.createObjectURL(
+  new Blob([png.buffer], { type: 'image/png' }),
+);
+```
+
+Or, using a script tag in the browser and load from unpkg.
+
+```html
+<script src="https://unpkg.com/svg2png-wasm@0.4.0/unpkg/index.js"></script>
+<script>
+  const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
+  /** @type {Uint8Array} */
+  const png = await SVG2PNG.svg2png(
+    '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
+    {
+      scale: 2, // optional
+      width: 400, // optional
+      height: 400, // optional
+      fonts: [
+        // optional
+        new Uint8Array(font), // require, If you use text in svg
+      ],
+    },
+  );
+  document.getElementById('output').src = URL.createObjectURL(
+    new Blob([png.buffer], { type: 'image/png' }),
+  );
+</script>
 ```
 
 ### API
+
+#### `svg2png-wasm` module
 
 ```ts
 export type DefaultFontFamily = {
@@ -96,6 +131,19 @@ export type ConvertOptions = {
 };
 
 export const svg2png: (
+  svg: string,
+  opts?: ConvertOptions | undefined,
+) => Promise<Uint8Array>;
+```
+
+#### `svg2png-wasm/core` module
+
+```ts
+export type PromiseOr<T> = Promise<T> | T;
+
+export const createSvg2png = (
+  mod: PromiseOr<WebAssembly.Module | Response | Request | URL | string>
+) => (
   svg: string,
   opts?: ConvertOptions | undefined,
 ) => Promise<Uint8Array>;
