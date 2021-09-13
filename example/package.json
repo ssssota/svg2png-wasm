@@ -2,13 +2,16 @@
   "name": "example",
   "version": "1.0.0",
   "description": "svg2png examples",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cjs": "node index.cjs",
+    "esm": "node index.mjs",
+    "start": "serve"
   },
   "dependencies": {
     "svg2png-wasm": "link:.."
   },
-  "author": "ssssota",
-  "license": "MPL-2.0"
+  "type": "module",
+  "devDependencies": {
+    "serve": "^12.0.1"
+  }
 }

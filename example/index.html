@@ -10,6 +10,9 @@
         font-family: 'Roboto Thin';
         src: url('/Roboto-Thin.ttf');
       }
+      * {
+        font-family: 'Roboto Thin', sans-serif;
+      }
       section {
         display: flex;
       }
@@ -221,7 +224,7 @@
         </td>
       </tr>
     </table>
-    <script src="https://unpkg.com/svg2png-wasm"></script>
+    <script src="/umd/index.js"></script>
     <script src="https://unpkg.com/canvg/lib/umd.js"></script>
     <script>
       const setDataURL = (id, svg) => {
@@ -232,7 +235,10 @@
         )}`;
       };
       const setSvg2Png = async (id, svg, fonts = []) => {
-        const res = await SVG2PNG.svg2png(svg, { fonts });
+        const svg2png = SVG2PNG_CORE.createSvg2png(
+          fetch('/svg2png_wasm_bg.wasm'),
+        );
+        const res = await svg2png(svg, { fonts });
         document.getElementById(id).src = URL.createObjectURL(
           new Blob([res.buffer], { type: 'image/png' }),
         );
