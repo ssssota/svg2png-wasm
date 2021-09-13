@@ -46,7 +46,10 @@ jobs:
         with:
           name: build-cache-${{ github.sha }}
           path: |
+            core
             main
+            umd
+            unpkg
             svg2png_wasm_bg.wasm
 
   lint:
