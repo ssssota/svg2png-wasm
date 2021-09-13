@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "make": "run-s build bundle copy-wasm",
+    "make": "run-s build bundle bundle-dts copy-wasm",
     "build": "wasm-pack build --target web --out-dir pkg",
     "bundle": "rollup -c",
     "bundle-dts": "run-p bundle-dts:*",
