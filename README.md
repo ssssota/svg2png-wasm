@@ -139,10 +139,8 @@ export const svg2png: (
 #### `svg2png-wasm/core` module
 
 ```ts
-export type PromiseOr<T> = Promise<T> | T;
-
 export const createSvg2png = (
-  mod: PromiseOr<WebAssembly.Module | Response | Request | URL | string>
+  mod: Promise<WebAssembly.Module | Response | Request | URL | string> | WebAssembly.Module | Response | Request | URL | string
 ) => (
   svg: string,
   opts?: ConvertOptions | undefined,

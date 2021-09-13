@@ -18,7 +18,7 @@ export type ConvertOptions = {
   defaultFontFamily?: DefaultFontFamily;
 };
 
-export type PromiseOr<T> = Promise<T> | T;
+type PromiseOr<T> = Promise<T> | T;
 
 /**
  * @param mod WebAssembly Module or WASM url
