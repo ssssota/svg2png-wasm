@@ -139,12 +139,20 @@ export const svg2png: (
 #### `svg2png-wasm/core` module
 
 ```ts
-export const createSvg2png = (
-  mod: Promise<WebAssembly.Module | Response | Request | URL | string> | WebAssembly.Module | Response | Request | URL | string
-) => (
-  svg: string,
-  opts?: ConvertOptions | undefined,
-) => Promise<Uint8Array>;
+export type InitInput =
+  | RequestInfo
+  | URL
+  | Response
+  | BufferSource
+  | WebAssembly.Module;
+
+/**
+ * @param mod WebAssembly Module
+ * @returns svg2png converter
+ */
+export declare const createSvg2png: (
+  mod: Promise<InitInput> | InitInput,
+) => (svg: string, opts?: ConvertOptions | undefined) => Promise<Uint8Array>;
 ```
 
 ## 📄 LICENSE

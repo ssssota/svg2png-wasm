@@ -1,4 +1,8 @@
-import init, { createConverter, InitOutput } from '../pkg/svg2png_wasm';
+import init, {
+  createConverter,
+  InitInput,
+  InitOutput,
+} from '../pkg/svg2png_wasm';
 
 let wasm: InitOutput | undefined;
 
@@ -18,14 +22,12 @@ export type ConvertOptions = {
   defaultFontFamily?: DefaultFontFamily;
 };
 
-type PromiseOr<T> = Promise<T> | T;
-
 /**
  * @param mod WebAssembly Module or WASM url
  * @returns svg2png converter
  */
 export const createSvg2png =
-  (mod: PromiseOr<WebAssembly.Module | Response | Request | URL | string>) =>
+  (mod: Promise<InitInput> | InitInput) =>
   async (svg: string, opts?: ConvertOptions): Promise<Uint8Array> => {
     if (wasm === undefined) wasm = await init(await mod);
     const converter = createConverter(
