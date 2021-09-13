@@ -76,4 +76,4 @@ jobs:
         with:
           draft: true
           tag_name: ${{ needs.version.outputs.CURRENT_TAG }}
-          files: cjs/svg2png_wasm_bg.wasm
+          files: svg2png_wasm_bg.wasm

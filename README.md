@@ -17,7 +17,7 @@ npm install svg2png-wasm
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.4.0/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.4.2/unpkg/index.js"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
