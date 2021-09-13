@@ -66,6 +66,7 @@ jobs:
             main
             umd
             unpkg
+            svg2png_wasm_bg.wasm
           key: ${{ env.cache-name }}-${{ github.sha }}
       - name: Build
         run: pnpm make
