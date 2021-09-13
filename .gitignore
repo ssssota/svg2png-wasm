@@ -1,9 +1,10 @@
 /target
-Cargo.lock
-dist
-node_modules
-/pkg*
+/core
+/main
+/pkg
 /umd
-/cjs
-/esm
+/unpkg
+node_modules
+Cargo.lock
 reg.json
+*.wasm

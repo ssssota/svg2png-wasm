@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "rootDir": "lib",
     "target": "es2015",
-    "lib": ["es2015"],
+    "lib": ["es2015", "dom"],
     "module": "esnext",
-    "declaration": true,
+    "declaration": false,
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node"
