@@ -108,6 +108,6 @@ jobs:
         if: ${{ runner.os == 'Windows' }}
         with:
           name: build-cache-${{ github.sha }}
-      - run: pnpm playwright-install
+
       - name: Test
         run: pnpm test
