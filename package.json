@@ -35,12 +35,17 @@
     "lint": "run-p lint:*",
     "lint:js": "prettier --check .",
     "lint:rust": "cargo fmt -- --check && cargo clippy",
-    "test": "run-p vrt",
+    "test": "run-p vrt test:*",
+    "test:browser": "playwright test --browser=all --config=test/browser/playwright.config.ts",
+    "test:node": "jest -c test/node/jest.config.cjs",
     "vrt": "run-s vrt:gen vrt:comp",
-    "vrt:comp": "reg-cli vrt/actual vrt/expected vrt/diff",
-    "vrt:gen": "node vrt/index.mjs",
-    "vrt:update": "rimraf vrt/diff && reg-cli vrt/actual vrt/expected vrt/diff -U",
-    "vrt:clean": "rimraf vrt/diff vrt/actual"
+    "vrt:gen": "node test/vrt/index.mjs",
+    "vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
+    "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
+    "update-snapshot": "run-p update-snapshot:*",
+    "update-snapshot:vrt": "npm run vrt:clean && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
+    "update-snapshot:browser": "playwright test --browser=all --config=test/browser/playwright.config.ts --update-snapshots",
+    "playwright-install": "playwright install"
   },
   "repository": {
     "type": "git",
