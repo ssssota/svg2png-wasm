@@ -6,4 +6,6 @@
 /unpkg
 node_modules
 Cargo.lock
+reg.json
+pnpm-lock.yaml
 *.wasm
