@@ -1,5 +1,12 @@
-import { svg2png } from 'svg2png-wasm';
+import { createSvg2png } from 'svg2png-wasm/core';
 import { writeFileSync, readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const dir = dirname(fileURLToPath(import.meta.url));
+const svg2png = createSvg2png(
+  new WebAssembly.Module(readFileSync(join(dir, '..', 'svg2png_wasm_bg.wasm'))),
+);
 
 svg2png(
   `
