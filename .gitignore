@@ -5,6 +5,7 @@
 /umd
 /unpkg
 node_modules
+test-results
 Cargo.lock
 reg.json
 *.wasm

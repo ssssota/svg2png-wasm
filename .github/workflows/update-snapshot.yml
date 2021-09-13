@@ -1,0 +1,38 @@
+name: Update snapshot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.15.0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - name: Install deps
+        run: pnpm install
+
+      - name: Restore build files
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-files
+        with:
+          path: |
+            target
+            core
+            main
+            umd
+            unpkg
+            svg2png_wasm_bg.wasm
+          key: '${{ env.cache-name }}-${{ github.sha }}'
+          restore-keys: |
+            ${{ env.cache-name }}
+      - run: pnpm playwright-install
+      - name: Update snapshots
+        run: pnpm update-snapshot

@@ -4,7 +4,7 @@ import glob from 'glob';
 import { dirname, join } from 'path';
 import { exit } from 'process';
 import { fileURLToPath } from 'url';
-import { svg2png } from '../main/index.js';
+import { svg2png } from '../../main/index.js';
 
 /**
  * Remove(if exists) and Make dir

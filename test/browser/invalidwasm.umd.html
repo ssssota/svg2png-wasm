@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>svg2png test</title>
+    <style>
+      @font-face {
+        font-family: 'Roboto Black';
+        src: url(/test/browser/Roboto-BlackItalic.ttf);
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      id="svg"
+      viewBox="0 0 200 100"
+      width="200px"
+      height="100px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="100,100 150,25 150,75 200,0"
+        fill="none"
+        stroke="black"
+      />
+    </svg>
+    <script src="/umd/index.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        try {
+          const svg2png = SVG2PNG_CORE.createSvg2png(
+            '/test/browser/invalid.wasm',
+          );
+          const svgData = document.getElementById('svg').outerHTML;
+          const png = await svg2png(svgData);
+        } catch (e) {
+          window.processComplete = true;
+        }
+      });
+    </script>
+  </body>
+</html>
