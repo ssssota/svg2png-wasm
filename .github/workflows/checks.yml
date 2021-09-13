@@ -73,6 +73,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
+        node: [14, 16]
 
     steps:
       - uses: actions/checkout@v2
@@ -81,7 +82,7 @@ jobs:
           version: 6.15.0
       - uses: actions/setup-node@v2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node }}
           cache: pnpm
       - name: Install deps
         run: pnpm install
@@ -107,6 +108,6 @@ jobs:
         if: ${{ runner.os == 'Windows' }}
         with:
           name: build-cache-${{ github.sha }}
-
+      - run: pnpm playwright-install
       - name: Test
         run: pnpm test
