@@ -43,7 +43,7 @@
     "vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
     "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
     "update-snapshot": "run-p update-snapshot:*",
-    "update-snapshot:vrt": "npm run vrt:clean && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
+    "update-snapshot:vrt": "run-s vrt:clean vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
     "update-snapshot:browser": "playwright test --browser=all --config=test/browser/playwright.config.ts --update-snapshots",
     "playwright-install": "playwright install"
   },
