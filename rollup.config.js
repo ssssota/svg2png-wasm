@@ -7,13 +7,19 @@ import { defineConfig } from 'rollup';
 
 const pkg = require('./package.json');
 
-const customReplacer = replace({
-  preventAssignment: true,
-  values: {
-    'new TextDecoder': `new (typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder)`,
-    'new TextEncoder': `new (typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder)`,
-  },
-});
+const importMetaReplacer = () =>
+  replace({
+    preventAssignment: true,
+    values: { 'import.meta.url': undefined },
+  });
+const textEncDevReplacer = () =>
+  replace({
+    preventAssignment: true,
+    values: {
+      'new TextDecoder': `new (typeof TextDecoder === 'undefined' ? (0, module.require)('util').TextDecoder : TextDecoder)`,
+      'new TextEncoder': `new (typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder)`,
+    },
+  });
 
 export default defineConfig([
   {
@@ -31,7 +37,7 @@ export default defineConfig([
     plugins: [
       commonjs(),
       nodeResolve(),
-      customReplacer,
+      textEncDevReplacer(),
       typescript({ rootDir: 'lib' }),
     ],
   },
@@ -55,11 +61,8 @@ export default defineConfig([
     plugins: [
       commonjs(),
       nodeResolve(),
-      replace({
-        preventAssignment: true,
-        values: { 'import.meta.url': undefined },
-      }),
-      customReplacer,
+      importMetaReplacer(),
+      textEncDevReplacer(),
       typescript({ rootDir: 'lib' }),
     ],
   },
@@ -79,7 +82,7 @@ export default defineConfig([
       }),
       commonjs(),
       nodeResolve(),
-      customReplacer,
+      textEncDevReplacer(),
       typescript({ rootDir: 'lib' }),
       terser(),
     ],
