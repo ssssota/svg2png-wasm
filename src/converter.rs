@@ -28,7 +28,7 @@ impl Converter {
         scale: Option<f32>,
         width: Option<f64>,
         height: Option<f64>,
-    ) -> Option<Vec<u8>> {
+    ) -> Result<Vec<u8>, JsValue> {
         let fontdb = load_fonts(
             &self.fonts,
             self.serif_family.as_deref(),
@@ -47,20 +47,25 @@ impl Converter {
             text_rendering: usvg::TextRendering::OptimizeLegibility,
             image_rendering: usvg::ImageRendering::OptimizeQuality,
             keep_named_groups: false,
-            default_size: Size::new(width.unwrap_or(100.0), height.unwrap_or(100.0)).unwrap(),
+            default_size: Size::new(width.unwrap_or(100.0), height.unwrap_or(100.0))
+                .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
             fontdb: &fontdb,
         };
         let scale = scale.unwrap_or(1.0);
-        let tree = Tree::from_str(svg, &svg_options).ok()?;
+        let tree =
+            Tree::from_str(svg, &svg_options).map_err(|e| JsValue::from_str(&e.to_string()))?;
         let pixmap_size = tree.svg_node().size;
 
         let mut pixmap = Pixmap::new(
             (width.unwrap_or_else(|| pixmap_size.width()) * (scale as f64)).ceil() as u32,
             (height.unwrap_or_else(|| pixmap_size.height()) * (scale as f64)).ceil() as u32,
-        )?;
+        )
+        .ok_or_else(|| JsValue::from_str("Invalid width or height"))?;
 
         resvg::render(&tree, FitTo::Zoom(scale), pixmap.as_mut());
-        pixmap.encode_png().ok()
+        pixmap
+            .encode_png()
+            .map_err(|e| JsValue::from_str(&e.to_string()))
     }
 }
 
