@@ -21,7 +21,7 @@ const main = async () => {
   const fontPaths = glob.sync(join(__dirname, 'data/**/*.@(ttf|otf)'));
   const svgs = glob.sync(join(__dirname, 'data/**/*.svg'));
 
-  /** @type {import('../main/index.js').DefaultFontFamily} */
+  /** @type {import('../../main/index.js').DefaultFontFamily} */
   const defaultFontFamily = {
     sansSerifFamily: 'Roboto',
   };
