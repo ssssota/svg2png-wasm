@@ -1,4 +1,4 @@
-# <span align="center"><img src="./logo.svg" width="150px"></span>
+# <img src="./logo.svg" width="150px">
 
 svg2png-wasm
 
@@ -14,6 +14,8 @@ See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support sta
 
 ### Installation
 
+#### Node.js / Browser
+
 ```sh
 npm install svg2png-wasm
 # yarn add svg2png-wasm
@@ -23,10 +25,16 @@ npm install svg2png-wasm
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.4.3/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.5.0/unpkg/index.js"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
+```
+
+#### Deno
+
+```ts
+export { createSvg2png } from 'https://unpkg.com/svg2png-wasm@0.5.0/core/index.js';
 ```
 
 ### Example
@@ -160,6 +168,12 @@ export declare const createSvg2png: (
   mod: Promise<InitInput> | InitInput,
 ) => (svg: string, opts?: ConvertOptions | undefined) => Promise<Uint8Array>;
 ```
+
+## Examples
+
+- Use with Cloudflare Workers [ssssota/svg2png-worker](https://github.com/ssssota/svg2png-worker)
+- Use with Deno Deploy [ssssota/svg2png-deno-deploy](https://github.com/ssssota/svg2png-deno-deploy)
+- Or [test directory](./test/)
 
 ## 📄 LICENSE
 
