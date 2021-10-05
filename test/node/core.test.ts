@@ -1,5 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { createSvg2png } from '../../core';
 
 // Test before load valid wasm

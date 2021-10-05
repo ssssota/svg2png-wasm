@@ -3,7 +3,7 @@ import init, {
   createConverter,
   InitInput,
   InitOutput,
-} from '../pkg/svg2png_wasm';
+} from '../pkg/svg2png_wasm.js';
 
 let wasm: InitOutput | undefined;
 
@@ -45,7 +45,10 @@ export const createSvg2png =
         options?.defaultFontFamily?.fantasyFamily,
         options?.defaultFontFamily?.monospaceFamily,
       );
-      options?.fonts?.forEach((f) => converter?.registerFont(f));
+      for (const font of options?.fonts ?? []) {
+        converter.registerFont(font);
+      }
+
       const result = converter.convert(
         svg,
         options?.scale,
@@ -53,10 +56,8 @@ export const createSvg2png =
         options?.height,
       );
       return result;
-    } catch (error) {
-      if (error instanceof Error) throw error;
-      if (typeof error === 'string') throw new Error(error);
-      throw new Error(`${error}`);
+    } catch (error: unknown) {
+      throw error;
     } finally {
       converter?.free();
     }
