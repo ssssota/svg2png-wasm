@@ -12,8 +12,8 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-resvg = {version = "0.18.0", default-features = false}
-usvg = {version = "0.18.0", default-features = false, features = ["text"]}
+resvg = {version = "0.19.0", default-features = false}
+usvg = {version = "0.19.0", default-features = false, features = ["text"]}
 
 fontdb = "0.6.2"
 tiny-skia = "0.6.1"
