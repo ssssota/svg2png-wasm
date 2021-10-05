@@ -1,7 +1,7 @@
 module.exports = {
   prettier: true,
   space: 2,
-  ignores: ['test/**'],
+  ignores: ['test/**', 'main/**', 'core/**', 'pkg/**', 'umd/**', 'unpkg/**'],
   rules: {
     'node/prefer-global/process': 'off',
     'unicorn/prefer-module': 'off',
