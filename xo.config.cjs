@@ -10,7 +10,7 @@ module.exports = {
   },
   orverrides: [
     {
-      files: ['lib/core.ts'],
+      files: 'lib/core.ts',
       rules: {
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
