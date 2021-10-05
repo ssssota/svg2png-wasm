@@ -24,6 +24,8 @@
     "build": "wasm-pack build --target web --out-dir pkg",
     "bundle": "rollup -c",
     "bundle-dts": "run-p bundle-dts:*",
+    "bundle-dts:main": "dts-bundle-generator --no-banner --external-types -o main/index.d.ts lib/main.ts",
+    "bundle-dts:core": "dts-bundle-generator --no-banner --external-types -o core/index.d.ts lib/core.ts",
     "clean": "run-p clean:*",
     "clean:wasm": "rimraf pkg",
     "clean:bundle": "rimraf core main unpkg umd",
