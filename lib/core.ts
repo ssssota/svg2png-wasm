@@ -23,13 +23,18 @@ export type ConvertOptions = {
   defaultFontFamily?: DefaultFontFamily;
 };
 
+export type Svg2png = (
+  svg: string,
+  opts?: ConvertOptions,
+) => Promise<Uint8Array>;
+
 /**
  * @param mod WebAssembly Module or WASM url
  * @returns svg2png converter
  */
 export const createSvg2png =
-  (mod: Promise<InitInput> | InitInput) =>
-  async (svg: string, opts?: ConvertOptions): Promise<Uint8Array> => {
+  (mod: Promise<InitInput> | InitInput): Svg2png =>
+  async (svg, opts) => {
     let converter: Converter | undefined;
     try {
       if (wasm === undefined) wasm = await init(await mod);
