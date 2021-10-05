@@ -3,7 +3,8 @@ module.exports = {
   space: 2,
   ignores: ['test/**'],
   rules: {
-    'unicorn/prefer-module': 'off',
     'node/prefer-global/process': 'off',
+    'unicorn/prefer-module': 'off',
+    'unicorn/prefer-node-protocol': 'off',
   },
 };
