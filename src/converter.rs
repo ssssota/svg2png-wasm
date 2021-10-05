@@ -1,6 +1,5 @@
-use fontdb::Database;
 use tiny_skia::Pixmap;
-use usvg::{FitTo, OptionsRef, Size, Tree};
+use usvg::{fontdb::Database, FitTo, OptionsRef, Size, Tree};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
