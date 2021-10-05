@@ -4,6 +4,7 @@ edition = "2018"
 license = "MPL-2.0"
 name = "svg2png-wasm"
 version = "0.1.0"
+repository = "https://github.com/ssssota/svg2png-wasm"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
