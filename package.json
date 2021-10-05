@@ -90,7 +90,8 @@
     "serve": "^12.0.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3",
-    "wasm-pack": "^0.10.1"
+    "wasm-pack": "^0.10.1",
+    "xo": "^0.45.0"
   },
   "type": "module"
 }
