@@ -1,8 +1,8 @@
 // @ts-check
-import { buildSync } from 'esbuild';
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSync } from 'esbuild';
 
 /** @type {{version:string}} */
 const { version } = JSON.parse(
