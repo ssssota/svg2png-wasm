@@ -33,7 +33,7 @@ const nodeOptions = {
   platform: 'node',
 };
 
-// core modules
+// Core modules
 buildSync({
   ...coreOptions,
   format: 'cjs',
@@ -52,7 +52,7 @@ buildSync({
   outfile: 'umd/index.js',
 });
 
-// node modules
+// Node modules
 buildSync({
   ...nodeOptions,
   format: 'cjs',
@@ -64,7 +64,7 @@ buildSync({
   outfile: 'main/index.js',
 });
 
-// unpkg modules
+// Unpkg modules
 buildSync({
   ...commonOptions,
   entryPoints: ['lib/unpkg.ts'],

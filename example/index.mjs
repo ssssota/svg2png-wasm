@@ -1,7 +1,7 @@
+import { writeFileSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createSvg2png } from 'svg2png-wasm/core';
-import { writeFileSync, readFileSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const svg2png = createSvg2png(

@@ -1,8 +1,8 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { createSvg2png } from '../../core';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
-// test before load valid wasm
+// Test before load valid wasm
 it('invalid wasm', (done) => {
   const wasm = join(__dirname, '../../LICENSE');
   const svg2png = createSvg2png(readFileSync(wasm));

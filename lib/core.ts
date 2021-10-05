@@ -25,7 +25,7 @@ export type ConvertOptions = {
 
 export type Svg2png = (
   svg: string,
-  opts?: ConvertOptions,
+  options?: ConvertOptions,
 ) => Promise<Uint8Array>;
 
 /**
@@ -34,29 +34,29 @@ export type Svg2png = (
  */
 export const createSvg2png =
   (mod: Promise<InitInput> | InitInput): Svg2png =>
-  async (svg, opts) => {
+  async (svg, options) => {
     let converter: Converter | undefined;
     try {
       if (wasm === undefined) wasm = await init(await mod);
       converter = createConverter(
-        opts?.defaultFontFamily?.serifFamily,
-        opts?.defaultFontFamily?.sansSerifFamily,
-        opts?.defaultFontFamily?.cursiveFamily,
-        opts?.defaultFontFamily?.fantasyFamily,
-        opts?.defaultFontFamily?.monospaceFamily,
+        options?.defaultFontFamily?.serifFamily,
+        options?.defaultFontFamily?.sansSerifFamily,
+        options?.defaultFontFamily?.cursiveFamily,
+        options?.defaultFontFamily?.fantasyFamily,
+        options?.defaultFontFamily?.monospaceFamily,
       );
-      opts?.fonts?.forEach((f) => converter?.registerFont(f));
+      options?.fonts?.forEach((f) => converter?.registerFont(f));
       const result = converter.convert(
         svg,
-        opts?.scale,
-        opts?.width,
-        opts?.height,
+        options?.scale,
+        options?.width,
+        options?.height,
       );
       return result;
-    } catch (e) {
-      if (e instanceof Error) throw e;
-      if (typeof e === 'string') throw new Error(e);
-      throw new Error(`${e}`);
+    } catch (error) {
+      if (error instanceof Error) throw error;
+      if (typeof error === 'string') throw new Error(error);
+      throw new Error(`${error}`);
     } finally {
       converter?.free();
     }

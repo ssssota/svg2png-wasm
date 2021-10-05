@@ -1,5 +1,5 @@
-const { svg2png } = require('svg2png-wasm');
 const { writeFileSync } = require('fs');
+const { svg2png } = require('svg2png-wasm');
 
 svg2png(`
   <svg id="source" width="100px" height="100px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">

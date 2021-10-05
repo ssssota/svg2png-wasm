@@ -1,9 +1,15 @@
 // @ts-check
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { dirname, join } from 'node:path';
+import { exit } from 'node:process';
+import { fileURLToPath } from 'node:url';
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import glob from 'glob';
-import { dirname, join } from 'path';
-import { exit } from 'process';
-import { fileURLToPath } from 'url';
 import { svg2png } from '../../main/index.js';
 
 /**
@@ -52,7 +58,7 @@ const main = async () => {
 
 main()
   .then(() => exit(0))
-  .catch((e) => {
-    console.error(e);
+  .catch((error) => {
+    console.error(error);
     exit(1);
   });
