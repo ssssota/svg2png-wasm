@@ -3,7 +3,7 @@ import init, {
   createConverter,
   InitInput,
   InitOutput,
-} from '../pkg/svg2png_wasm.js';
+} from '../pkg/svg2png_wasm';
 
 let wasm: InitOutput | undefined;
 
@@ -57,7 +57,9 @@ export const createSvg2png =
       );
       return result;
     } catch (error: unknown) {
-      throw error;
+      if (error instanceof Error) throw error;
+      if (typeof error === 'string') throw new Error(error);
+      throw new Error(String(error));
     } finally {
       converter?.free();
     }
