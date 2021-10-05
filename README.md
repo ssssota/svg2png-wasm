@@ -135,7 +135,6 @@ export type DefaultFontFamily = {
   fantasyFamily?: string;
   monospaceFamily?: string;
 };
-
 export type ConvertOptions = {
   scale?: number;
   width?: number;
@@ -143,11 +142,11 @@ export type ConvertOptions = {
   fonts?: Uint8Array[];
   defaultFontFamily?: DefaultFontFamily;
 };
-
-export const svg2png: (
+export type Svg2png = (
   svg: string,
-  opts?: ConvertOptions | undefined,
+  opts?: ConvertOptions,
 ) => Promise<Uint8Array>;
+export const svg2png: Svg2png;
 ```
 
 #### `svg2png-wasm/core` module
@@ -159,14 +158,29 @@ export type InitInput =
   | Response
   | BufferSource
   | WebAssembly.Module;
-
+export type DefaultFontFamily = {
+  serifFamily?: string;
+  sansSerifFamily?: string;
+  cursiveFamily?: string;
+  fantasyFamily?: string;
+  monospaceFamily?: string;
+};
+export type ConvertOptions = {
+  scale?: number;
+  width?: number;
+  height?: number;
+  fonts?: Uint8Array[];
+  defaultFontFamily?: DefaultFontFamily;
+};
+export type Svg2png = (
+  svg: string,
+  opts?: ConvertOptions,
+) => Promise<Uint8Array>;
 /**
- * @param mod WebAssembly Module
+ * @param mod WebAssembly Module or WASM url
  * @returns svg2png converter
  */
-export declare const createSvg2png: (
-  mod: Promise<InitInput> | InitInput,
-) => (svg: string, opts?: ConvertOptions | undefined) => Promise<Uint8Array>;
+export const createSvg2png: (mod: Promise<InitInput> | InitInput) => Svg2png;
 ```
 
 ## Examples
