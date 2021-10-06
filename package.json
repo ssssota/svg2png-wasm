@@ -20,6 +20,7 @@
     }
   },
   "scripts": {
+    "prepack": "run-s clean make",
     "make": "run-s build bundle bundle-dts copy-wasm",
     "build": "wasm-pack build --target web --out-dir pkg",
     "bundle": "node bundle",
@@ -27,10 +28,9 @@
     "bundle-dts:main": "dts-bundle-generator --no-banner --external-types -o main/index.d.ts lib/main.ts",
     "bundle-dts:core": "dts-bundle-generator --no-banner --external-types -o core/index.d.ts lib/core.ts",
     "clean": "run-p clean:*",
-    "clean:wasm": "rimraf pkg",
+    "clean:wasm": "rimraf pkg svg2png_wasm_bg.wasm",
     "clean:bundle": "rimraf core main unpkg umd",
     "copy-wasm": "copyfiles -f pkg/svg2png_wasm_bg.wasm .",
-    "prepack": "run-s clean make",
     "format": "run-p format:*",
     "format:all": "prettier --write .",
     "format:rust": "cargo fmt",
@@ -38,16 +38,13 @@
     "lint:js": "prettier --check .",
     "lint:rust": "cargo fmt -- --check && cargo clippy",
     "test": "run-p test:vrt test:node",
-    "test:browser": "playwright test --browser=all --config=test/browser/playwright.config.ts",
     "test:node": "jest -c test/node/jest.config.cjs",
     "test:vrt": "run-s vrt:gen vrt:comp",
     "vrt:gen": "node test/vrt/index.mjs",
     "vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
     "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
     "update-snapshot": "run-p update-snapshot:*",
-    "update-snapshot:vrt": "run-s vrt:clean vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
-    "update-snapshot:browser": "playwright test --browser=all --config=test/browser/playwright.config.ts --update-snapshots",
-    "playwright-install": "playwright install"
+    "update-snapshot:vrt": "run-s vrt:clean vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U"
   },
   "repository": {
     "type": "git",
