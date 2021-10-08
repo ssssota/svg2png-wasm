@@ -4,6 +4,7 @@
 /pkg
 /umd
 /unpkg
+/site
 node_modules
 Cargo.lock
 reg.json
