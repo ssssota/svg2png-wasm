@@ -1,31 +1,50 @@
 <script lang="ts">
-	import { svg2png } from '$lib/svg2png';
-	import { browser } from '$app/env';
-	let svg: string = '';
-	let convertPromise: Promise<Uint8Array> | undefined;
+	import {
+		PackageManager,
+		packageManager,
+		packageManagers
+	} from '$lib/stores/packageManager';
+	import {
+		CodeSnippet,
+		RadioButtonGroup,
+		RadioButton
+	} from 'carbon-components-svelte';
+
+	const installCommands = {
+		npm: 'npm install svg2png-wasm',
+		yarn: 'yarn add svg2png-wasm',
+		pnpm: 'pnpm add svg2png-wasm'
+	};
 </script>
 
-<textarea bind:value={svg} cols="30" rows="10" />
+<main>
+	<section>
+		<h3 class="main-title">svg2png-wasm</h3>
+		<p>Convert svg to png using WebAssembly.</p>
+		<div>
+			<RadioButtonGroup bind:selected={$packageManager}>
+				{#each packageManagers as pm (pm)}
+					<RadioButton labelText={pm} value={pm} />
+				{/each}
+			</RadioButtonGroup>
+			<CodeSnippet code={installCommands[$packageManager]} />
+		</div>
+	</section>
+</main>
 
-<button
-	on:click={async () => {
-		if (svg.length === 0) return;
-		convertPromise = svg2png(svg);
-	}}>convert</button
->
+<style>
+	main section {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0 1.5em;
+	}
+	main section div {
+		padding: 1em 0;
+	}
 
-{#if browser && convertPromise !== undefined}
-	{#await convertPromise}
-		<p>converting...</p>
-	{:then result}
-		<!-- svelte-ignore missing-declaration -->
-		<p>
-			<img
-				src={URL.createObjectURL(new Blob([result], { type: 'image/png' }))}
-				alt="converted"
-			/>
-		</p>
-	{:catch err}
-		<p>{err}</p>
-	{/await}
-{/if}
+	.main-title {
+		font-size: 3rem;
+		margin-top: 2em;
+		margin-bottom: 0;
+	}
+</style>
