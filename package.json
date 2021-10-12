@@ -4,7 +4,7 @@
   "description": "A svg to png converter made with wasm.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "unpkg": "umd/index.js",
+  "unpkg": "dist/index.min.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {

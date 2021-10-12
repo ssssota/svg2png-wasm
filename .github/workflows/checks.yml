@@ -32,7 +32,6 @@ jobs:
             target
             dist
             dist-wasm
-            umd
             svg2png_wasm_bg.wasm
           key: ${{ env.cache-name }}-${{ github.sha }}
 
@@ -48,7 +47,6 @@ jobs:
             target
             dist
             dist-wasm
-            umd
             svg2png_wasm_bg.wasm
 
   lint:
@@ -98,7 +96,6 @@ jobs:
             target
             dist
             dist-wasm
-            umd
             svg2png_wasm_bg.wasm
           key: '${{ env.cache-name }}-${{ github.sha }}'
           restore-keys: |

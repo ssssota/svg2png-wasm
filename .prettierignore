@@ -1,6 +1,5 @@
 /target
 /dist*
-/umd
 node_modules
 test-results
 Cargo.lock

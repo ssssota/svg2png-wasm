@@ -24,5 +24,5 @@ buildSync({
   format: 'iife',
   minify: true,
   globalName: 'svg2pngWasm',
-  outfile: 'umd/index.js',
+  outfile: 'dist/index.min.js',
 });

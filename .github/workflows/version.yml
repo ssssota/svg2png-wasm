@@ -64,7 +64,6 @@ jobs:
             target
             dist
             dist-wasm
-            umd
             svg2png_wasm_bg.wasm
           key: ${{ env.cache-name }}-${{ github.sha }}
       - name: Build
