@@ -109,3 +109,42 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+  site-check:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIR: site
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.17.0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+          cache-dependency-path: ${{ env.WORKING_DIR }}/pnpm-lock.yaml
+      - name: Install deps
+        run: pnpm install
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Restore build files
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-files
+        with:
+          path: |
+            target
+            dist
+            dist-wasm
+            svg2png_wasm_bg.wasm
+          key: '${{ env.cache-name }}-${{ github.sha }}'
+          restore-keys: |
+            ${{ env.cache-name }}
+
+      - run: pnpm lint
+        working-directory: ${{ env.WORKING_DIR }}
+      - run: pnpm check
+        working-directory: ${{ env.WORKING_DIR }}
+      - run: pnpm build
+        working-directory: ${{ env.WORKING_DIR }}
