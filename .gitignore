@@ -1,9 +1,5 @@
 /target
-/core
-/main
-/pkg
-/umd
-/unpkg
+/dist*
 node_modules
 test-results
 Cargo.lock
