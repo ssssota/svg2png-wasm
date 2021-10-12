@@ -4,7 +4,7 @@ import glob from 'glob';
 import { dirname, join } from 'path';
 import { exit } from 'process';
 import { fileURLToPath } from 'url';
-import { svg2png } from '../../main/index.js';
+import { svg2png, initialize } from '../../dist/index.mjs';
 
 /**
  * Remove(if exists) and Make dir
@@ -21,7 +21,9 @@ const main = async () => {
   const fontPaths = glob.sync(join(__dirname, 'data/**/*.@(ttf|otf)'));
   const svgs = glob.sync(join(__dirname, 'data/**/*.svg'));
 
-  /** @type {import('../../main/index.js').DefaultFontFamily} */
+  await initialize(readFileSync(join(__dirname, '../../svg2png_wasm_bg.wasm')));
+
+  /** @type {import('../../dist').DefaultFontFamily} */
   const defaultFontFamily = {
     sansSerifFamily: 'Roboto',
   };
