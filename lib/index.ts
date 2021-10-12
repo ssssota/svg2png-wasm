@@ -2,7 +2,7 @@ import init, {
   Converter,
   createConverter,
   InitInput,
-} from '../pkg/svg2png_wasm';
+} from '../dist-wasm/svg2png_wasm';
 import { ConverterOptions, ConvertOptions, Svg2png } from './types';
 
 let initialized = false;
@@ -27,7 +27,7 @@ export const initialize = async (
  * @param opts Converter options (e.g. font settings)
  * @returns svg2png converter
  */
-export const createSvg2png = (opts: ConverterOptions): Svg2png => {
+export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
   let converter: Converter | undefined;
   converter = createConverter(
     opts?.defaultFontFamily?.serifFamily,
@@ -52,7 +52,8 @@ export const createSvg2png = (opts: ConverterOptions): Svg2png => {
         if (result) resolve(result);
         else throw new Error('Converter already disposed.');
       } catch (e) {
-        reject(e);
+        if (e instanceof Error) reject(e);
+        else reject(new Error(`${e}`));
       }
     });
   svg2png.dispose = () => {
@@ -65,7 +66,7 @@ export const createSvg2png = (opts: ConverterOptions): Svg2png => {
 
 export const svg2png = (
   svg: string,
-  opts: ConverterOptions & ConvertOptions,
+  opts?: ConverterOptions & ConvertOptions,
 ): Promise<Uint8Array> => {
   const convert = createSvg2png(opts);
   return convert(svg, opts).finally(() => convert.dispose());
