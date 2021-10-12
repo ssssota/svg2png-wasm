@@ -1,5 +1,6 @@
 /target
 /dist*
+/site
 node_modules
 test-results
 Cargo.lock
