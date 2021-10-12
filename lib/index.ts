@@ -3,48 +3,28 @@ import init, {
   createConverter,
   InitInput,
 } from '../pkg/svg2png_wasm';
-
-export type DefaultFontFamily = {
-  serifFamily?: string;
-  sansSerifFamily?: string;
-  cursiveFamily?: string;
-  fantasyFamily?: string;
-  monospaceFamily?: string;
-};
-
-export type ConverterOptions = {
-  fonts?: Uint8Array[];
-  defaultFontFamily?: DefaultFontFamily;
-};
-
-export type ConvertOptions = {
-  scale?: number;
-  width?: number;
-  height?: number;
-};
+import { ConverterOptions, ConvertOptions, Svg2png } from './types';
 
 let initialized = false;
+
+/**
+ * Initialize WASM module
+ * @param mod WebAssembly Module or WASM url
+ */
 export const initialize = async (
   mod: Promise<InitInput> | InitInput,
 ): Promise<void> => {
   if (initialized) {
-    console.warn(
+    throw new Error(
       'Already initialized. The `initialize` function can be used only once.',
     );
-    return;
   }
   await init(await mod);
   initialized = true;
 };
 
-export interface Svg2png {
-  (svg: string, options?: ConvertOptions): Promise<Uint8Array>;
-
-  dispose(): void;
-}
-
 /**
- * @param mod WebAssembly Module or WASM url
+ * @param opts Converter options (e.g. font settings)
  * @returns svg2png converter
  */
 export const createSvg2png = (opts: ConverterOptions): Svg2png => {
@@ -82,3 +62,14 @@ export const createSvg2png = (opts: ConverterOptions): Svg2png => {
 
   return svg2png;
 };
+
+export const svg2png = (
+  svg: string,
+  opts: ConverterOptions & ConvertOptions,
+): Promise<Uint8Array> => {
+  const convert = createSvg2png(opts);
+  return convert(svg, opts).finally(() => convert.dispose());
+};
+
+// types re-export
+export { ConverterOptions, ConvertOptions, Svg2png };
