@@ -28,6 +28,10 @@ export const initialize = async (
  * @returns svg2png converter
  */
 export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
+  if (!initialized)
+    throw new Error(
+      'WASM has not been initialized. Call `initialize` function.',
+    );
   let converter: Converter | undefined;
   converter = createConverter(
     opts?.defaultFontFamily?.serifFamily,
