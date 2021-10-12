@@ -2,35 +2,28 @@
   "name": "svg2png-wasm",
   "version": "0.5.0",
   "description": "A svg to png converter made with wasm.",
-  "main": "main/index.cjs",
-  "module": "main/index.js",
-  "unpkg": "unpkg/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "unpkg": "umd/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./main/index.js",
-      "require": "./main/index.cjs",
-      "node": "./main/index.js",
-      "default": "./main/index.js"
-    },
-    "./core": {
-      "import": "./core/index.js",
-      "require": "./core/index.cjs",
-      "node": "./core/index.js",
-      "default": "./core/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "node": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "scripts": {
     "prepack": "run-s clean make",
     "make": "run-s build bundle bundle-dts copy-wasm",
-    "build": "wasm-pack build --target web --out-dir pkg",
+    "build": "wasm-pack build --target web --out-dir dist-wasm",
     "bundle": "node bundle",
-    "bundle-dts": "run-p bundle-dts:*",
-    "bundle-dts:main": "dts-bundle-generator --no-banner --external-types -o main/index.d.ts lib/main.ts",
-    "bundle-dts:core": "dts-bundle-generator --no-banner --external-types -o core/index.d.ts lib/core.ts",
+    "bundle-dts": "dts-bundle-generator --no-banner --external-types -o dist/index.d.ts lib/index.ts",
     "clean": "run-p clean:*",
-    "clean:wasm": "rimraf pkg svg2png_wasm_bg.wasm",
-    "clean:bundle": "rimraf core main unpkg umd",
-    "copy-wasm": "copyfiles -f pkg/svg2png_wasm_bg.wasm .",
+    "clean:wasm": "rimraf dist-wasm svg2png_wasm_bg.wasm",
+    "clean:bundle": "rimraf dist",
+    "copy-wasm": "copyfiles -f dist-wasm/svg2png_wasm_bg.wasm .",
     "format": "run-p format:*",
     "format:all": "prettier --write .",
     "format:rust": "cargo fmt",
@@ -56,11 +49,8 @@
     "png"
   ],
   "files": [
-    "main",
     "svg2png_wasm_bg.wasm",
-    "core",
-    "umd",
-    "unpkg"
+    "dist"
   ],
   "author": "ssssota",
   "license": "MPL-2.0",
