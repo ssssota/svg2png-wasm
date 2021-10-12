@@ -2,10 +2,7 @@ import init, {
   Converter,
   createConverter,
   InitInput,
-  InitOutput,
 } from '../pkg/svg2png_wasm';
-
-let wasm: InitOutput | undefined;
 
 export type DefaultFontFamily = {
   serifFamily?: string;
@@ -15,49 +12,73 @@ export type DefaultFontFamily = {
   monospaceFamily?: string;
 };
 
-export type ConvertOptions = {
-  scale?: number;
-  width?: number;
-  height?: number;
+export type ConverterOptions = {
   fonts?: Uint8Array[];
   defaultFontFamily?: DefaultFontFamily;
 };
 
-export type Svg2png = (
-  svg: string,
-  opts?: ConvertOptions,
-) => Promise<Uint8Array>;
+export type ConvertOptions = {
+  scale?: number;
+  width?: number;
+  height?: number;
+};
+
+let initialized = false;
+export const initialize = async (
+  mod: Promise<InitInput> | InitInput,
+): Promise<void> => {
+  if (initialized) {
+    console.warn(
+      'Already initialized. The `initialize` function can be used only once.',
+    );
+    return;
+  }
+  await init(await mod);
+  initialized = true;
+};
+
+export interface Svg2png {
+  (svg: string, options?: ConvertOptions): Promise<Uint8Array>;
+
+  dispose(): void;
+}
 
 /**
  * @param mod WebAssembly Module or WASM url
  * @returns svg2png converter
  */
-export const createSvg2png =
-  (mod: Promise<InitInput> | InitInput): Svg2png =>
-  async (svg, opts) => {
-    let converter: Converter | undefined;
-    try {
-      if (wasm === undefined) wasm = await init(await mod);
-      converter = createConverter(
-        opts?.defaultFontFamily?.serifFamily,
-        opts?.defaultFontFamily?.sansSerifFamily,
-        opts?.defaultFontFamily?.cursiveFamily,
-        opts?.defaultFontFamily?.fantasyFamily,
-        opts?.defaultFontFamily?.monospaceFamily,
-      );
-      opts?.fonts?.forEach((f) => converter?.registerFont(f));
-      const result = converter.convert(
-        svg,
-        opts?.scale,
-        opts?.width,
-        opts?.height,
-      );
-      return result;
-    } catch (e) {
-      if (e instanceof Error) throw e;
-      if (typeof e === 'string') throw new Error(e);
-      throw new Error(`${e}`);
-    } finally {
-      converter?.free();
-    }
+export const createSvg2png = (opts: ConverterOptions): Svg2png => {
+  let converter: Converter | undefined;
+  converter = createConverter(
+    opts?.defaultFontFamily?.serifFamily,
+    opts?.defaultFontFamily?.sansSerifFamily,
+    opts?.defaultFontFamily?.cursiveFamily,
+    opts?.defaultFontFamily?.fantasyFamily,
+    opts?.defaultFontFamily?.monospaceFamily,
+  );
+  for (const font of opts?.fonts ?? []) {
+    converter.registerFont(font);
+  }
+
+  const svg2png = (svg: string, options?: ConvertOptions) =>
+    new Promise<Uint8Array>((resolve, reject) => {
+      try {
+        const result = converter?.convert(
+          svg,
+          options?.scale,
+          options?.width,
+          options?.height,
+        );
+        if (result) resolve(result);
+        else throw new Error('Converter already disposed.');
+      } catch (e) {
+        reject(e);
+      }
+    });
+  svg2png.dispose = () => {
+    converter?.free();
+    converter = undefined;
   };
+
+  return svg2png;
+};
