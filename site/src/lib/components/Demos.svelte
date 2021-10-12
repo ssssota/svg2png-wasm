@@ -8,7 +8,7 @@
 	const imagesPromiseMap: Record<string, Promise<Uint8Array>[]> = {
 		[`${base}/icon.svg`]: [],
 		[`${base}/gradient.svg`]: [],
-		[`${base}/parrot.svg`]: [],
+		[`${base}/parrot.svg`]: []
 	};
 </script>
 
