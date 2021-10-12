@@ -17,7 +17,7 @@ export const packageManager = (() => {
 	const setWithStorage = (pm: PackageManager) => {
 		set(pm);
 		localStorage.setItem(storeKey, pm);
-	}
+	};
 
 	return {
 		subscribe,

@@ -1,23 +1,54 @@
-import { createSvg2png } from 'svg2png-wasm/core';
+import { createSvg2png, initialize } from 'svg2png-wasm';
+import type { ConverterOptions, ConvertOptions, Svg2png } from 'svg2png-wasm';
+import { dev } from '$app/env';
 
 console.log('worker initializing');
-
-const svg2png = createSvg2png(fetch('/svg2png-wasm/svg2png.wasm'));
-export type Svg2pngRequest = {
-	svg: string;
-	options?: Parameters<typeof svg2png>[1]; // type importing will be error
-};
+export type Svg2pngRequest =
+	| {
+			id: string;
+			type: 'svg2png';
+			svg: string;
+			options?: ConvertOptions; // type importing will be error
+	  }
+	| {
+			type: 'initialize';
+			options?: ConverterOptions;
+	  };
 
 export type Svg2pngResponse =
-	| { type: 'success'; data: Uint8Array }
-	| { type: 'error'; error: Error };
+	| { id: string; type: 'success'; data: Uint8Array }
+	| { id: string; type: 'error'; error: Error };
+
+let svg2png: Svg2png | undefined;
 
 self.addEventListener('message', (ev) => {
-	console.log('worker converting');
 	const data = ev.data as Svg2pngRequest;
 	if (typeof data !== 'object' || data == null) return;
 
-	svg2png(data.svg, data.options)
-		.then((res) => self.postMessage({ type: 'success', data: res }))
-		.catch((e) => self.postMessage({ type: 'error', error: e }));
+	console.log(`worker ${data.type}`);
+
+	switch (data.type) {
+		case 'initialize':
+			initialize(
+				fetch(dev ? '/svg2png.wasm' : '/svg2png-wasm/svg2png.wasm')
+			).then(() => {
+				svg2png = createSvg2png(data.options);
+			});
+			break;
+		case 'svg2png':
+			if (svg2png === undefined)
+				self.postMessage({
+					type: 'error',
+					error: 'svg2png has not been initialized.'
+				});
+			else
+				svg2png(data.svg, data.options)
+					.then((res) =>
+						self.postMessage({ id: data.id, type: 'success', data: res })
+					)
+					.catch((e) =>
+						self.postMessage({ id: data.id, type: 'error', error: `${e}` })
+					);
+			break;
+	}
 });
