@@ -25,7 +25,7 @@ npm install svg2png-wasm
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.5.0/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.6.0"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
@@ -34,7 +34,12 @@ Or, using a script tag in the browser and load from unpkg.
 #### Deno
 
 ```ts
-export { createSvg2png } from 'https://unpkg.com/svg2png-wasm@0.5.0/core/index.js';
+// @deno-types="https://unpkg.com/svg2png-wasm@0.6.0/index.d.ts";
+export {
+  createSvg2png,
+  initialize,
+  svg2png,
+} from 'https://unpkg.com/svg2png-wasm@0.6.0';
 ```
 
 ### Example
@@ -42,9 +47,13 @@ export { createSvg2png } from 'https://unpkg.com/svg2png-wasm@0.5.0/core/index.j
 #### Node.js
 
 ```js
-import { svg2png } from 'svg2png-wasm';
-// const { svg2png } = require('svg2png-wasm');
+import { svg2png, initialize } from 'svg2png-wasm';
+// const { svg2png, initialize } = require('svg2png-wasm');
 import { readFileSync, writeFileSync } from 'fs';
+
+await initialize(
+  readFileSync('./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm'),
+);
 
 /** @type {Uint8Array} */
 const png = await svg2png(
@@ -68,18 +77,16 @@ writeFileSync('./output.png', png);
 
 #### Browser
 
-You should create `svg2png` with the `svg2png-wasm/core` module by specifying your own WASM.
-(You can download the WASM from [Releases](https://github.com/ssssota/svg2png-wasm/releases) page and deploy to your custom assets directory!)
-
-e.g.
-
 ```js
 import { createSvg2png } from 'svg2png-wasm/core';
 
-const svg2png = createSvg2png(
-  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',
-);
 const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
+const svg2png = createSvg2png({
+  fonts: [
+    // optional
+    new Uint8Array(font), // require, If you use text in svg
+  ],
+});
 /** @type {Uint8Array} */
 const png = await svg2png(
   '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
@@ -87,10 +94,6 @@ const png = await svg2png(
     scale: 2, // optional
     width: 400, // optional
     height: 400, // optional
-    fonts: [
-      // optional
-      new Uint8Array(font), // require, If you use text in svg
-    ],
   },
 );
 document.getElementById('output').src = URL.createObjectURL(
@@ -101,11 +104,11 @@ document.getElementById('output').src = URL.createObjectURL(
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.4.3/unpkg/index.js"></script>
+<script src="https://unpkg.com/svg2png-wasm"></script>
 <script>
   const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
   /** @type {Uint8Array} */
-  const png = await SVG2PNG.svg2png(
+  const png = await svg2pngWasm.svg2png(
     '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
     {
       scale: 2, // optional
@@ -128,30 +131,6 @@ Or, using a script tag in the browser and load from unpkg.
 #### `svg2png-wasm` module
 
 ```ts
-export type DefaultFontFamily = {
-  serifFamily?: string;
-  sansSerifFamily?: string;
-  cursiveFamily?: string;
-  fantasyFamily?: string;
-  monospaceFamily?: string;
-};
-export type ConvertOptions = {
-  scale?: number;
-  width?: number;
-  height?: number;
-  fonts?: Uint8Array[];
-  defaultFontFamily?: DefaultFontFamily;
-};
-export type Svg2png = (
-  svg: string,
-  opts?: ConvertOptions,
-) => Promise<Uint8Array>;
-export const svg2png: Svg2png;
-```
-
-#### `svg2png-wasm/core` module
-
-```ts
 export type InitInput =
   | RequestInfo
   | URL
@@ -165,22 +144,35 @@ export type DefaultFontFamily = {
   fantasyFamily?: string;
   monospaceFamily?: string;
 };
+export type ConverterOptions = {
+  fonts?: Uint8Array[];
+  defaultFontFamily?: DefaultFontFamily;
+};
 export type ConvertOptions = {
   scale?: number;
   width?: number;
   height?: number;
-  fonts?: Uint8Array[];
-  defaultFontFamily?: DefaultFontFamily;
 };
-export type Svg2png = (
+export type Svg2png = ((
   svg: string,
-  opts?: ConvertOptions,
-) => Promise<Uint8Array>;
+  options?: ConvertOptions,
+) => Promise<Uint8Array>) & {
+  dispose: () => void;
+};
 /**
+ * Initialize WASM module
  * @param mod WebAssembly Module or WASM url
+ */
+export const initialize: (mod: Promise<InitInput> | InitInput) => Promise<void>;
+/**
+ * @param opts Converter options (e.g. font settings)
  * @returns svg2png converter
  */
-export const createSvg2png: (mod: Promise<InitInput> | InitInput) => Svg2png;
+export const createSvg2png: (opts?: ConverterOptions | undefined) => Svg2png;
+export const svg2png: (
+  svg: string,
+  opts?: (ConverterOptions & ConvertOptions) | undefined,
+) => Promise<Uint8Array>;
 ```
 
 ## Examples

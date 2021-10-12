@@ -1,11 +1,8 @@
 /target
-/core
-/main
-/pkg
-/umd
-/unpkg
+/dist*
 node_modules
+test-results
 Cargo.lock
 reg.json
-pnpm-lock.yaml
 *.wasm
+pnpm-lock.yaml
