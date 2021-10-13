@@ -39,7 +39,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  site-check:
+  site-deploy:
     runs-on: ubuntu-latest
     env:
       WORKING_DIR: site
