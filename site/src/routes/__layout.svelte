@@ -6,10 +6,28 @@
 </script>
 
 <svelte:head>
+	<title>svg2png-wasm</title>
+
+	<meta
+		name="description"
+		content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."
+	/>
+	<meta name="keywords" content="svg,png,wasm,convert,js,javascript" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="svg2png-wasm" />
+	<meta
+		property="og:description"
+		content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."
+	/>
+	<meta property="og:image" content="https://ssssota.github.io{base}/ogp.png" />
+	<meta property="og:url" content="http://ssssota.github.io{base}/" />
+
 	<link rel="icon" href="{base}/favicon.png" />
 
 	<!-- for prerendering -->
 	<link rel="prefetch" href="{base}/svg2png.wasm" />
+	<link rel="prefetch" href="{base}/ogp.png" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link
