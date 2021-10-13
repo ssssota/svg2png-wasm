@@ -1,14 +1,20 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { LogoGithub32 } from 'carbon-icons-svelte';
+	import { Link } from 'carbon-components-svelte';
 </script>
 
 <header>
 	<div>
 		<h1>
-			<img width="48" src="{base}/icon.svg" alt="svg2png-wasm icon" />
+			<a href="{base}/">
+				<img width="48" src="{base}/icon.svg" alt="svg2png-wasm icon" />
+			</a>
 		</h1>
 		<div class="spacer" />
+		<nav>
+			<Link href="{base}/docs" size="lg">Docs</Link>
+		</nav>
 		<p>
 			<a
 				href="https://github.com/ssssota/svg2png-wasm"
@@ -36,6 +42,10 @@
 
 	.spacer {
 		flex-grow: 1;
+	}
+
+	nav {
+		padding: 2em;
 	}
 
 	h1,
