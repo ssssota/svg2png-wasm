@@ -1,12 +1,15 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { svg2png, initialize } from 'svg2png-wasm';
-import { iconSvg } from './icon.svg';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { initialize, svg2png } from 'svg2png-wasm';
 import { svg2pngWasm } from './svg2png.wasm';
+
+const ogpSvg = readFileSync(resolve('static', 'ogp.svg'), 'utf8');
 
 export const get: RequestHandler = async () => {
 	await initialize(svg2pngWasm).catch(() => undefined);
 	return {
-		body: await svg2png(iconSvg, { scale: 128 / 24 }),
+		body: await svg2png(ogpSvg),
 		headers: { 'content-type': 'image/png' }
 	};
 };
