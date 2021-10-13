@@ -25,7 +25,7 @@ npm install svg2png-wasm
 Or, using a script tag in the browser and load from unpkg.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm@0.6.0"></script>
+<script src="https://unpkg.com/svg2png-wasm@0.6.1"></script>
 
 <!-- Or, latest -->
 <script src="https://unpkg.com/svg2png-wasm"></script>
@@ -34,12 +34,10 @@ Or, using a script tag in the browser and load from unpkg.
 #### Deno
 
 ```ts
-// @deno-types="https://unpkg.com/svg2png-wasm@0.6.0/index.d.ts";
-export {
-  createSvg2png,
-  initialize,
-  svg2png,
-} from 'https://unpkg.com/svg2png-wasm@0.6.0';
+// from esm.sh
+export * from 'https://esm.sh/svg2png-wasm@0.6.1';
+// from skypack.dev
+export * from 'https://cdn.skypack.dev/svg2png-wasm@0.6.1?dts';
 ```
 
 ### Examples
