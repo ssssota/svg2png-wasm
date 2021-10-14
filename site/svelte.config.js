@@ -1,3 +1,4 @@
+// @ts-check
 import preprocess from 'svelte-preprocess';
 import adapt from '@sveltejs/adapter-static';
 import { optimizeImports, optimizeCss } from 'carbon-preprocess-svelte';
@@ -18,11 +19,14 @@ const config = {
 			base: dev ? undefined : '/svg2png-wasm'
 		},
 		vite: {
-			plugins: [!dev && optimizeCss({
-				safelist: {
-					deep: [/token$/]
-				}
-			})]
+			plugins: [
+				!dev &&
+					optimizeCss({
+						safelist: {
+							deep: [/token$/]
+						}
+					})
+			]
 		}
 	}
 };
