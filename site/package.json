@@ -13,6 +13,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
+		"@types/prismjs": "^1.16.6",
 		"@typescript-eslint/eslint-plugin": "^4.33.0",
 		"@typescript-eslint/parser": "^4.33.0",
 		"autoprefixer": "^10.3.7",
@@ -35,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"prismjs": "^1.25.0",
 		"svg2png-wasm": "link:.."
 	}
 }

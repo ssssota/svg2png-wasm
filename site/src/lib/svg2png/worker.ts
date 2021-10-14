@@ -29,11 +29,11 @@ self.addEventListener('message', (ev) => {
 
 	switch (data.type) {
 		case 'initialize':
-			initialize(
-				fetch(dev ? '/svg2png.wasm' : '/svg2png-wasm/svg2png.wasm')
-			).then(() => {
-				svg2png = createSvg2png(data.options);
-			});
+			initialize(dev ? '/svg2png.wasm' : '/svg2png-wasm/svg2png.wasm').then(
+				() => {
+					svg2png = createSvg2png(data.options);
+				}
+			);
 			break;
 		case 'svg2png':
 			if (svg2png === undefined)
