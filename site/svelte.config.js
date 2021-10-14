@@ -18,7 +18,11 @@ const config = {
 			base: dev ? undefined : '/svg2png-wasm'
 		},
 		vite: {
-			plugins: [!dev && optimizeCss()]
+			plugins: [!dev && optimizeCss({
+				safelist: {
+					deep: [/token$/]
+				}
+			})]
 		}
 	}
 };
