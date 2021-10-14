@@ -3,3 +3,30 @@
 *::after {
 	box-sizing: border-box;
 }
+
+/* carbon-components override */
+.bx--copy-btn,
+.bx--snippet,
+button.bx--btn.bx--snippet-btn--expand {
+	background-color: #262626;
+	color: #f4f4f4;
+}
+.bx--copy-btn:hover,
+button.bx--btn.bx--snippet-btn--expand:hover {
+	background-color: #393939;
+}
+.bx--snippet__icon {
+	fill: #f4f4f4;
+}
+.bx--snippet-container pre {
+	font-size: var(--cds-code-02-font-size);
+	line-height: var(--cds-code-02-line-height);
+	letter-spacing: var(--cds-code-02-letter-spacing);
+	cursor: text;
+}
+.bx--snippet--multi .bx--snippet-container pre {
+	overflow-x: auto;
+}
+.bx--snippet--multi .bx--snippet-container pre::after {
+	background-image: none;
+}
