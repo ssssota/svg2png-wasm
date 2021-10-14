@@ -55,7 +55,7 @@
     "NOTICE"
   ],
   "author": "ssssota",
-  "license": "MPL-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ssssota/svg2png-wasm/issues"
   },
