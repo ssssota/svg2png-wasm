@@ -58,7 +58,7 @@
   "bugs": {
     "url": "https://github.com/ssssota/svg2png-wasm/issues"
   },
-  "homepage": "https://github.com/ssssota/svg2png-wasm#readme",
+  "homepage": "https://ssssota.github.io/svg2png-wasm/",
   "devDependencies": {
     "@swc/core": "^1.2.93",
     "@swc/jest": "^0.2.4",
