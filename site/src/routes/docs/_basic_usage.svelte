@@ -4,7 +4,8 @@
 </script>
 
 <script lang="ts">
-	import { CodeSnippet } from 'carbon-components-svelte';
+	import { languages } from 'prismjs';
+	import HighlightCodeSnippet from '$lib/components/HighlightCodeSnippet.svelte';
 
 	const prepareWasm = {
 		node: `
@@ -16,7 +17,7 @@ const wasm = readFileSync('./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm');`.
 const wasm = await fetch('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm')
   .then(res => res.arrayBuffer())`.trim(),
 		browser: `
-// browser (For example, let's say that we have a wasm file in the assets directory)
+// browser (For example, we have a wasm file in the assets directory)
 const wasm = await fetch('/assets/svg2png_wasm_bg.wasm').then(res => res.arrayBuffer())`.trim()
 	};
 
@@ -35,15 +36,30 @@ const png = await svg2png(svg)`.trim();
 <p>e.g.</p>
 {#each Object.entries(prepareWasm) as [env, code] (env)}
 	<div class="code-snippet">
-		<CodeSnippet type="multi" {code} />
+		<HighlightCodeSnippet
+			type="multi"
+			{code}
+			grammar={languages.js}
+			language="javascript"
+		/>
 	</div>
 {/each}
 
 <h4>2. Initialize wasm</h4>
-<CodeSnippet type="multi" code={initializeCode} />
+<HighlightCodeSnippet
+	type="multi"
+	code={initializeCode}
+	grammar={languages.js}
+	language="javascript"
+/>
 
 <h4>3. Convert SVG</h4>
-<CodeSnippet type="multi" code={convertCode} />
+<HighlightCodeSnippet
+	type="multi"
+	code={convertCode}
+	grammar={languages.js}
+	language="javascript"
+/>
 
 <style>
 	h4,

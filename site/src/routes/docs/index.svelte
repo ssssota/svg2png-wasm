@@ -4,6 +4,7 @@
 	import type { SvelteComponent } from 'svelte';
 	import BasicUsage, * as BasicUsageInfo from './_basic_usage.svelte';
 	import GettingStarted, * as GettingStartedInfo from './_getting_started.svelte';
+	import 'prismjs/themes/prism-tomorrow.css';
 
 	type SectionEntry = readonly [
 		typeof SvelteComponent,
