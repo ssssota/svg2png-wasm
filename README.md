@@ -6,6 +6,8 @@ svg2png-wasm
 [![npm](https://img.shields.io/npm/v/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
 [![NPM](https://img.shields.io/npm/l/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
 
+**[Demo site](https://ssssota.github.io/svg2png-wasm/)**
+
 SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crates/resvg).
 
 See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support status.
@@ -172,7 +174,10 @@ export const svg2png: (
 
 ## 📄 LICENSE
 
-MPL-2.0 License
+MIT
+
+This library uses [resvg](https://github.com/RazrFalcon/resvg), which is licensed unser MPL-2.0.
+The source code for resvg can be found [here](https://github.com/RazrFalcon/resvg).
 
 ## 🙋‍♂️ Contributing
 

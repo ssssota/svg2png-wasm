@@ -1,5 +1,6 @@
 // @ts-check
 import { buildSync } from 'esbuild';
+import { readFileSync } from 'fs';
 
 /** @type {import('esbuild').BuildOptions} */
 const commonOptions = {
@@ -7,6 +8,12 @@ const commonOptions = {
   logLevel: 'error',
   entryPoints: ['lib/index.ts'],
   define: { 'import.meta.url': 'undefined' },
+  banner: {
+    js: `/**\n * @file ${readFileSync('./NOTICE', 'utf8')
+      .trim()
+      .split('\n')
+      .join(' ')}\n */`,
+  },
 };
 
 buildSync({
