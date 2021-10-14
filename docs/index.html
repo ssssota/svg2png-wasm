@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>svg2png-wasm</title><meta name="description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment." data-svelte="svelte-10yub7g"><meta name="keywords" content="svg,png,wasm,convert,js,javascript" data-svelte="svelte-10yub7g"><meta property="og:type" content="website" data-svelte="svelte-10yub7g"><meta property="og:title" content="svg2png-wasm" data-svelte="svelte-10yub7g"><meta property="og:description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment." data-svelte="svelte-10yub7g"><meta property="og:image" content="https://ssssota.github.io/svg2png-wasm/ogp.png" data-svelte="svelte-10yub7g"><meta property="og:url" content="http://ssssota.github.io/svg2png-wasm/" data-svelte="svelte-10yub7g"><link rel="icon" href="/svg2png-wasm/favicon.png" data-svelte="svelte-10yub7g"><link rel="prefetch" href="/svg2png-wasm/svg2png.wasm" data-svelte="svelte-10yub7g"><link rel="prefetch" href="/svg2png-wasm/ogp.png" data-svelte="svelte-10yub7g"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-10yub7g"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-10yub7g"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet" data-svelte="svelte-10yub7g">
+
+		
+
+		<link rel="modulepreload" href="/svg2png-wasm/_app/start-a150f2e5.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/vendor-16d16a08.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/paths-28a87002.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/pages/__layout.svelte-123f5e2c.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/pages/docs/index.svelte-9f02c536.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/InstallCommand-727e28bc.js">
+		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/start-464e9d0a.css">
+		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/pages/__layout.svelte-635e6d84.css">
+		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/pages/docs/index.svelte-93fe3e27.css">
+		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/InstallCommand-3bae156c.css">
+
+		<script type="module">
+			import { start } from "/svg2png-wasm/_app/start-a150f2e5.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"/svg2png-wasm","assets":""},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/svg2png-wasm/_app/pages/__layout.svelte-123f5e2c.js"),
+						import("/svg2png-wasm/_app/pages/docs/index.svelte-9f02c536.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "\u002Fdocs",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+
+
+<header class="svelte-q5gupp"><div class="svelte-q5gupp"><h1 class="svelte-q5gupp"><a href="/svg2png-wasm/"><img width="48" src="/svg2png-wasm/icon.svg" alt="svg2png-wasm icon"></a></h1>
+		<div class="spacer svelte-q5gupp"></div>
+		<nav class="svelte-q5gupp">
+<a href="/svg2png-wasm/docs" class="bx--link     bx--link--lg">Docs</a></nav>
+		<p class="svelte-q5gupp"><a href="https://github.com/ssssota/svg2png-wasm" target="_blank" rel="noopener noreferer">
+<svg data-carbon-icon="LogoGithub32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="32" height="32" preserveAspectRatio="xMidYMid meet" style="fill:#000" aria-hidden focusable="false"><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path>
+    
+  </svg></a></p></div>
+</header>
+
+<main class="svelte-djbajb"><section class="toc svelte-djbajb">
+<ul class="bx--list--unordered  ">
+<li class="bx--list__item">
+<a href="#svg-support" class="bx--link     ">SVG Support</a>
+				</li>
+<li class="bx--list__item">
+<a href="#getting-started" class="bx--link     ">Getting Started</a>
+				</li>
+<li class="bx--list__item">
+<a href="#basic-usage" class="bx--link     ">Basic usage</a>
+				</li>
+<li class="bx--list__item">
+<a href="#font-settings" class="bx--link     ">Font settings</a>
+				</li>
+<li class="bx--list__item">
+<a href="#advanced-usage" class="bx--link     ">Advanced usage</a>
+				</li></ul></section>
+	<section class="svelte-djbajb"><h2 id="svg-support" class="title svelte-djbajb">SVG Support
+				<a aria-hidden href="/docs#svg-support" class="header-anchor svelte-djbajb">#
+				</a></h2>
+			<p class="svelte-vnkn97">svg2png-wasm uses resvg
+	
+<a rel="noopener noreferrer" href="https://crates.io/crates/resvg" target="_blank" class="bx--link     ">resvg<div class="bx--link__icon">
+<svg data-carbon-icon="Launch16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path>
+    
+  </svg></div></a>
+	for SVG conversion.
+</p>
+<p class="svelte-vnkn97">So, please check
+	
+<a rel="noopener noreferrer" href="https://crates.io/crates/resvg#svg-support" target="_blank" class="bx--link     ">resvg document
+	<div class="bx--link__icon">
+<svg data-carbon-icon="Launch16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path>
+    
+  </svg></div></a>
+	for SVG support status.
+</p>
+		</section><section class="svelte-djbajb"><h2 id="getting-started" class="title svelte-djbajb">Getting Started
+				<a aria-hidden href="/docs#getting-started" class="header-anchor svelte-djbajb">#
+				</a></h2>
+			<p class="svelte-merh05">You can use this library in Node.js, Deno and Browser.</p>
+
+<h4 class="svelte-merh05">Node.js</h4>
+<div class="svelte-tfikos">
+<div class="bx--form-item"><fieldset  class="bx--radio-button-group   bx--radio-button-group--label-right">
+    <div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.5yeswr749j6" name="" checked  value="npm" class="bx--radio-button">
+  <label for="ccs-0.5yeswr749j6" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <span>
+          npm
+        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.snfj9rgi47e" name=""   value="yarn" class="bx--radio-button">
+  <label for="ccs-0.snfj9rgi47e" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <span>
+          yarn
+        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.vki628vrtzc" name=""   value="pnpm" class="bx--radio-button">
+  <label for="ccs-0.vki628vrtzc" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <span>
+          pnpm
+        </span></label></div></fieldset></div>
+
+	
+<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>npm install svg2png-wasm</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+
+<h4 class="svelte-merh05">Deno</h4>
+<div class="svelte-tfikos">
+<div class="bx--form-item"><fieldset  class="bx--radio-button-group   bx--radio-button-group--label-right">
+    <div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.0m0zqg2fjnga" name="" checked  value="skypack" class="bx--radio-button">
+  <label for="ccs-0.0m0zqg2fjnga" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <span>
+          skypack
+        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.042yffbfdfdj" name=""   value="esm.sh" class="bx--radio-button">
+  <label for="ccs-0.042yffbfdfdj" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <span>
+          esm.sh
+        </span></label></div></fieldset></div>
+
+	
+<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">export</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">'https://cdn.skypack.dev/svg2png-wasm?dts'</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+
+<h4 class="svelte-merh05">Browser</h4>
+<p class="svelte-merh05">You can use npm (like Node.js) to bundle it with bundler (Webpack, Vite,
+	etc.).<br>
+	It can also be used directly as follows.
+</p>
+
+<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/svg2png-wasm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+<br>
+
+<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> <span class="token punctuation">{</span> initialize<span class="token punctuation">,</span> svg2png<span class="token punctuation">,</span> createSvg2png <span class="token punctuation">}</span> <span class="token operator">=</span> svg2pngWasm<span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+		</section><section class="svelte-djbajb"><h2 id="basic-usage" class="title svelte-djbajb">Basic usage
+				<a aria-hidden href="/docs#basic-usage" class="header-anchor svelte-djbajb">#
+				</a></h2>
+			<h4 class="svelte-vmzsxk">1. Prepare wasm</h4>
+<p class="svelte-vmzsxk">You will need to prepare a wasm module.</p>
+
+<p class="svelte-vmzsxk">e.g.</p>
+<div class="code-snippet svelte-vmzsxk">
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// Node.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> readFileSync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> wasm <span class="token operator">=</span> <span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+	</div><div class="code-snippet svelte-vmzsxk">
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// Deno (For example, fetch from unpkg CDN)</span>
+<span class="token keyword">const</span> wasm <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+	</div><div class="code-snippet svelte-vmzsxk">
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// browser (For example, we have a wasm file in the assets directory)</span>
+<span class="token keyword">const</span> wasm <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/assets/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+	</div>
+
+<h4 class="svelte-vmzsxk">2. Initialize wasm</h4>
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">{</span> initialize <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svg2png-wasm'</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>wasm<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+<h4 class="svelte-vmzsxk">3. Convert SVG</h4>
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">{</span> svg2png <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svg2png-wasm'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> png <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svg<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+		</section><section class="svelte-djbajb"><h2 id="font-settings" class="title svelte-djbajb">Font settings
+				<a aria-hidden href="/docs#font-settings" class="header-anchor svelte-djbajb">#
+				</a></h2>
+			
+<div role="alert" kind="warning" class="bx--inline-notification  bx--inline-notification--hide-close-button     bx--inline-notification--warning "><div class="bx--inline-notification__details">
+<svg data-carbon-icon="WarningFilled20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" class="bx--inline-notification__icon" preserveAspectRatio="xMidYMid meet" role="img" focusable="false"><path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1	s1,0.4,1,1S10.6,16,10,16z"></path><path d="M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S10.6,16,10,16z" data-icon-path="inner-path" opacity="0"></path>
+    <title>Closes notification</title>
+  </svg>
+      
+
+<div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
+    <div class="bx--inline-notification__subtitle">If you want to use text in SVG, you need to check this section.</div>
+    </div></div>
+    
+    </div>
+
+<div role="alert" kind="warning" class="bx--inline-notification  bx--inline-notification--hide-close-button     bx--inline-notification--warning "><div class="bx--inline-notification__details">
+<svg data-carbon-icon="WarningFilled20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" class="bx--inline-notification__icon" preserveAspectRatio="xMidYMid meet" role="img" focusable="false"><path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1	s1,0.4,1,1S10.6,16,10,16z"></path><path d="M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S10.6,16,10,16z" data-icon-path="inner-path" opacity="0"></path>
+    <title>Closes notification</title>
+  </svg>
+      
+
+<div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
+    <div class="bx--inline-notification__subtitle">We are aware that this API is not easy to understand and we will improve it, so please pay attention to future API changes.</div>
+    </div></div>
+    
+    </div>
+
+<p class="svelte-merh05">WebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly
+	does not have access to system information, for example, it cannot use the
+	system fonts.
+</p>
+<p class="svelte-merh05">For this reason, svg2png-wasm passes the font externally when you want to use
+	text in SVG.
+</p>
+
+<h4 class="svelte-merh05">Example</h4>
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> robotoFont <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/assets/Roboto.ttf'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> png <span class="token operator">=</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svgData<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  fonts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>robotoFont<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span>
+    sansSerifFamily<span class="token operator">:</span> <span class="token string">'Roboto'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+		</section><section class="svelte-djbajb"><h2 id="advanced-usage" class="title svelte-djbajb">Advanced usage
+				<a aria-hidden href="/docs#advanced-usage" class="header-anchor svelte-djbajb">#
+				</a></h2>
+			<h3 class="svelte-1yfl1jy">Initialize only once</h3>
+<p class="svelte-1yfl1jy">The 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.rpkp3r4otm" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.rpkp3r4otm">initialize</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be called only
+	once.
+</p>
+<p class="svelte-1yfl1jy">If it is called more than once,
+	
+<button type="button" aria-live="polite" aria-describedby="ccs-0.j8zqegbo4ag" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.j8zqegbo4ag">Promise</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> will be rejected.
+</p>
+
+
+<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>wasm<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">/* Called twice (OR Invalid wasm module) */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+<h3 class="svelte-1yfl1jy">Initialize without buffer</h3>
+<p class="svelte-1yfl1jy">The argument of the 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.t4595sxkq18" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.t4595sxkq18">initialize</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can
+	be something other than a buffer.
+</p>
+
+<h4 class="svelte-1yfl1jy">Types</h4>
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">export</span> type InitInput <span class="token operator">=</span>
+  <span class="token operator">|</span> RequestInfo
+  <span class="token operator">|</span> <span class="token constant">URL</span>
+  <span class="token operator">|</span> Response
+  <span class="token operator">|</span> BufferSource
+  <span class="token operator">|</span> WebAssembly<span class="token punctuation">.</span>Module<span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">initialize</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">mod<span class="token operator">:</span> Promise<span class="token operator">&lt;</span>InitInput<span class="token operator">></span> <span class="token operator">|</span> InitInput</span><span class="token punctuation">)</span> <span class="token operator">=></span> Promise<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+<h4 class="svelte-1yfl1jy">Examples</h4>
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// full code (WebAsembly.Module)</span>
+<span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> module <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> WebAssembly<span class="token punctuation">.</span><span class="token function">instantiate</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// BufferSource</span>
+<span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Response</span>
+<span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Promise&lt;Response></span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// in Deno (Promise&lt;BufferSource>)</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span>Deno<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'./svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// in Deno and Browser (RequestInfo (=string/URL))</span>
+<span class="token keyword">await</span> <span class="token function">initialize</span><span class="token punctuation">(</span><span class="token string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+<h3 class="svelte-1yfl1jy">Custom svg2png</h3>
+<p class="svelte-1yfl1jy">You can create a custom svg2png function.</p>
+
+<p class="svelte-1yfl1jy">Basically, you can use
+	
+<button type="button" aria-live="polite" aria-describedby="ccs-0.ylrwyij37c" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.ylrwyij37c">svg2png</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>, but if you want to process a lot
+	of data continuously, consider using
+	
+<button type="button" aria-live="polite" aria-describedby="ccs-0.x4sm52ehd2l" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.x4sm52ehd2l">createSvg2png</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>. It can reduce the overhead
+	of font loading. Converters generated by
+	
+<button type="button" aria-live="polite" aria-describedby="ccs-0.0rp23qaannhj" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.0rp23qaannhj">createSvg2png</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+	should be disposed of after use by calling the dispose method.
+</p>
+
+
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> svgs <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span><span class="token punctuation">,</span>
+  <span class="token string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span><span class="token punctuation">,</span>
+  <span class="token string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span><span class="token punctuation">,</span>
+  <span class="token comment">// and more ...</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> font <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'./Roboto.ttf'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> svg2png <span class="token operator">=</span> <span class="token function">createSvg2png</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  fonts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>font<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pngs <span class="token operator">=</span> <span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>svgs<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">svg</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svg<span class="token punctuation">,</span> <span class="token punctuation">{</span> scale<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+svg2png<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// You should dispose svg2png, if you will not use it in the future</span><!-- HTML_TAG_END --></code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
+<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
+    
+  </svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+		</section>
+</main>
+
+<footer class="svelte-17enh3x"></footer>
+
+
+
+			
+		</div>
+	</body>
+</html>
