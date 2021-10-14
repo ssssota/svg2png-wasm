@@ -172,7 +172,10 @@ export const svg2png: (
 
 ## 📄 LICENSE
 
-MPL-2.0 License
+MIT
+
+This library uses [resvg](https://github.com/RazrFalcon/resvg), which is licensed unser MPL-2.0.
+The source code for resvg can be found [here](https://github.com/RazrFalcon/resvg).
 
 ## 🙋‍♂️ Contributing
 
