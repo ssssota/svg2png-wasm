@@ -45,6 +45,8 @@
 
 <slot />
 
+<footer />
+
 <style>
 	:root {
 		font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana,
@@ -54,5 +56,9 @@
 	:global(code) {
 		font-family: 'IBM Plex Mono', Menlo, Consolas, 'Courier New', Courier,
 			monospace;
+	}
+
+	footer {
+		height: 10vmin;
 	}
 </style>
