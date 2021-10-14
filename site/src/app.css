@@ -12,10 +12,14 @@ button.bx--btn.bx--snippet-btn--expand {
 	color: #f4f4f4;
 }
 .bx--copy-btn:hover,
+.bx--snippet--inline:hover,
 button.bx--btn.bx--snippet-btn--expand:hover {
 	background-color: #393939;
 }
 .bx--snippet__icon {
+	fill: #f4f4f4;
+}
+.bx--snippet-btn--expand .bx--icon-chevron--down {
 	fill: #f4f4f4;
 }
 .bx--snippet-container pre {
@@ -24,8 +28,27 @@ button.bx--btn.bx--snippet-btn--expand:hover {
 	letter-spacing: var(--cds-code-02-letter-spacing);
 	cursor: text;
 }
+.bx--snippet .bx--snippet-container::-webkit-scrollbar,
+.bx--snippet--multi .bx--snippet-container pre::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+	background-color: #393939;
+}
+.bx--snippet .bx--snippet-container::-webkit-scrollbar-thumb,
+.bx--snippet--multi .bx--snippet-container pre::-webkit-scrollbar-thumb {
+	background-color: #727272;
+}
+.bx--snippet .bx--snippet-container::-webkit-scrollbar-thumb:hover,
+.bx--snippet--multi .bx--snippet-container pre::-webkit-scrollbar-thumb:hover {
+	background-color: #5f5f5f;
+}
+.bx--snippet .bx--snippet-container::-webkit-scrollbar-thumb:active,
+.bx--snippet--multi .bx--snippet-container pre::-webkit-scrollbar-thumb:active {
+	background-color: #4c4c4c;
+}
+.bx--snippet .bx--snippet-container,
 .bx--snippet--multi .bx--snippet-container pre {
-	overflow-x: auto;
+	scrollbar-width: thin;
 }
 .bx--snippet--multi .bx--snippet-container pre::after {
 	background-image: none;
