@@ -4,7 +4,7 @@
 </script>
 
 <script lang="ts">
-	import { languages } from 'prismjs';
+	import Prism from 'prismjs';
 	import InstallCommand from '$lib/components/InstallCommand.svelte';
 	import SelectableCodeSnippet from '$lib/components/SelectableCodeSnippet.svelte';
 	import HighlightCodeSnippet from '$lib/components/HighlightCodeSnippet.svelte';
@@ -15,19 +15,14 @@
 	} as const;
 </script>
 
-<p>
-	You can use this library in
-	Node.js,
-	Deno and
-	Browser.
-</p>
+<p>You can use this library in Node.js, Deno and Browser.</p>
 
 <h4>Node.js</h4>
 <InstallCommand />
 
 <h4>Deno</h4>
 <SelectableCodeSnippet
-	highlight={{ grammar: languages.js, language: 'javascript' }}
+	highlight={{ grammar: Prism.languages.js, language: 'javascript' }}
 	titleValueMap={denoImports}
 />
 
@@ -42,13 +37,13 @@
 		/scrpt/g,
 		'script'
 	)}
-	grammar={languages.html}
+	grammar={Prism.languages.html}
 	language="html"
 />
 <br />
 <HighlightCodeSnippet
 	code={`const { initialize, svg2png, createSvg2png } = svg2pngWasm;`}
-	grammar={languages.js}
+	grammar={Prism.languages.js}
 	language="javascript"
 />
 

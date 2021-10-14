@@ -4,7 +4,7 @@
 </script>
 
 <script lang="ts">
-	import { languages } from 'prismjs';
+	import Prism from 'prismjs';
 	import HighlightCodeSnippet from '$lib/components/HighlightCodeSnippet.svelte';
 
 	const prepareWasm = {
@@ -15,10 +15,10 @@ const wasm = readFileSync('./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm');`.
 		deno: `
 // Deno (For example, fetch from unpkg CDN)
 const wasm = await fetch('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm')
-  .then(res => res.arrayBuffer())`.trim(),
+  .then(res => res.arrayBuffer());`.trim(),
 		browser: `
 // browser (For example, we have a wasm file in the assets directory)
-const wasm = await fetch('/assets/svg2png_wasm_bg.wasm').then(res => res.arrayBuffer())`.trim()
+const wasm = await fetch('/assets/svg2png_wasm_bg.wasm').then(res => res.arrayBuffer());`.trim()
 	};
 
 	const initializeCode = `
@@ -27,7 +27,7 @@ await initialize(wasm);`.trim();
 
 	const convertCode = `
 import { svg2png } from 'svg2png-wasm';
-const png = await svg2png(svg)`.trim();
+const png = await svg2png(svg);`.trim();
 </script>
 
 <h4>1. Prepare wasm</h4>
@@ -39,7 +39,7 @@ const png = await svg2png(svg)`.trim();
 		<HighlightCodeSnippet
 			type="multi"
 			{code}
-			grammar={languages.js}
+			grammar={Prism.languages.js}
 			language="javascript"
 		/>
 	</div>
@@ -49,7 +49,7 @@ const png = await svg2png(svg)`.trim();
 <HighlightCodeSnippet
 	type="multi"
 	code={initializeCode}
-	grammar={languages.js}
+	grammar={Prism.languages.js}
 	language="javascript"
 />
 
@@ -57,7 +57,7 @@ const png = await svg2png(svg)`.trim();
 <HighlightCodeSnippet
 	type="multi"
 	code={convertCode}
-	grammar={languages.js}
+	grammar={Prism.languages.js}
 	language="javascript"
 />
 
