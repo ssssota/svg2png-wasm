@@ -51,7 +51,8 @@
   ],
   "files": [
     "svg2png_wasm_bg.wasm",
-    "dist"
+    "dist",
+    "NOTICE"
   ],
   "author": "ssssota",
   "license": "MPL-2.0",
