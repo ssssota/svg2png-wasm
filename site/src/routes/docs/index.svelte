@@ -2,18 +2,21 @@
 	import { page } from '$app/stores';
 	import { Link, ListItem, UnorderedList } from 'carbon-components-svelte';
 	import type { SvelteComponent } from 'svelte';
+	import AdvancedUsage, * as AdvancedUsageInfo from './_advanced_usage.svelte';
 	import BasicUsage, * as BasicUsageInfo from './_basic_usage.svelte';
+	import FontSettings, * as FontSettingsInfo from './_font_settings.svelte';
 	import GettingStarted, * as GettingStartedInfo from './_getting_started.svelte';
+	import SvgSupport, * as SvgSupportInfo from './_svg_support.svelte';
 	import 'prismjs/themes/prism-tomorrow.css';
 
-	type SectionEntry = readonly [
-		typeof SvelteComponent,
-		{ name: string; title: string }
-	];
-	const sections: readonly SectionEntry[] = [
+	type SectionEntry = [typeof SvelteComponent, { name: string; title: string }];
+	const sections: SectionEntry[] = [
+		[SvgSupport, SvgSupportInfo],
 		[GettingStarted, GettingStartedInfo],
-		[BasicUsage, BasicUsageInfo]
-	] as const;
+		[BasicUsage, BasicUsageInfo],
+		[FontSettings, FontSettingsInfo],
+		[AdvancedUsage, AdvancedUsageInfo]
+	];
 </script>
 
 <main>
