@@ -17,7 +17,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.33.0",
 		"@typescript-eslint/parser": "^4.33.0",
 		"autoprefixer": "^10.3.7",
-		"carbon-components-svelte": "^0.44.6",
+		"carbon-components-svelte": "^0.45.0",
 		"carbon-icons-svelte": "^10.38.0",
 		"carbon-preprocess-svelte": "^0.6.0",
 		"cssnano": "^5.0.8",
@@ -28,15 +28,17 @@
 		"postcss-load-config": "^3.1.0",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
-		"svelte": "^3.43.1",
+		"svelte": "^3.43.2",
 		"svelte-check": "^2.2.7",
 		"svelte-preprocess": "^4.9.8",
 		"tslib": "^2.3.1",
-		"typescript": "^4.4.3"
+		"typescript": "^4.4.4"
 	},
 	"type": "module",
 	"dependencies": {
+		"front-matter": "^4.0.2",
 		"prismjs": "^1.25.0",
+		"svelte-markdown": "^0.1.12",
 		"svg2png-wasm": "link:.."
 	}
 }
