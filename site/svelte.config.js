@@ -26,7 +26,10 @@ const config = {
 							deep: [/token$/]
 						}
 					})
-			]
+			],
+			optimizeDeps: {
+				exclude: ['marked']
+			}
 		}
 	}
 };

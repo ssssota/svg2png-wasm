@@ -1,43 +1,59 @@
+<script context="module" lang="ts">
+	import { browser } from '$app/env';
+	import { base } from '$app/paths';
+	import type { Load } from '@sveltejs/kit';
+	import type { Section } from './[section].json';
+
+	const sectionSlugs = [
+		'svg-support',
+		'getting-started',
+		'basic-usage',
+		'font-settings',
+		'advanced-usage'
+	];
+
+	export const load: Load = async ({ fetch, page }) => {
+		const sections = await Promise.all(
+			sectionSlugs
+				.map((slug) => `${browser ? base : ''}${page.path}/${slug}.json`)
+				.map((url) => fetch(url).then((res) => res.json()))
+		);
+		return { props: { sections } };
+	};
+</script>
+
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Markdown from '$lib/components/Markdown';
 	import { Link, ListItem, UnorderedList } from 'carbon-components-svelte';
-	import type { SvelteComponent } from 'svelte';
-	import AdvancedUsage, * as AdvancedUsageInfo from './_advanced_usage.svelte';
-	import BasicUsage, * as BasicUsageInfo from './_basic_usage.svelte';
-	import FontSettings, * as FontSettingsInfo from './_font_settings.svelte';
-	import GettingStarted, * as GettingStartedInfo from './_getting_started.svelte';
-	import SvgSupport, * as SvgSupportInfo from './_svg_support.svelte';
 	import 'prismjs/themes/prism-tomorrow.css';
 
-	type SectionEntry = [typeof SvelteComponent, { name: string; title: string }];
-	const sections: SectionEntry[] = [
-		[SvgSupport, SvgSupportInfo],
-		[GettingStarted, GettingStartedInfo],
-		[BasicUsage, BasicUsageInfo],
-		[FontSettings, FontSettingsInfo],
-		[AdvancedUsage, AdvancedUsageInfo]
-	];
+	export let sections: Section[];
 </script>
 
 <main>
-	<section class="toc">
+	<nav class="toc">
 		<UnorderedList>
-			{#each sections as [, info] (info.name)}
+			{#each sections as { metadata } (metadata.slug)}
 				<ListItem>
-					<Link href="#{info.name}">{info.title}</Link>
+					<Link href="#{metadata.slug}">{metadata.title}</Link>
 				</ListItem>
 			{/each}
 		</UnorderedList>
-	</section>
-	{#each sections as [Section, info] (info.name)}
+	</nav>
+	{#each sections as { body, metadata } (metadata.slug)}
 		<section>
-			<h2 id={info.name} class="title">
-				{info.title}
-				<a aria-hidden href="{$page.path}#{info.name}" class="header-anchor">
+			<h2 id={metadata.slug} class="title">
+				{metadata.title}
+				<a
+					aria-hidden
+					href="{$page.path}#{metadata.slug}"
+					class="header-anchor"
+				>
 					#
 				</a>
 			</h2>
-			<svelte:component this={Section} />
+			<Markdown source={body} />
 		</section>
 	{/each}
 </main>
@@ -49,7 +65,10 @@
 		padding: 0 1.5em;
 	}
 
-	.toc {
+	nav {
+		max-width: 960px;
+		margin: 2em auto;
+		padding: 0 1.5em;
 		padding-left: 3em;
 	}
 
