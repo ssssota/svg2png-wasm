@@ -15,6 +15,7 @@ export type ConvertOptions = {
   scale?: number;
   width?: number;
   height?: number;
+  backgroundColor?: string;
 };
 
 export type Svg2png = ((
