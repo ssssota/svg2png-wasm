@@ -15,11 +15,28 @@ const refreshDir = (dir) => {
   mkdirSync(dir);
 };
 
+/**
+ * @param {(svg: string, options?: import('../../dist/index').ConvertOptions) => Promise<Uint8Array>} svg2png
+ * @param {string} fileSuffix
+ * @param {import('../../dist/index').ConvertOptions} options
+ * @returns {(svgPath: string) => Promise<void>}
+ */
+const convert =
+  (svg2png, fileSuffix, options = undefined) =>
+  async (svgPath) => {
+    const pngPath = svgPath
+      .replace(/\/data\//g, '/vrt/actual/')
+      .replace(/\.svg$/i, `${fileSuffix}.png`);
+    console.log(`[SVG] ${svgPath} - ${pngPath}`);
+    const png = await svg2png(readFileSync(svgPath, 'utf8'), options);
+    writeFileSync(pngPath, png);
+  };
+
 const main = async () => {
   // @ts-ignore
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  const fontPaths = glob.sync(join(__dirname, 'data/**/*.@(ttf|otf)'));
-  const svgs = glob.sync(join(__dirname, 'data/**/*.svg'));
+  const fontPaths = glob.sync(join(__dirname, '../data/**/*.@(ttf|otf)'));
+  const svgs = glob.sync(join(__dirname, '../data/**/*.svg'));
 
   await initialize(readFileSync('./svg2png_wasm_bg.wasm'));
 
@@ -41,17 +58,15 @@ const main = async () => {
   refreshDir(join(__dirname, 'actual'));
   refreshDir(join(__dirname, 'diff'));
 
-  await Promise.all(
-    svgs.map(async (svgPath) => {
-      console.log('[SVG]', svgPath);
-      const png = await svg2png(readFileSync(svgPath, 'utf8'));
-      if (png == null) throw new Error('Invalid data');
-      writeFileSync(
-        svgPath.replace(/\/data\//g, '/actual/').replace(/\.svg$/i, '.png'),
-        png,
-      );
-    }),
-  );
+  await Promise.all([
+    ...svgs.map(convert(svg2png, '.1x')),
+    ...svgs.map(convert(svg2png, '.2x', { scale: 2 })),
+    ...svgs.map(convert(svg2png, '.50w', { width: 50 })),
+    ...svgs.map(convert(svg2png, '.30h', { height: 30 })),
+    ...svgs.map(convert(svg2png, '.50w30h', { width: 50, height: 30 })),
+  ]);
+
+  svg2png.dispose();
 };
 
 main()
