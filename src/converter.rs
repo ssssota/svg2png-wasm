@@ -25,8 +25,8 @@ impl Converter {
         &self,
         svg: &str,
         scale: Option<f32>,
-        width: Option<f64>,
-        height: Option<f64>,
+        width: Option<f32>,
+        height: Option<f32>,
     ) -> Result<Vec<u8>, JsValue> {
         let fontdb = load_fonts(
             &self.fonts,
@@ -46,22 +46,37 @@ impl Converter {
             text_rendering: usvg::TextRendering::OptimizeLegibility,
             image_rendering: usvg::ImageRendering::OptimizeQuality,
             keep_named_groups: false,
-            default_size: Size::new(width.unwrap_or(100.0), height.unwrap_or(100.0))
-                .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
+            default_size: Size::new(
+                width.unwrap_or(100.0).into(),
+                height.unwrap_or(100.0).into(),
+            )
+            .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
             fontdb: &fontdb,
         };
         let scale = scale.unwrap_or(1.0);
         let tree =
             Tree::from_str(svg, &svg_options).map_err(|e| JsValue::from_str(&e.to_string()))?;
-        let pixmap_size = tree.svg_node().size;
+        let svg_size = tree.svg_node().size;
+        let (width, height) = match (width, height) {
+            (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
+            (Some(w), _) => (
+                w.round() as u32,
+                (svg_size.height() * ((w as f64) / svg_size.width())) as u32,
+            ),
+            (_, Some(h)) => (
+                (svg_size.width() * ((h as f64) / svg_size.height())) as u32,
+                h.round() as u32,
+            ),
+            _ => (
+                ((svg_size.width().round() as f32) * scale) as u32,
+                ((svg_size.height().round() as f32) * scale) as u32,
+            ),
+        };
 
-        let mut pixmap = Pixmap::new(
-            (width.unwrap_or_else(|| pixmap_size.width()) * (scale as f64)).ceil() as u32,
-            (height.unwrap_or_else(|| pixmap_size.height()) * (scale as f64)).ceil() as u32,
-        )
-        .ok_or_else(|| JsValue::from_str("Invalid width or height"))?;
+        let mut pixmap = Pixmap::new(width, height)
+            .ok_or_else(|| JsValue::from_str("Invalid width or height"))?;
 
-        resvg::render(&tree, FitTo::Zoom(scale), pixmap.as_mut());
+        resvg::render(&tree, FitTo::Size(width, height), pixmap.as_mut());
         pixmap
             .encode_png()
             .map_err(|e| JsValue::from_str(&e.to_string()))

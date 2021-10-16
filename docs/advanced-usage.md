@@ -58,6 +58,26 @@ await initialize(Deno.readFile('./svg2png_wasm_bg.wasm'));
 await initialize('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm');
 ```
 
+## Size options
+
+You can specify the output image size by passing an option as the second argument of the `svg2png` function.
+
+Specifying the width and height will not stretch the image.
+
+```js
+// 2x scale
+await svg2png(svgData, { scale: 2 });
+
+// Fit to 500px width
+await svg2png(svgData, { width: 500 });
+
+// Fit to 128px height
+await svg2png(svgData, { height: 128 });
+
+// Fit to 300px width (width and height have priority)
+await svg2png(svgData, { width: 300, scale: 10 });
+```
+
 ## Custom svg2png
 
 You can create a custom svg2png function.
