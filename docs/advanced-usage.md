@@ -58,9 +58,13 @@ await initialize(Deno.readFile('./svg2png_wasm_bg.wasm'));
 await initialize('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm');
 ```
 
-## Size options
+## Convert options
 
-You can specify the output image size by passing an option as the second argument of the `svg2png` function.
+The output image can be adjusted by specifying an option as the second argument of the function `svg2png`.
+
+### Size option
+
+You can specify output image size.
 
 Specifying the width and height will not stretch the image.
 
@@ -76,6 +80,22 @@ await svg2png(svgData, { height: 128 });
 
 // Fit to 300px width (width and height have priority)
 await svg2png(svgData, { width: 300, scale: 10 });
+```
+
+### Background color option
+
+You can specify background color of the output image when the SVG is transparent.
+
+```js
+// Compatible with CSS Color Module 3
+// with color keyword
+await svg2png(svgData, { backgroundColor: 'lightskyblue' });
+
+// with hex values
+await svg2png(svgData, { backgroundColor: '#3cf' });
+
+// with hsla
+await svg2png(svgData, { backgroundColor: 'hsla(240, 100%, 50%, 0.5)' });
 ```
 
 ## Custom svg2png

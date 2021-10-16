@@ -67,6 +67,7 @@ const png = await svg2png(
     scale: 2, // optional
     width: 400, // optional
     height: 400, // optional
+    backgroundColor: 'white', // optional
     fonts: [
       // optional
       readFileSync('./Roboto.ttf'), // require, If you use text in svg
@@ -149,6 +150,7 @@ export type ConvertOptions = {
   scale?: number;
   width?: number;
   height?: number;
+  backgroundColor?: string;
 };
 export type Svg2png = ((
   svg: string,
