@@ -1,3 +1,6 @@
+use std::str::FromStr;
+
+use tiny_skia::Color;
 use tiny_skia::Pixmap;
 use usvg::{fontdb::Database, FitTo, OptionsRef, Size, Tree};
 use wasm_bindgen::prelude::*;
@@ -27,6 +30,7 @@ impl Converter {
         scale: Option<f32>,
         width: Option<f32>,
         height: Option<f32>,
+        background: Option<String>,
     ) -> Result<Vec<u8>, JsValue> {
         let fontdb = load_fonts(
             &self.fonts,
@@ -75,6 +79,10 @@ impl Converter {
 
         let mut pixmap = Pixmap::new(width, height)
             .ok_or_else(|| JsValue::from_str("Invalid width or height"))?;
+
+        if let Some(color) = background {
+            pixmap.fill(parse_color_string(&color));
+        }
 
         resvg::render(&tree, FitTo::Size(width, height), pixmap.as_mut());
         pixmap
@@ -129,4 +137,11 @@ pub fn load_fonts(
         db.set_monospace_family(f.to_string())
     }
     db
+}
+
+fn parse_color_string(color: &str) -> Color {
+    match svgtypes::Color::from_str(color) {
+        Err(_) => Color::TRANSPARENT,
+        Ok(c) => Color::from_rgba8(c.red, c.green, c.blue, c.alpha),
+    }
 }

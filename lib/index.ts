@@ -52,6 +52,7 @@ export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
           options?.scale,
           options?.width,
           options?.height,
+          options?.backgroundColor,
         );
         if (result) resolve(result);
         else throw new Error('Converter already disposed.');
