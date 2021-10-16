@@ -64,6 +64,11 @@ const main = async () => {
     ...svgs.map(convert(svg2png, '.50w', { width: 50 })),
     ...svgs.map(convert(svg2png, '.30h', { height: 30 })),
     ...svgs.map(convert(svg2png, '.50w30h', { width: 50, height: 30 })),
+    ...svgs.map(convert(svg2png, '.red', { backgroundColor: 'tomato' })),
+    ...svgs.map(
+      convert(svg2png, '.green', { backgroundColor: 'rgba(15,255,0,0.25)' }),
+    ),
+    ...svgs.map(convert(svg2png, '.blue', { backgroundColor: '#33f' })),
   ]);
 
   svg2png.dispose();
