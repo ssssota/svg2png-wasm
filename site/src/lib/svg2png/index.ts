@@ -4,7 +4,12 @@ import Svg2pngWorker from './worker?worker';
 
 export const createSvg2png = (
 	options?: ConverterOptions
-): Omit<Svg2png, 'getLoadedFontFamilies'> => {
+): ((
+	svg: string,
+	options?: ConvertOptions | undefined
+) => Promise<Uint8Array>) & {
+	dispose: () => void;
+} => {
 	const svg2pngWorker = new Svg2pngWorker();
 	svg2pngWorker.postMessage({ type: 'initialize', options });
 
