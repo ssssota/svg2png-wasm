@@ -65,6 +65,7 @@ export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
     converter?.free();
     converter = undefined;
   };
+  svg2png.loadedFontFamilies = () => converter?.list_fonts() ?? [];
 
   return svg2png;
 };

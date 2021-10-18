@@ -1,8 +1,10 @@
+use std::collections::HashSet;
 use std::str::FromStr;
 
 use tiny_skia::Color;
 use tiny_skia::Pixmap;
-use usvg::{fontdb::Database, FitTo, OptionsRef, Size, Tree};
+use usvg::fontdb::Database;
+use usvg::{FitTo, OptionsRef, Size, Tree};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -40,10 +42,16 @@ impl Converter {
             self.fantasy_family.as_deref(),
             self.monospace_family.as_deref(),
         );
+        let faces = fontdb.faces();
+        let default_font_family = if faces.is_empty() {
+            "sans-serif"
+        } else {
+            &faces[0].family
+        };
         let svg_options = OptionsRef {
             resources_dir: None,
             dpi: 96.0,
-            font_family: "sans-serif",
+            font_family: default_font_family,
             font_size: 12.0,
             languages: &["en".to_string()],
             shape_rendering: usvg::ShapeRendering::GeometricPrecision,
@@ -88,6 +96,19 @@ impl Converter {
         pixmap
             .encode_png()
             .map_err(|e| JsValue::from_str(&e.to_string()))
+    }
+
+    #[wasm_bindgen]
+    pub fn list_fonts(&self) -> Box<[JsValue]> {
+        load_fonts(&self.fonts, None, None, None, None, None)
+            .faces()
+            .iter()
+            .map(|f| &f.family)
+            .collect::<HashSet<&String>>()
+            .iter()
+            .map(|s| JsValue::from_str(s))
+            .collect::<Vec<JsValue>>()
+            .into_boxed_slice()
     }
 }
 
