@@ -8,7 +8,7 @@
 
 		
 
-		<link rel="modulepreload" href="/svg2png-wasm/_app/start-146f7922.js">
+		<link rel="modulepreload" href="/svg2png-wasm/_app/start-3d773e7b.js">
 		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/vendor-9031228e.js">
 		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/paths-28a87002.js">
 		<link rel="modulepreload" href="/svg2png-wasm/_app/pages/__layout.svelte-ffa89bf7.js">
@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/pages/docs/index.svelte-137802f7.css">
 
 		<script type="module">
-			import { start } from "/svg2png-wasm/_app/start-146f7922.js";
+			import { start } from "/svg2png-wasm/_app/start-3d773e7b.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/svg2png-wasm","assets":""},
@@ -194,27 +194,57 @@
     <div class="bx--inline-notification__subtitle"></div>
     <p>If you want to use text in SVG, you need to check this section.</p></div></div>
     
-    </div></blockquote><blockquote>
-<div role="alert" kind="warning-alt" class="bx--inline-notification bx--inline-notification--low-contrast bx--inline-notification--hide-close-button      bx--inline-notification--warning-alt"><div class="bx--inline-notification__details">
-<svg data-carbon-icon="WarningAltFilled20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="20" height="20" class="bx--inline-notification__icon" preserveAspectRatio="xMidYMid meet" role="img" focusable="false"><path fill="none" d="M16,26a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,16,26Zm-1.125-5h2.25V12h-2.25Z" data-icon-path="inner-path"></path><path d="M16.002,6.1714h-.004L4.6487,27.9966,4.6506,28H27.3494l.0019-.0034ZM14.875,12h2.25v9h-2.25ZM16,26a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,16,26Z"></path><path d="M29,30H3a1,1,0,0,1-.8872-1.4614l13-25a1,1,0,0,1,1.7744,0l13,25A1,1,0,0,1,29,30ZM4.6507,28H27.3493l.002-.0033L16.002,6.1714h-.004L4.6487,27.9967Z"></path>
-    <title>Closes notification</title>
-  </svg>
-      
+    </div></blockquote><p>WebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.</p><p>For this reason, you must pass the fonts when you want to use text in SVG.</p><p>The first entry in the 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.s80f7alv57g" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.s80f7alv57g">fonts</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field array will be the fallback font.</p><p>The 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.gf3uvlo0w4t" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.gf3uvlo0w4t">defaultFontFamily</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field is used when the font is specified as 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.df8vyb58tqi" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.df8vyb58tqi">sans-serif</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>, 
+<button type="button" aria-live="polite" aria-describedby="ccs-0.m8vi7c35htg" class="bx--snippet bx--snippet--inline
+          bx--btn--copy
+          false
+          false
+          false
+          false undefined bx--copy "><code id="ccs-0.m8vi7c35htg">serif</code>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> etc.</p><h4 class="svelte-1u7un7v">Example</h4><div class="svelte-1705sli">
+<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">{</span> svg2png<span class="token punctuation">,</span> createSvg2png <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svg2png-wasm'</span><span class="token punctuation">;</span>
 
-<div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
-    <div class="bx--inline-notification__subtitle"></div>
-    <p>We are aware that this API is not easy to understand and we will improve it, so please pay attention to future API changes.</p></div></div>
-    
-    </div></blockquote><p>WebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.</p><p>For this reason, svg2png-wasm passes the font externally when you want to use text in SVG.</p><h4 class="svelte-1u7un7v">Example</h4><div class="svelte-1705sli">
-<div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> robotoFont <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/assets/Roboto.ttf'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+<span class="token comment">// Prepare font data</span>
+<span class="token keyword">const</span> robotoFont <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/assets/Roboto.ttf'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span>
   res<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> png <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svgData<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+
+<span class="token comment">// convert directly</span>
+<span class="token keyword">const</span> png <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svg<span class="token punctuation">,</span> <span class="token punctuation">{</span>
   fonts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>robotoFont<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span>
-    sansSerifFamily<span class="token operator">:</span> <span class="token string">'Roboto'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
+  defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span> sansSerifFamily<span class="token operator">:</span> <span class="token string">'Roboto'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  scale<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// OR</span>
+<span class="token comment">// create font loaded svg2png</span>
+<span class="token keyword">const</span> fontLoadedSvg2png <span class="token operator">=</span> <span class="token function">createSvg2png</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  fonts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>robotoFont<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span> sansSerifFamily<span class="token operator">:</span> <span class="token string">'Roboto'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// convert</span>
+<span class="token keyword">const</span> png <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fontLoadedSvg2png</span><span class="token punctuation">(</span>svg<span class="token punctuation">,</span> <span class="token punctuation">{</span> scale<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code></pre></div>
     <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
 <svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
     
@@ -226,26 +256,26 @@
 				<a aria-hidden href="/docs#advanced-usage" class="header-anchor svelte-2go5v4">#
 				</a></h2>
 			<h3 class="svelte-1u7un7v">Initialize only once</h3><p>The 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.dzxvvim511" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.ndcb01a0nx9" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.dzxvvim511">initialize</code>
+          false undefined bx--copy "><code id="ccs-0.ndcb01a0nx9">initialize</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be called only once.</p><p>If it is called more than once, 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.exvw9ec3ivw" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.ixy67fklnne" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.exvw9ec3ivw">Promise</code>
+          false undefined bx--copy "><code id="ccs-0.ixy67fklnne">Promise</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> will be rejected.</p><h3 class="svelte-1u7un7v">Initialize without buffer</h3><p>The argument of the 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.0bkrj4tvedlh" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.ttp0n3bkixc" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.0bkrj4tvedlh">initialize</code>
+          false undefined bx--copy "><code id="ccs-0.ttp0n3bkixc">initialize</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be something other than a buffer.</p><h4 class="svelte-1u7un7v">Types</h4><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">export</span> type InitInput <span class="token operator">=</span>
   <span class="token operator">|</span> RequestInfo
@@ -297,12 +327,12 @@
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
     </div>
 </div><h3 class="svelte-1u7un7v">Convert options</h3><p>The output image can be adjusted by specifying an option as the second argument of the function 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.nr2mhhm0jle" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.6i2n6bndmd3" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.nr2mhhm0jle">svg2png</code>
+          false undefined bx--copy "><code id="ccs-0.6i2n6bndmd3">svg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>.</p><h4 class="svelte-1u7un7v">Size option</h4><p>You can specify output image size.</p><p>Specifying the width and height will not stretch the image.</p><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// 2x scale</span>
 <span class="token keyword">await</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svgData<span class="token punctuation">,</span> <span class="token punctuation">{</span> scale<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -338,26 +368,26 @@
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
     </div>
 </div><h3 class="svelte-1u7un7v">Custom svg2png</h3><p>You can create a custom svg2png function.</p><p>Basically, you can use 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.2yal9he1j4" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.lo54gxjs16p" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.2yal9he1j4">svg2png</code>
+          false undefined bx--copy "><code id="ccs-0.lo54gxjs16p">svg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> , but if you want to process a lot of data continuously, consider using 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.ma1s9y1qsym" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.7oap1b9p25s" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.ma1s9y1qsym">createSvg2png</code>
+          false undefined bx--copy "><code id="ccs-0.7oap1b9p25s">createSvg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> . It can reduce the overhead of font loading. Converters generated by 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.dsn4qkodhf6" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.itgwibckes" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.dsn4qkodhf6">createSvg2png</code>
+          false undefined bx--copy "><code id="ccs-0.itgwibckes">createSvg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> should be disposed of after use by calling the dispose method.</p><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> svgs <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span><span class="token punctuation">,</span>
@@ -392,7 +422,7 @@ svg2png<span class="token punctuation">.</span><span class="token function">disp
 
 	<script type="application/json" data-type="svelte-data" data-url="/docs/basic-usage.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"body\":\"### 1. Prepare wasm\\n\\nYou will need to prepare a wasm module.\\n\\ne.g.\\n\\n```js\\n\u002F\u002F Node.js\\nimport { readFileSync } from 'fs';\\nconst wasm = readFileSync('.\u002Fnode_modules\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm');\\n```\\n\\n```js\\n\u002F\u002F Deno (For example, fetch from unpkg CDN)\\nconst wasm = await fetch(\\n  'https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm',\\n).then((res) =\u003E res.arrayBuffer());\\n```\\n\\n```js\\n\u002F\u002F browser (For example, we have a wasm file in the assets directory)\\nconst wasm = await fetch('\u002Fassets\u002Fsvg2png_wasm_bg.wasm').then((res) =\u003E\\n  res.arrayBuffer(),\\n);\\n```\\n\\n### 2. Initialize wasm\\n\\n```js\\nimport { initialize } from 'svg2png-wasm';\\nawait initialize(wasm);\\n```\\n\\n### 3. Convert SVG\\n\\n```js\\nimport { svg2png } from 'svg2png-wasm';\\nconst png = await svg2png(svg);\\n```\\n\",\"metadata\":{\"slug\":\"basic-usage\",\"title\":\"Basic Usage\"}}"}</script>
 
-	<script type="application/json" data-type="svelte-data" data-url="/docs/font-settings.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"body\":\"\u003E If you want to use text in SVG, you need to check this section.\\n\\n\u003E We are aware that this API is not easy to understand and we will improve it, so please pay attention to future API changes.\\n\\nWebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.\\n\\nFor this reason, svg2png-wasm passes the font externally when you want to use text in SVG.\\n\\n### Example\\n\\n```js\\nconst robotoFont = await fetch('\u002Fassets\u002FRoboto.ttf').then((res) =\u003E\\n  res.arrayBuffer(),\\n);\\nconst png = await svg2png(svgData, {\\n  fonts: [new Uint8Array(robotoFont)],\\n  defaultFontFamily: {\\n    sansSerifFamily: 'Roboto',\\n  },\\n});\\n```\\n\",\"metadata\":{\"slug\":\"font-settings\",\"title\":\"Font Settings\"}}"}</script>
+	<script type="application/json" data-type="svelte-data" data-url="/docs/font-settings.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"body\":\"\u003E If you want to use text in SVG, you need to check this section.\\n\\nWebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.\\n\\nFor this reason, you must pass the fonts when you want to use text in SVG.\\n\\nThe first entry in the `fonts` field array will be the fallback font.\\n\\nThe `defaultFontFamily` field is used when the font is specified as `sans-serif`, `serif` etc.\\n\\n### Example\\n\\n```js\\nimport { svg2png, createSvg2png } from 'svg2png-wasm';\\n\\n\u002F\u002F Prepare font data\\nconst robotoFont = await fetch('\u002Fassets\u002FRoboto.ttf').then((res) =\u003E\\n  res.arrayBuffer(),\\n);\\n\\n\u002F\u002F convert directly\\nconst png = await svg2png(svg, {\\n  fonts: [new Uint8Array(robotoFont)],\\n  defaultFontFamily: { sansSerifFamily: 'Roboto' },\\n  scale: 2,\\n});\\n\\n\u002F\u002F OR\\n\u002F\u002F create font loaded svg2png\\nconst fontLoadedSvg2png = createSvg2png({\\n  fonts: [new Uint8Array(robotoFont)],\\n  defaultFontFamily: { sansSerifFamily: 'Roboto' },\\n});\\n\u002F\u002F convert\\nconst png = await fontLoadedSvg2png(svg, { scale: 2 });\\n```\\n\",\"metadata\":{\"slug\":\"font-settings\",\"title\":\"Font Settings\"}}"}</script>
 
 	<script type="application/json" data-type="svelte-data" data-url="/docs/advanced-usage.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"body\":\"## Initialize only once\\n\\nThe `initialize` function can be called only once.\\n\\nIf it is called more than once, `Promise` will be rejected.\\n\\n## Initialize without buffer\\n\\nThe argument of the `initialize` function can be something other than a buffer.\\n\\n### Types\\n\\n```js\\nexport type InitInput =\\n  | RequestInfo\\n  | URL\\n  | Response\\n  | BufferSource\\n  | WebAssembly.Module;\\nexport const initialize: (mod: Promise\u003CInitInput\u003E | InitInput) =\u003E Promise\u003Cvoid\u003E;\\n```\\n\\n### Examples\\n\\n```js\\n\u002F\u002F full code (WebAsembly.Module)\\nconst response = await fetch(\\n  'https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm',\\n);\\nconst buffer = await response.arrayBuffer();\\nconst { module } = await WebAssembly.instantiate(buffer);\\nawait initialize(module);\\n\\n\u002F\u002F BufferSource\\nconst response = await fetch(\\n  'https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm',\\n);\\nconst buffer = await response.arrayBuffer();\\nawait initialize(buffer);\\n\\n\u002F\u002F Response\\nconst response = await fetch(\\n  'https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm',\\n);\\nawait initialize(response);\\n\\n\u002F\u002F Promise\u003CResponse\u003E\\nawait initialize(fetch('https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm'));\\n\\n\u002F\u002F in Deno (Promise\u003CBufferSource\u003E)\\nawait initialize(Deno.readFile('.\u002Fsvg2png_wasm_bg.wasm'));\\n\\n\u002F\u002F in Deno and Browser (RequestInfo (=string\u002FURL))\\nawait initialize('https:\u002F\u002Funpkg.com\u002Fsvg2png-wasm\u002Fsvg2png_wasm_bg.wasm');\\n```\\n\\n## Convert options\\n\\nThe output image can be adjusted by specifying an option as the second argument of the function `svg2png`.\\n\\n### Size option\\n\\nYou can specify output image size.\\n\\nSpecifying the width and height will not stretch the image.\\n\\n```js\\n\u002F\u002F 2x scale\\nawait svg2png(svgData, { scale: 2 });\\n\\n\u002F\u002F Fit to 500px width\\nawait svg2png(svgData, { width: 500 });\\n\\n\u002F\u002F Fit to 128px height\\nawait svg2png(svgData, { height: 128 });\\n\\n\u002F\u002F Fit to 300px width (width and height have priority)\\nawait svg2png(svgData, { width: 300, scale: 10 });\\n```\\n\\n### Background color option\\n\\nYou can specify background color of the output image when the SVG is transparent.\\n\\n```js\\n\u002F\u002F Compatible with CSS Color Module 3\\n\u002F\u002F with color keyword\\nawait svg2png(svgData, { backgroundColor: 'lightskyblue' });\\n\\n\u002F\u002F with hex values\\nawait svg2png(svgData, { backgroundColor: '#3cf' });\\n\\n\u002F\u002F with hsla\\nawait svg2png(svgData, { backgroundColor: 'hsla(240, 100%, 50%, 0.5)' });\\n```\\n\\n## Custom svg2png\\n\\nYou can create a custom svg2png function.\\n\\nBasically, you can use `svg2png` , but if you want to process a lot of data continuously, consider using `createSvg2png` . It can reduce the overhead of font loading. Converters generated by `createSvg2png` should be disposed of after use by calling the dispose method.\\n\\n```js\\nconst svgs = [\\n  '\u003Csvg viewBox=\\\"0 0 200 200\\\" xmlns=\\\"http:\u002F\u002Fwww.w3.org\u002F2000\u002Fsvg\\\"\u003E ... \u003C\u002Fsvg\u003E',\\n  '\u003Csvg viewBox=\\\"0 0 200 200\\\" xmlns=\\\"http:\u002F\u002Fwww.w3.org\u002F2000\u002Fsvg\\\"\u003E ... \u003C\u002Fsvg\u003E',\\n  '\u003Csvg viewBox=\\\"0 0 200 200\\\" xmlns=\\\"http:\u002F\u002Fwww.w3.org\u002F2000\u002Fsvg\\\"\u003E ... \u003C\u002Fsvg\u003E',\\n  \u002F\u002F and more ...\\n];\\nconst font = await fetch('.\u002FRoboto.ttf').then((res) =\u003E res.arrayBuffer());\\nconst svg2png = createSvg2png({\\n  fonts: [new Uint8Array(font)],\\n});\\n\\nconst pngs = await Promise.all(svgs.map((svg) =\u003E svg2png(svg, { scale: 2 })));\\nsvg2png.dispose(); \u002F\u002F You should dispose svg2png, if you will not use it in the future\\n```\\n\",\"metadata\":{\"slug\":\"advanced-usage\",\"title\":\"Advanced usage\"}}"}</script>
 		</div>
