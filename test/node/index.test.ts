@@ -1,5 +1,6 @@
-import { initialize, svg2png } from '../../dist/index.cjs';
+import { initialize, svg2png, createSvg2png } from '../../dist/index.cjs';
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 
 beforeAll(async () => {
   await initialize(readFileSync('./svg2png_wasm_bg.wasm'));
@@ -69,5 +70,25 @@ describe('svg2png', () => {
       { width: 10, scale: 100 },
     );
     expect(actual).toStrictEqual(expected);
+  });
+});
+
+describe('createSvg2png', () => {
+  it('no fonts', async () => {
+    const convert = createSvg2png();
+    expect(convert.getLoadedFontFamilies()).toStrictEqual([]);
+    convert.dispose();
+  });
+
+  it('only roboto', async () => {
+    const convert = createSvg2png({
+      fonts: [
+        new Uint8Array(
+          readFileSync(resolve(__dirname, '../data/Roboto-Regular.ttf')),
+        ),
+      ],
+    });
+    expect(convert.getLoadedFontFamilies()).toStrictEqual(['Roboto']);
+    convert.dispose();
   });
 });

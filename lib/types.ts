@@ -22,5 +22,6 @@ export type Svg2png = ((
   svg: string,
   options?: ConvertOptions,
 ) => Promise<Uint8Array>) & {
+  getLoadedFontFamilies: () => string[];
   dispose: () => void;
 };

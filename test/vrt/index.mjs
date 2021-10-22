@@ -27,7 +27,7 @@ const convert =
     const pngPath = svgPath
       .replace(/\/data\//g, '/vrt/actual/')
       .replace(/\.svg$/i, `${fileSuffix}.png`);
-    console.log(`[SVG] ${svgPath} - ${pngPath}`);
+    console.log(`[convert] ${pngPath}`);
     const png = await svg2png(readFileSync(svgPath, 'utf8'), options);
     writeFileSync(pngPath, png);
   };
@@ -43,6 +43,7 @@ const main = async () => {
   /** @type {import('../../dist').DefaultFontFamily} */
   const defaultFontFamily = {
     sansSerifFamily: 'Roboto',
+    serifFamily: 'Noto Serif',
   };
 
   const fonts = fontPaths.map((path) => {
