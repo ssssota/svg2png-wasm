@@ -9,6 +9,7 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
@@ -51,6 +52,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
     steps:
       - uses: actions/checkout@v2
@@ -69,6 +71,7 @@ jobs:
 
   test:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     needs: [setup]
     strategy:
       matrix:
@@ -112,6 +115,7 @@ jobs:
 
   site-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
     env:
       WORKING_DIR: site

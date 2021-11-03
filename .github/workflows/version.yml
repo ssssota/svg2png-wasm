@@ -11,6 +11,7 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
@@ -40,6 +41,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [version]
     steps:
       - uses: actions/checkout@v2
