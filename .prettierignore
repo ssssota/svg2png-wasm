@@ -1,6 +1,7 @@
 /target
 /dist*
-/site
+/site/build
+/site/.svelte-kit
 node_modules
 test-results
 Cargo.lock

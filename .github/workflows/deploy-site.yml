@@ -6,25 +6,20 @@ on:
 jobs:
   site-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       WORKING_DIR: site
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
           cache: pnpm
-          cache-dependency-path: |
-            pnpm-lock.yaml
-            ${{ env.WORKING_DIR }}/pnpm-lock.yaml
       - name: Install deps
         run: pnpm install
-      - name: Install deps (site)
-        run: pnpm install
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Restore build files
         uses: actions/cache@v2

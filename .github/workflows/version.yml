@@ -11,11 +11,12 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
@@ -40,12 +41,13 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [version]
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*

@@ -9,11 +9,12 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
@@ -51,12 +52,13 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
@@ -69,6 +71,7 @@ jobs:
 
   test:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     needs: [setup]
     strategy:
       matrix:
@@ -79,7 +82,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
@@ -112,6 +115,7 @@ jobs:
 
   site-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [setup]
     env:
       WORKING_DIR: site
@@ -119,15 +123,13 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.17.0
+          version: 6.20.1
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
           cache: pnpm
-          cache-dependency-path: ${{ env.WORKING_DIR }}/pnpm-lock.yaml
       - name: Install deps
         run: pnpm install
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Restore build files
         uses: actions/cache@v2
@@ -143,8 +145,6 @@ jobs:
           restore-keys: |
             ${{ env.cache-name }}
 
-      - run: pnpm lint
-        working-directory: ${{ env.WORKING_DIR }}
       - run: pnpm check
         working-directory: ${{ env.WORKING_DIR }}
       - run: pnpm build

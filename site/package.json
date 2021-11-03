@@ -6,9 +6,7 @@
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "next",
@@ -21,13 +19,8 @@
 		"carbon-icons-svelte": "^10.38.0",
 		"carbon-preprocess-svelte": "^0.6.0",
 		"cssnano": "^5.0.8",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-svelte3": "^3.2.1",
 		"postcss": "^8.3.9",
 		"postcss-load-config": "^3.1.0",
-		"prettier": "^2.4.1",
-		"prettier-plugin-svelte": "^2.4.0",
 		"svelte": "^3.43.2",
 		"svelte-check": "^2.2.7",
 		"svelte-preprocess": "^4.9.8",
