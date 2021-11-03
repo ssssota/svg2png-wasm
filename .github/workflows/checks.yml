@@ -124,10 +124,8 @@ jobs:
         with:
           node-version: lts/*
           cache: pnpm
-          cache-dependency-path: ${{ env.WORKING_DIR }}/pnpm-lock.yaml
       - name: Install deps
         run: pnpm install
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Restore build files
         uses: actions/cache@v2
