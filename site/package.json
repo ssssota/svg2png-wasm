@@ -7,8 +7,7 @@
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"lint": "eslint --ignore-path .gitignore ."
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "next",
@@ -26,8 +25,6 @@
 		"eslint-plugin-svelte3": "^3.2.1",
 		"postcss": "^8.3.9",
 		"postcss-load-config": "^3.1.0",
-		"prettier": "^2.4.1",
-		"prettier-plugin-svelte": "^2.4.0",
 		"svelte": "^3.43.2",
 		"svelte-check": "^2.2.7",
 		"svelte-preprocess": "^4.9.8",
