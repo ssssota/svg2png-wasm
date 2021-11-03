@@ -6,8 +6,7 @@
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint --ignore-path .gitignore ."
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "next",
@@ -20,9 +19,6 @@
 		"carbon-icons-svelte": "^10.38.0",
 		"carbon-preprocess-svelte": "^0.6.0",
 		"cssnano": "^5.0.8",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-svelte3": "^3.2.1",
 		"postcss": "^8.3.9",
 		"postcss-load-config": "^3.1.0",
 		"svelte": "^3.43.2",
