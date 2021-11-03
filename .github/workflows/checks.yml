@@ -145,8 +145,6 @@ jobs:
           restore-keys: |
             ${{ env.cache-name }}
 
-      - run: pnpm lint
-        working-directory: ${{ env.WORKING_DIR }}
       - run: pnpm check
         working-directory: ${{ env.WORKING_DIR }}
       - run: pnpm build
