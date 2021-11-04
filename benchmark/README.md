@@ -3,12 +3,12 @@
 
 ```yaml
   System:
-    OS: Windows 10 10.0.19042
-    CPU: (12) x64 AMD Ryzen 5 2600 Six-Core Processor            
-    Memory: 4.91 GB / 15.93 GB
+    OS: Linux 5.11 Ubuntu 20.04.3 LTS (Focal Fossa)
+    CPU: (2) x64 Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz
+    Memory: 3.34 GB / 6.79 GB
   Binaries:
-    Node: 14.17.0 - C:\Program Files\nodejs\node.EXE
-    npm: 7.20.2 - C:\Program Files\nodejs\npm.CMD
+    Node: 14.18.1 - /opt/hostedtoolcache/node/14.18.1/x64/bin/node
+    npm: 6.14.15 - /opt/hostedtoolcache/node/14.18.1/x64/bin/npm
   npmPackages:
     sharp: ^0.29.2 => 0.29.2 
     svg2img: ^0.9.4 => 0.9.4 
@@ -22,11 +22,11 @@ Source SVG: https://github.com/ssssota/svg2png-wasm/raw/main/logo.svg
 
 |Renderer|Speed|Output|
 |:-------|----:|:----:|
-|sharp|307 ops/s, ±39.94%|![sharp output](results/icon-sharp.png)|
-|svg2img|421 ops/s, ±5.3%|![svg2img output](results/icon-svg2img.png)|
-|svg2png-wasm|**1490 ops/s, ±1.25%**|![svg2png-wasm output](results/icon-svg2png-wasm.png)|
+|svg2png-wasm|**1687 ops/s, ±1.64%**|![svg2png-wasm output](results/icon-svg2png-wasm.png)|
+|sharp|234 ops/s, ±22.7%|![sharp output](results/icon-sharp.png)|
+|svg2img|362 ops/s, ±6.1%|![svg2img output](results/icon-svg2img.png)|
 
-_Thu Nov 04 2021 23:53:25 GMT+0900 (Japan Standard Time)_
+_Thu Nov 04 2021 15:50:27 GMT+0000 (Coordinated Universal Time)_
 
 
 ## tiger
@@ -35,9 +35,9 @@ Source SVG: https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/tiger.svg
 
 |Renderer|Speed|Output|
 |:-------|----:|:----:|
-|sharp|**27 ops/s, ±1.43%**|![sharp output](results/tiger-sharp.png)|
-|svg2img|9 ops/s, ±3.83%|![svg2img output](results/tiger-svg2img.png)|
-|svg2png-wasm|13 ops/s, ±0.91%|![svg2png-wasm output](results/tiger-svg2png-wasm.png)|
+|svg2png-wasm|14 ops/s, ±1.15%|![svg2png-wasm output](results/tiger-svg2png-wasm.png)|
+|sharp|**17 ops/s, ±1.24%**|![sharp output](results/tiger-sharp.png)|
+|svg2img|7 ops/s, ±3.76%|![svg2img output](results/tiger-svg2img.png)|
 
-_Thu Nov 04 2021 23:53:25 GMT+0900 (Japan Standard Time)_
+_Thu Nov 04 2021 15:50:27 GMT+0000 (Coordinated Universal Time)_
 
