@@ -2,6 +2,7 @@
 /dist*
 /site/build
 /site/.svelte-kit
+/benchmark/README.md
 node_modules
 test-results
 Cargo.lock
