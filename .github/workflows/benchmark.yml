@@ -1,0 +1,57 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  site-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      WORKING_DIR: benchmark
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.20.1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - name: Install deps
+        run: pnpm install
+
+      - name: Restore build files
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-files
+        with:
+          path: |
+            target
+            dist
+            dist-wasm
+            svg2png_wasm_bg.wasm
+          key: '${{ env.cache-name }}-${{ github.sha }}'
+          restore-keys: |
+            ${{ env.cache-name }}
+
+      - name: WASM target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Prebuild
+        run: cargo build --target wasm32-unknown-unknown --release
+      - name: Build packages
+        run: pnpm make
+
+      - run: pnpm start
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Push benchmark result
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add .
+          git commit -m "📊 Update benchmark"
+          git push origin
