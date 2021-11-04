@@ -12,6 +12,10 @@ SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crate
 
 See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support status.
 
+## 📊 Benchmark
+
+[Benchmark result](./benchmark/README.md)
+
 ## 💻 Usage
 
 ### Installation
