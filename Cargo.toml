@@ -26,5 +26,10 @@ wee_alloc = {version = "0.4.5", optional = true}
 [dev-dependencies]
 wasm-bindgen-test = "0.3.28"
 
+# ref. https://github.com/yisibl/resvg-js
 [profile.release]
-opt-level = "s"
+lto = true # Enable Link Time Optimization
+opt-level = 3
+# Setting this to 1 may improve the performance of generated code, but may be slower to compile.
+# https://doc.rust-lang.org/rustc/codegen-options/index.html#codegen-units
+codegen-units = 1
