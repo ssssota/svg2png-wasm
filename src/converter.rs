@@ -3,6 +3,7 @@ use std::str::FromStr;
 
 use tiny_skia::Color;
 use tiny_skia::Pixmap;
+use tiny_skia::Transform;
 use usvg::fontdb::Database;
 use usvg::{FitTo, OptionsRef, Size, Tree};
 use wasm_bindgen::prelude::*;
@@ -92,7 +93,12 @@ impl Converter {
             pixmap.fill(parse_color_string(&color));
         }
 
-        resvg::render(&tree, FitTo::Size(width, height), pixmap.as_mut());
+        resvg::render(
+            &tree,
+            FitTo::Size(width, height),
+            Transform::default(),
+            pixmap.as_mut(),
+        );
         pixmap
             .encode_png()
             .map_err(|e| JsValue::from_str(&e.to_string()))
