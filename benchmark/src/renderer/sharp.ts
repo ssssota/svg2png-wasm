@@ -1,8 +1,8 @@
-import type { Render } from './types';
+import { createRenderer } from './types';
 import sharp from 'sharp';
 
-export const render: Render = (svg) =>
-  sharp(Buffer.from(svg))
+export default createRenderer({
+  render: (svg: string) => sharp(Buffer.from(svg))
     .png()
     .toBuffer()
-    .then((buf) => new Uint8Array(buf));
+})

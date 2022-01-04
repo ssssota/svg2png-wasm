@@ -9,6 +9,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
+    "@resvg/resvg-js": "^1.3.0",
     "benny": "^3.7.1",
     "envinfo": "^7.8.1",
     "node-fetch": "^3.0.0",

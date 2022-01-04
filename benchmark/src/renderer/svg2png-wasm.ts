@@ -1,7 +1,19 @@
-import { readFileSync } from 'fs';
+import { readFile } from 'fs/promises';
 import { initialize, svg2png } from 'svg2png-wasm';
-import { Render } from './types';
+import { createRenderer } from './types';
 
-const initPromise = initialize(readFileSync('../svg2png_wasm_bg.wasm'));
+let inited = false
 
-export const render: Render = (svg) => initPromise.then(() => svg2png(svg));
+export default createRenderer({
+    init: async () => {
+        if (inited) {
+            return
+        }
+        inited = true
+
+        const buffer = await readFile('../svg2png_wasm_bg.wasm')
+
+        await initialize(buffer)
+    },
+    render: svg2png
+})

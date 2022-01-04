@@ -41,6 +41,15 @@ jobs:
         run: rustup target add wasm32-unknown-unknown
       - name: Prebuild
         run: cargo build --target wasm32-unknown-unknown --release
+      - name: Install resvg to path
+        run: |
+          mkdir -p /tmp/resvg
+          cd /tmp/resvg
+          curl -s https://api.github.com/repos/RazrFalcon/resvg/releases/latest | jq -r '.assets[] | select(.name | contains("resvg-linux")) | .browser_download_url' | head -n1 | xargs curl -O -L
+          tar -zxvf resvg-linux-x86_64.tar.gz
+          export PATH=/tmp/resvg:$PATH
+          cd -
+          resvg --help
       - name: Build packages
         run: pnpm make
 
