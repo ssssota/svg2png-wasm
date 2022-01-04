@@ -9,7 +9,8 @@ const svgUrlMap = {
   icon: 'https://github.com/ssssota/svg2png-wasm/raw/main/logo.svg',
   tiger: 'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/tiger.svg',
   text: 'https://raw.githubusercontent.com/yisibl/resvg-js/main/example/text.svg',
-  animeGirl: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Anime_Girl.svg',
+  animeGirl:
+    'https://upload.wikimedia.org/wikipedia/commons/c/c2/Anime_Girl.svg',
 };
 
 const createMarkdown = (reports: string[], env: string) => `
@@ -41,28 +42,28 @@ Source SVG: ${svgUrl}
 |Renderer|Speed|Output|
 |:-------|----:|:----:|
 ${summary.results
-      .map(({ name, ops, margin }) => {
-        const emphasis = name === summary.fastest.name ? '**' : '';
-        const entries = [
-          name,
-          `${emphasis}${ops} ops/s, ±${margin}%${emphasis}`,
-          `![${name} output](${imageDir}/${title}-${name}.png)`,
-        ];
-        return `|${entries.join('|')}|`;
-      })
-      .join('\n')}
+  .map(({ name, ops, margin }) => {
+    const emphasis = name === summary.fastest.name ? '**' : '';
+    const entries = [
+      name,
+      `${emphasis}${ops} ops/s, ±${margin}%${emphasis}`,
+      `![${name} output](${imageDir}/${title}-${name}.png)`,
+    ];
+    return `|${entries.join('|')}|`;
+  })
+  .join('\n')}
 
 _${summary.date.toString()}_
 `;
 };
 
 const main = async () => {
-  const reports: string[] = []
-  const entries = Object.entries(svgUrlMap)
+  const reports: string[] = [];
+  const entries = Object.entries(svgUrlMap);
   // Benchmarks should not parallelize.
   for (const [title, svgUrl] of entries) {
-    const r = await createReport(title, svgUrl)
-    reports.push(r)
+    const r = await createReport(title, svgUrl);
+    reports.push(r);
   }
   const env = await envinfo.run({
     System: ['OS', 'CPU', 'Memory'],
