@@ -1,7 +1,14 @@
 import { createRenderer } from './types';
 import { readFile, unlink } from 'fs/promises';
 import { spawn, ChildProcess } from 'child_process';
-const call = (cmd: string, args: string[], hook?: (p: ChildProcess) => void) =>
+const call = (
+  cmd: string,
+  args: string[],
+  hook?: (p: ChildProcess) => void,
+): Promise<{
+  stdout: Buffer;
+  stderr: Buffer;
+}> =>
   new Promise((resolve, reject) => {
     const p = spawn(cmd, args);
 
@@ -15,11 +22,16 @@ const call = (cmd: string, args: string[], hook?: (p: ChildProcess) => void) =>
     });
 
     p.once('close', (code) => {
+      const err = Buffer.concat(stderr);
+      const out = Buffer.concat(stdout);
       if (code === 0) {
-        resolve(code);
+        resolve({
+          stderr: err,
+          stdout: out,
+        });
         return;
       }
-      reject(new Error(`Exit status not 0: ${code}\n${Buffer.concat(stderr)}`));
+      reject(new Error(`Exit status not 0: ${code}\n${err}`));
     });
 
     if (hook) {
@@ -28,6 +40,14 @@ const call = (cmd: string, args: string[], hook?: (p: ChildProcess) => void) =>
   });
 
 export default createRenderer({
+  init: async () => {
+    const { stdout } = await call('resvg', ['--help']);
+
+    if (!`${stdout}`.includes('--version')) {
+      throw new Error('resvg bin not valid');
+    }
+  },
+
   render: async (svg: string) => {
     // resvg only accept file output
 
