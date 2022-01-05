@@ -8,6 +8,9 @@ import Renderer from './renderer';
 const svgUrlMap = {
   icon: 'https://github.com/ssssota/svg2png-wasm/raw/main/logo.svg',
   tiger: 'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/tiger.svg',
+  text: 'https://raw.githubusercontent.com/yisibl/resvg-js/main/example/text.svg',
+  animeGirl:
+    'https://upload.wikimedia.org/wikipedia/commons/c/c2/Anime_Girl.svg',
 };
 
 const createMarkdown = (reports: string[], env: string) => `
@@ -27,7 +30,7 @@ const createReport = async (
 ): Promise<string> => {
   if (!existsSync(imageDir)) mkdirSync(imageDir);
   const svg = await fetch(svgUrl).then((res) => res.text());
-  const { summary, outputs } = await benchmark(svg);
+  const { summary, outputs } = await benchmark(title, svg);
   Object.entries(outputs).map(([rendererName, output]) => {
     writeFileSync(`${imageDir}/${title}-${rendererName}.png`, output);
   });
@@ -55,11 +58,13 @@ _${summary.date.toString()}_
 };
 
 const main = async () => {
-  const reports: string[] = await Promise.all(
-    Object.entries(svgUrlMap).map(([title, svgUrl]) =>
-      createReport(title, svgUrl),
-    ),
-  );
+  const reports: string[] = [];
+  const entries = Object.entries(svgUrlMap);
+  // Benchmarks should not parallelize.
+  for (const [title, svgUrl] of entries) {
+    const r = await createReport(title, svgUrl);
+    reports.push(r);
+  }
   const env = await envinfo.run({
     System: ['OS', 'CPU', 'Memory'],
     Binaries: ['Node', 'npm'],

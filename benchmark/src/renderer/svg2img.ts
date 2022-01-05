@@ -1,10 +1,12 @@
 import svg2img from 'svg2img';
-import { Render } from './types';
+import { createRenderer } from './types';
 
-export const render: Render = (svg) =>
-  new Promise((resolve, reject) => {
-    svg2img(svg, (err, buf: Buffer) => {
-      if (err) return reject(err);
-      return resolve(new Uint8Array(buf));
-    });
-  });
+export default createRenderer({
+  render: (svg: string) =>
+    new Promise((resolve, reject) => {
+      svg2img(svg, (err, buf: Buffer) => {
+        if (err) return reject(err);
+        return resolve(buf);
+      });
+    }),
+});
