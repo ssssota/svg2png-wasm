@@ -65,6 +65,7 @@ impl Converter {
             )
             .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
             fontdb: &fontdb,
+            image_href_resolver: &usvg::ImageHrefResolver::default(),
         };
         let scale = scale.unwrap_or(1.0);
         let tree =
