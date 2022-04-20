@@ -10,9 +10,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2
         with:
-          version: 6.20.1
+          version: latest
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*
@@ -47,9 +47,9 @@ jobs:
       WORKING_DIR: site
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2
         with:
-          version: 6.20.1
+          version: latest
       - uses: actions/setup-node@v2
         with:
           node-version: lts/*

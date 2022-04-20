@@ -13,10 +13,10 @@ jobs:
       WORKING_DIR: benchmark
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2
         with:
-          version: 6.20.1
-      - uses: actions/setup-node@v2
+          version: latest
+      - uses: actions/setup-node@v3
         with:
           node-version: lts/*
           cache: pnpm
