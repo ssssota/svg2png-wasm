@@ -193,33 +193,33 @@
         <p>If you want to use text in SVG, you need to check this section.</p></div></div>
     
     </div></blockquote><p>WebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.</p><p>For this reason, you must pass the fonts when you want to use text in SVG.</p><p>The first entry in the 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.duhvqr54ogi" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.zjtcmorgm4" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.duhvqr54ogi">fonts</code>
+          false undefined bx--copy "><code id="ccs-0.zjtcmorgm4">fonts</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field array will be the fallback font.</p><p>The 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.mmlx4oncw1r" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.3i9aymsewh" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.mmlx4oncw1r">defaultFontFamily</code>
+          false undefined bx--copy "><code id="ccs-0.3i9aymsewh">defaultFontFamily</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field is used when the font is specified as 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.vmw2z5i748l" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.5zd35x7po3j" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.vmw2z5i748l">sans-serif</code>
+          false undefined bx--copy "><code id="ccs-0.5zd35x7po3j">sans-serif</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>, 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.r06ek5wlc7" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.0gcc4knt4cne" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.r06ek5wlc7">serif</code>
+          false undefined bx--copy "><code id="ccs-0.0gcc4knt4cne">serif</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> etc.</p><h4 class="svelte-1u7un7v">Example</h4><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">{</span> svg2png<span class="token punctuation">,</span> createSvg2png <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'svg2png-wasm'</span><span class="token punctuation">;</span>
 
@@ -254,26 +254,26 @@
 				<a aria-hidden href="/docs#advanced-usage" class="header-anchor svelte-2go5v4">#
 				</a></h2>
 			<h3 class="svelte-1u7un7v">Initialize only once</h3><p>The 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.fwhf696lezg" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.vqcy6genhhd" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.fwhf696lezg">initialize</code>
+          false undefined bx--copy "><code id="ccs-0.vqcy6genhhd">initialize</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be called only once.</p><p>If it is called more than once, 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.zjyljoy1fd" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.rhcrz759g3d" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.zjyljoy1fd">Promise</code>
+          false undefined bx--copy "><code id="ccs-0.rhcrz759g3d">Promise</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> will be rejected.</p><h3 class="svelte-1u7un7v">Initialize without buffer</h3><p>The argument of the 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.8l33xs8bc1h" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.ub0zkscx2gl" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.8l33xs8bc1h">initialize</code>
+          false undefined bx--copy "><code id="ccs-0.ub0zkscx2gl">initialize</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be something other than a buffer.</p><h4 class="svelte-1u7un7v">Types</h4><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">export</span> type InitInput <span class="token operator">=</span>
   <span class="token operator">|</span> RequestInfo
@@ -325,12 +325,12 @@
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
     </div>
 </div><h3 class="svelte-1u7un7v">Convert options</h3><p>The output image can be adjusted by specifying an option as the second argument of the function 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.awah9v9o45f" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.9t0w7m3gvfg" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.awah9v9o45f">svg2png</code>
+          false undefined bx--copy "><code id="ccs-0.9t0w7m3gvfg">svg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>.</p><h4 class="svelte-1u7un7v">Size option</h4><p>You can specify output image size.</p><p>Specifying the width and height will not stretch the image.</p><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token comment">// 2x scale</span>
 <span class="token keyword">await</span> <span class="token function">svg2png</span><span class="token punctuation">(</span>svgData<span class="token punctuation">,</span> <span class="token punctuation">{</span> scale<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -366,26 +366,26 @@
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
     </div>
 </div><h3 class="svelte-1u7un7v">Custom svg2png</h3><p>You can create a custom svg2png function.</p><p>Basically, you can use 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.cppbjg8v99f" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.cvvdvmsue4n" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.cppbjg8v99f">svg2png</code>
+          false undefined bx--copy "><code id="ccs-0.cvvdvmsue4n">svg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> , but if you want to process a lot of data continuously, consider using 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.0abpua4g6tuc" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.lumpp2zeij9" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.0abpua4g6tuc">createSvg2png</code>
+          false undefined bx--copy "><code id="ccs-0.lumpp2zeij9">createSvg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> . It can reduce the overhead of font loading. Converters generated by 
-<button type="button" aria-live="polite" aria-describedby="ccs-0.7trequqti4j" class="bx--snippet bx--snippet--inline
+<button type="button" aria-live="polite" aria-describedby="ccs-0.aph5rsvq9v" class="bx--snippet bx--snippet--inline
           bx--btn--copy
           false
           false
           false
-          false undefined bx--copy "><code id="ccs-0.7trequqti4j">createSvg2png</code>
+          false undefined bx--copy "><code id="ccs-0.aph5rsvq9v">createSvg2png</code>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> should be disposed of after use by calling the dispose method.</p><div class="svelte-1705sli">
 <div class="bx--snippet       bx--snippet--multi "><div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code><!-- HTML_TAG_START --><span class="token keyword">const</span> svgs <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span><span class="token punctuation">,</span>
