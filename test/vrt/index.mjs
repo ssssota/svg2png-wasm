@@ -33,7 +33,6 @@ const convert =
   };
 
 const main = async () => {
-  // @ts-ignore
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const fontPaths = glob.sync(join(__dirname, '../data/**/*.@(ttf|otf)'));
   const svgs = glob.sync(join(__dirname, '../data/**/*.svg'));
