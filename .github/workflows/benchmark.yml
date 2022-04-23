@@ -9,8 +9,9 @@ jobs:
   site-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      WORKING_DIR: benchmark
+    defaults:
+      run:
+        working-directory: benchmark
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/build
@@ -23,10 +24,8 @@ jobs:
           curl -s https://api.github.com/repos/RazrFalcon/resvg/releases/latest | jq -r '.assets[] | select(.name | contains("resvg-linux")) | .browser_download_url' | head -n1 | xargs curl -O -L
           tar -zxvf resvg-linux-x86_64.tar.gz
           ./resvg --help
-          cd -
 
       - run: pnpm start
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Push benchmark result
         run: |
