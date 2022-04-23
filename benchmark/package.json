@@ -4,8 +4,8 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "npm run build && node --experimental-specifier-resolution=node dist/index",
-    "build": "swc src -d dist",
+    "start": "npm run build && node dist/index",
+    "build": "esbuild src/index.ts --platform=node --format=esm --bundle --external:./node_modules/* --outfile=dist/index.js",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -18,10 +18,9 @@
     "svg2png-wasm": "link:.."
   },
   "devDependencies": {
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.126",
     "@types/envinfo": "^7.8.1",
     "@types/sharp": "^0.29.5",
+    "esbuild": "^0.14.10",
     "typescript": "^4.5.4"
   }
 }
