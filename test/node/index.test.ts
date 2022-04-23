@@ -20,10 +20,14 @@ describe('svg2png', () => {
     );
   });
 
-  it('should throw because invalid svg (missing width and height)', async () => {
-    await expect(
-      svg2png('<svg xmlns="http://www.w3.org/2000/svg"></svg>'),
-    ).rejects.toThrow('Invalid width or height');
+  it('should convert with default sizes', async () => {
+    const actual = await svg2png(
+      '<svg xmlns="http://www.w3.org/2000/svg"></svg>',
+    );
+    const expected = await svg2png(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"></svg>',
+    );
+    expect(actual).toStrictEqual(expected);
   });
 
   it('should convert because specify width and height', async () => {
