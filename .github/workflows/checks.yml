@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/build
       - uses: ./.github/actions/upload-pkg
 
@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 15
     needs: [setup]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
       - run: pnpm lint
 
@@ -34,7 +34,7 @@ jobs:
         node: [14, 16]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/download-pkg
       - run: pnpm test
@@ -47,7 +47,7 @@ jobs:
       WORKING_DIR_SITE: site
       WORKING_DIR_BENCH: benchmark
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/download-pkg
 
