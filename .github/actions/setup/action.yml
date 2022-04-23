@@ -12,3 +12,4 @@ runs:
         cache: pnpm
     - name: Install deps
       run: pnpm install
+      shell: bash

@@ -6,5 +6,7 @@ runs:
     - uses: ./.github/actions/setup-node-pnpm
     - name: WASM target
       run: rustup target add wasm32-unknown-unknown
+      shell: bash
     - name: Build package
       run: pnpm build
+      shell: bash
