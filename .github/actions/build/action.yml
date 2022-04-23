@@ -1,0 +1,12 @@
+name: Build package
+description: Build svg2png-wasm
+runs:
+  using: 'composite'
+  steps:
+    - uses: ./.github/actions/setup
+    - name: WASM target
+      run: rustup target add wasm32-unknown-unknown
+      shell: bash
+    - name: Build package
+      run: pnpm build
+      shell: bash

@@ -1,4 +1,5 @@
-import { initialize, svg2png, createSvg2png } from '../../dist/index.cjs';
+import { beforeAll, it, expect, describe } from 'vitest';
+import { initialize, svg2png, createSvg2png } from '../..';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
