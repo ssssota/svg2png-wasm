@@ -38,3 +38,6 @@ jobs:
           git add .
           git commit -m "chore: update $BRANCH_NAME"
           git push -u origin $BRANCH_NAME
+          gh pr create -B main -t "Update benchmark" -b "$(cat README.md)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
