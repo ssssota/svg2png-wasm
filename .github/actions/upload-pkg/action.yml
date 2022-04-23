@@ -1,0 +1,12 @@
+name: Upload svg2png-wasm
+description: Upload svg2png-wasm files as artifact
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/upload-artifact@v3
+      with:
+        name: build-artifact
+        path: |
+          dist
+          dist-wasm
+          svg2png_wasm_bg.wasm
