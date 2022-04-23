@@ -1,0 +1,8 @@
+name: Download svg2png-wasm
+description: Download svg2png-wasm files from artifact
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: build-artifact

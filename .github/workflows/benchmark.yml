@@ -9,19 +9,12 @@ jobs:
   site-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      WORKING_DIR: benchmark
+    defaults:
+      run:
+        working-directory: benchmark
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          cache: pnpm
-      - name: Install deps
-        run: pnpm install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build
 
       - name: Install resvg to path
         run: |
@@ -31,37 +24,19 @@ jobs:
           curl -s https://api.github.com/repos/RazrFalcon/resvg/releases/latest | jq -r '.assets[] | select(.name | contains("resvg-linux")) | .browser_download_url' | head -n1 | xargs curl -O -L
           tar -zxvf resvg-linux-x86_64.tar.gz
           ./resvg --help
-          cd -
-
-      - name: Restore build files
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-build-files
-        with:
-          path: |
-            target
-            dist
-            dist-wasm
-            svg2png_wasm_bg.wasm
-          key: '${{ env.cache-name }}-${{ github.sha }}'
-          restore-keys: |
-            ${{ env.cache-name }}
-
-      - name: WASM target
-        run: rustup target add wasm32-unknown-unknown
-      - name: Prebuild
-        run: cargo build --target wasm32-unknown-unknown --release
-      - name: Build packages
-        run: pnpm make
 
       - run: pnpm start
-        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Push benchmark result
         run: |
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          BRANCH_NAME=benchmark-$(date +"%Y%m%d-%H%M%S")
+          git switch -c $BRANCH_NAME
           git add .
-          git commit -m "📊 Update benchmark"
-          git push origin
+          git commit -m "chore: update $BRANCH_NAME"
+          git push -u origin $BRANCH_NAME
+          gh pr create -B main -t "Update benchmark" -b "$(cat README.md)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
