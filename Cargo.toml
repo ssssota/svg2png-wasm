@@ -13,7 +13,7 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-resvg = { version = "0.22.0", default-features = false, features = ["filter"] }
+resvg = { version = "0.23.0", default-features = false, features = ["filter"] }
 usvg = { version = "0.22.0", default-features = false, features = [ "filter", "text"] }
 svgtypes = "0.8.0"
 
