@@ -70,20 +70,19 @@ impl Converter {
         let scale = scale.unwrap_or(1.0);
         let tree =
             Tree::from_str(svg, &svg_options).map_err(|e| JsValue::from_str(&e.to_string()))?;
-        let svg_size = tree.svg_node().size;
         let (width, height) = match (width, height) {
             (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
             (Some(w), _) => (
                 w.round() as u32,
-                (svg_size.height() * ((w as f64) / svg_size.width())) as u32,
+                (tree.size.height() * ((w as f64) / tree.size.width())) as u32,
             ),
             (_, Some(h)) => (
-                (svg_size.width() * ((h as f64) / svg_size.height())) as u32,
+                (tree.size.width() * ((h as f64) / tree.size.height())) as u32,
                 h.round() as u32,
             ),
             _ => (
-                ((svg_size.width().round() as f32) * scale) as u32,
-                ((svg_size.height().round() as f32) * scale) as u32,
+                ((tree.size.width().round() as f32) * scale) as u32,
+                ((tree.size.height().round() as f32) * scale) as u32,
             ),
         };
 
