@@ -95,7 +95,7 @@ importers:
         specifier: ^1.0.0-beta.2
         version: 1.0.0-beta.2
       svg2png-wasm:
-        specifier: link:..
+        specifier: workspace:..
         version: link:..
     devDependencies:
       '@types/envinfo':
