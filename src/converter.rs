@@ -1,11 +1,10 @@
 use std::collections::HashSet;
 use std::str::FromStr;
 
-use tiny_skia::Color;
-use tiny_skia::Pixmap;
-use tiny_skia::Transform;
+use resvg::tiny_skia::{Color, Pixmap, Transform};
 use usvg::fontdb::Database;
-use usvg::{FitTo, OptionsRef, Size, Tree};
+use usvg::{Options, Size, Tree};
+use usvg::{TreeParsing, TreeTextToPath};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -43,34 +42,35 @@ impl Converter {
             self.fantasy_family.as_deref(),
             self.monospace_family.as_deref(),
         );
-        let faces = fontdb.faces();
-        let default_font_family = if faces.is_empty() {
-            "sans-serif"
+        let faces = &mut fontdb.faces();
+        let default_font_family = if fontdb.is_empty() {
+            "sans-serif".to_string()
         } else {
-            &faces[0].family
+            faces.next().clone().unwrap().families[0].0.to_string()
         };
-        let svg_options = OptionsRef {
+        let svg_options = Options {
             resources_dir: None,
             dpi: 96.0,
-            font_family: default_font_family,
+            font_family: default_font_family.clone(),
             font_size: 12.0,
-            languages: &["en".to_string()],
+            languages: vec!["en".to_string()],
             shape_rendering: usvg::ShapeRendering::GeometricPrecision,
             text_rendering: usvg::TextRendering::OptimizeLegibility,
             image_rendering: usvg::ImageRendering::OptimizeQuality,
-            keep_named_groups: false,
             default_size: Size::new(
                 width.unwrap_or(100.0).into(),
                 height.unwrap_or(100.0).into(),
             )
             .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
-            fontdb: &fontdb,
-            image_href_resolver: &usvg::ImageHrefResolver::default(),
+            image_href_resolver: usvg::ImageHrefResolver::default(),
         };
+
         let scale = scale.unwrap_or(1.0);
-        let tree =
+        let mut tree =
             Tree::from_str(svg, &svg_options).map_err(|e| JsValue::from_str(&e.to_string()))?;
-        let svg_size = tree.svg_node().size;
+        tree.convert_text(&fontdb);
+
+        let svg_size = tree.size;
         let (width, height) = match (width, height) {
             (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
             (Some(w), _) => (
@@ -94,12 +94,23 @@ impl Converter {
             pixmap.fill(parse_color_string(&color));
         }
 
-        resvg::render(
-            &tree,
-            FitTo::Size(width, height),
-            Transform::default(),
-            pixmap.as_mut(),
+        let rtree = resvg::Tree::from_usvg(&tree);
+
+        let size = resvg::IntSize::from_usvg(tree.size);
+        let size1 = size.to_size();
+        let fit_to_size = resvg::IntSize::new(width, height).map(|s| size.scale_to(s));
+        let size2 = match fit_to_size {
+            Some(v) => v.to_size(),
+            None => size.to_size(),
+        };
+
+        let tx = Transform::from_scale(
+            (size2.width() / size1.width()) as f32,
+            (size2.height() / size1.height()) as f32,
         );
+
+        rtree.render(tx, &mut pixmap.as_mut());
+
         pixmap
             .encode_png()
             .map_err(|e| JsValue::from_str(&e.to_string()))
@@ -109,8 +120,8 @@ impl Converter {
     pub fn list_fonts(&self) -> Box<[JsValue]> {
         load_fonts(&self.fonts, None, None, None, None, None)
             .faces()
-            .iter()
-            .map(|f| &f.family)
+            .into_iter()
+            .map(|f| &f.families[0].0)
             .collect::<HashSet<&String>>()
             .iter()
             .map(|s| JsValue::from_str(s))
