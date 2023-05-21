@@ -11,7 +11,7 @@ runs:
         version: latest
     - uses: actions/setup-node@v3
       with:
-        node-version: lts/*
+        node-version: ${{ inputs.node-version }}
         cache: pnpm
     - name: Install deps
       run: pnpm install
