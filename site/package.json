@@ -9,7 +9,7 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "1.0.0-next.21",
+		"@sveltejs/adapter-static": "1.0.6",
 		"@sveltejs/kit": "1.0.0-next.193",
 		"@types/prismjs": "^1.16.6",
 		"@typescript-eslint/eslint-plugin": "^5.8.1",
