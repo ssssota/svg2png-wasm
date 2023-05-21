@@ -1,5 +1,8 @@
 name: Setup and Install deps
 description: Setup Node.js/pnpm. Install dependencies.
+inputs:
+  node-version:
+    default: lts/*
 runs:
   using: 'composite'
   steps:

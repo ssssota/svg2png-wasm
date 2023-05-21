@@ -12,6 +12,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
       - uses: ./.github/actions/build
       - uses: ./.github/actions/upload-pkg
       - run: pnpm lint
@@ -23,11 +24,13 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        node: [14, 16]
+        node-version: [16, 18, 20]
 
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
+        with:
+          node-version: ${{ matrix.node-version }}
       - uses: ./.github/actions/download-pkg
       - run: pnpm test
 
