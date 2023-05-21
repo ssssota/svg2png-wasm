@@ -15,6 +15,7 @@ jobs:
         working-directory: site
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
       - uses: ./.github/actions/build
 
       - run: pnpm build

@@ -3,7 +3,15 @@ description: Build svg2png-wasm
 runs:
   using: 'composite'
   steps:
-    - uses: ./.github/actions/setup
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          target/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - name: WASM target
       run: rustup target add wasm32-unknown-unknown
       shell: bash
