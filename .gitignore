@@ -4,4 +4,4 @@ node_modules
 test-results
 Cargo.lock
 reg.json
-*.wasm
+svg2png_wasm_bg.wasm
