@@ -16,7 +16,7 @@
   };
 
   let fileInfoList: FileInfo[] = [];
-  const fileSelected = ({ detail }: CustomEvent<FileList>) => {
+  const fileSelected = ({ detail }: CustomEvent<readonly File[]>) => {
     fileInfoList = [
       ...Array.from(detail)
         .filter((f) => f.type === 'image/svg+xml')
