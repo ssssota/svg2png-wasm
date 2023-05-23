@@ -29,8 +29,8 @@ importers:
         specifier: ^8.8.0
         version: 8.8.0(eslint@8.41.0)
       eslint-plugin-svelte3:
-        specifier: ^3.4.1
-        version: 3.4.1(eslint@8.41.0)(svelte@3.59.1)
+        specifier: ^4.0.0
+        version: 4.0.0(eslint@8.41.0)(svelte@3.59.1)
       glob:
         specifier: ^7.2.3
         version: 7.2.3
@@ -3479,11 +3479,10 @@ packages:
       eslint: 8.41.0
     dev: true
 
-  /eslint-plugin-svelte3@3.4.1(eslint@8.41.0)(svelte@3.59.1):
-    resolution: {integrity: sha512-7p59WG8qV8L6wLdl4d/c3mdjkgVglQCdv5XOTk/iNPBKXuuV+Q0eFP5Wa6iJd/G2M1qR3BkLPEzaANOqKAZczw==}
-    engines: {node: '>=10'}
+  /eslint-plugin-svelte3@4.0.0(eslint@8.41.0)(svelte@3.59.1):
+    resolution: {integrity: sha512-OIx9lgaNzD02+MDFNLw0GEUbuovNcglg+wnd/UY0fbZmlQSz7GlQiQ1f+yX0XvC07XPcDOnFcichqI3xCwp71g==}
     peerDependencies:
-      eslint: '>=6.0.0'
+      eslint: '>=8.0.0'
       svelte: ^3.2.0
     dependencies:
       eslint: 8.41.0
@@ -4097,10 +4096,10 @@ packages:
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-    dev: true
 
   /graceful-fs@4.2.8:
     resolution: {integrity: sha1-5BK40z9eAGWTy9PO5t+fLOu+gCo=}
+    dev: false
 
   /grapheme-splitter@1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
@@ -4640,7 +4639,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.11
 
   /jsonparse@1.3.1:
     resolution: {integrity: sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=}
