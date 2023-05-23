@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/0.79c4a7fb.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/3.8f6f6807.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Markdown.d8dcd10d.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.08806cf8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2d586ca1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.0cee51ab.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.4b6686a1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.f721dc0f.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.70e2454a.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.312ecb9d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Link.18096da4.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.7dd45045.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Markdown.665bb9b8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores.04079c9d.js"><title>svg2png-wasm</title><!-- HEAD_svelte-44y9q9_START --><meta name="description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."><meta name="keywords" content="svg,png,wasm,convert,js,javascript"><meta property="og:type" content="website"><meta property="og:title" content="svg2png-wasm"><meta property="og:description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."><meta property="og:image" content="https://ssssota.github.io/svg2png-wasm/ogp.png"><meta property="og:url" content="http://ssssota.github.io/svg2png-wasm/"><link rel="icon" href="/svg2png-wasm/favicon.png"><link rel="prefetch" href="/svg2png-wasm/svg2png.wasm"><link rel="prefetch" href="/svg2png-wasm/ogp.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet"><!-- HEAD_svelte-44y9q9_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
+
+
+
+
+<header class="svelte-5lt74q"><div class="svelte-5lt74q"><h1 class="svelte-5lt74q"><a href="/svg2png-wasm/"><img width="48" src="/svg2png-wasm/icon.svg" alt="svg2png-wasm"></a></h1>
+    <div class="spacer svelte-5lt74q"></div>
+    <nav class="svelte-5lt74q">
+<a href="/svg2png-wasm/docs" class="bx--link     bx--link--lg">Docs
+    </a></nav>
+    <p class="svelte-5lt74q">
+<a rel="noopener noreferer" href="https://github.com/ssssota/svg2png-wasm" target="_blank" class="bx--link     "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="black" preserveAspectRatio="xMidYMid meet" width="32" height="32" aria-hidden><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path></svg>
+    </a></p></div>
+</header>
+
+<main class="svelte-hdmpdd"><nav class="toc svelte-hdmpdd">
+<ul class="bx--list--unordered  ">
+<li class="bx--list__item">
+<a href="#01-svg-support" class="bx--link     ">SVG Support
+    </a>
+        </li>
+<li class="bx--list__item">
+<a href="#02-getting-started" class="bx--link     ">Getting Started
+    </a>
+        </li>
+<li class="bx--list__item">
+<a href="#03-basic-usage" class="bx--link     ">Basic Usage
+    </a>
+        </li>
+<li class="bx--list__item">
+<a href="#04-font-settings" class="bx--link     ">Font Settings
+    </a>
+        </li>
+<li class="bx--list__item">
+<a href="#05-advanced-usage" class="bx--link     ">Advanced usage
+    </a>
+        </li></ul></nav>
+  <section class="svelte-hdmpdd"><h2 id="01-svg-support" class="title svelte-hdmpdd">SVG Support
+        <a aria-hidden href="http://sveltekit-prerender/svg2png-wasm/docs#01-svg-support" class="header-anchor svelte-hdmpdd"># </a></h2>
+      <div class="container svelte-adwcon">
+	<p>svg2png-wasm uses 
+	<a href="https://crates.io/crates/resvg">resvg</a> for SVG conversion.</p>
+
+	<p>So, please check 
+	<a href="https://crates.io/crates/resvg#svg-support">resvg document</a> for SVG support status.</p>
+</div>
+    </section><section class="svelte-hdmpdd"><h2 id="02-getting-started" class="title svelte-hdmpdd">Getting Started
+        <a aria-hidden href="http://sveltekit-prerender/svg2png-wasm/docs#02-getting-started" class="header-anchor svelte-hdmpdd"># </a></h2>
+      <div class="container svelte-adwcon">
+	<p>You can use this library in Node.js, Deno and Browser.</p>
+
+  <h4>Node.js</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>npm install svg2png-wasm
+# yarn add svg2png-wasm
+# pnpm add svg2png-wasm
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>Deno</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// Skypack</span>
+
+	<span class="hljs-keyword">export</span> * 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'https://cdn.skypack.dev/svg2png-wasm?dts'</span>;
+
+	<span class="hljs-comment">// or</span>
+
+	<span class="hljs-comment">// esm.sh</span>
+
+	<span class="hljs-keyword">export</span> * 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'https://esm.sh/svg2png-wasm'</span>;
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>Browser</h4>
+
+	<p>You can use npm (like Node.js) to bundle it with bundler (Webpack, Vite, etc.).</p>
+
+	<p>It can also be used directly as follows.</p>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-tag">&lt;
+	<span class="hljs-name">script</span> 
+	<span class="hljs-attr">src</span>=
+	<span class="hljs-string">"https://unpkg.com/svg2png-wasm"</span>></span>
+	<span class="hljs-tag">&lt;/
+	<span class="hljs-name">script</span>></span>
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">const</span> { initialize, svg2png, createSvg2png } = svg2pngWasm;
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+    </section><section class="svelte-hdmpdd"><h2 id="03-basic-usage" class="title svelte-hdmpdd">Basic Usage
+        <a aria-hidden href="http://sveltekit-prerender/svg2png-wasm/docs#03-basic-usage" class="header-anchor svelte-hdmpdd"># </a></h2>
+      <div class="container svelte-adwcon">
+  <h4>1. Prepare wasm</h4>
+
+	<p>You will need to prepare a wasm module.</p>
+
+	<p>e.g.</p>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// Node.js</span>
+
+	<span class="hljs-keyword">import</span> { readFileSync } 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'fs'</span>;
+
+	<span class="hljs-keyword">const</span> wasm = 
+	<span class="hljs-title function_">readFileSync</span>(
+	<span class="hljs-string">'./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm'</span>);
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// Deno (For example, fetch from unpkg CDN)</span>
+
+	<span class="hljs-keyword">const</span> wasm = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+  
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>,
+).
+	<span class="hljs-title function_">then</span>(
+	<span class="hljs-function">(
+	<span class="hljs-params">res</span>) =></span> res.
+	<span class="hljs-title function_">arrayBuffer</span>());
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// browser (For example, we have a wasm file in the assets directory)</span>
+
+	<span class="hljs-keyword">const</span> wasm = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+	<span class="hljs-string">'/assets/svg2png_wasm_bg.wasm'</span>).
+	<span class="hljs-title function_">then</span>(
+	<span class="hljs-function">(
+	<span class="hljs-params">res</span>) =></span>
+  res.
+	<span class="hljs-title function_">arrayBuffer</span>(),
+);
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>2. Initialize wasm</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">import</span> { initialize } 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'svg2png-wasm'</span>;
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(wasm);
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>3. Convert SVG</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">import</span> { svg2png } 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'svg2png-wasm'</span>;
+
+	<span class="hljs-keyword">const</span> png = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svg);
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+    </section><section class="svelte-hdmpdd"><h2 id="04-font-settings" class="title svelte-hdmpdd">Font Settings
+        <a aria-hidden href="http://sveltekit-prerender/svg2png-wasm/docs#04-font-settings" class="header-anchor svelte-hdmpdd"># </a></h2>
+      <div class="container svelte-adwcon">
+  <blockquote>
+<div role="alert" kind="warning-alt" class="bx--inline-notification bx--inline-notification--low-contrast bx--inline-notification--hide-close-button      bx--inline-notification--warning-alt"><div class="bx--inline-notification__details"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="20" height="20" role="img" class="false bx--inline-notification__icon"><title>warning-alt icon</title><path fill="none" d="M16,26a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,16,26Zm-1.125-5h2.25V12h-2.25Z" data-icon-path="inner-path"></path><path d="M16.002,6.1714h-.004L4.6487,27.9966,4.6506,28H27.3494l.0019-.0034ZM14.875,12h2.25v9h-2.25ZM16,26a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,16,26Z"></path><path d="M29,30H3a1,1,0,0,1-.8872-1.4614l13-25a1,1,0,0,1,1.7744,0l13,25A1,1,0,0,1,29,30ZM4.6507,28H27.3493l.002-.0033L16.002,6.1714h-.004L4.6487,27.9967Z"></path></svg>
+      <div class="bx--inline-notification__text-wrapper"><p class="bx--inline-notification__title"></p>
+        <div class="bx--inline-notification__subtitle">
+
+	<p>If you want to use text in SVG, you need to check this section.</p>
+</div>
+        </div></div>
+    
+    </div></blockquote>
+
+	<p>WebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.</p>
+
+	<p>For this reason, you must pass the fonts when you want to use text in SVG.</p>
+
+	<p>The first entry in the 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.c80h8g1eycb">fonts</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field array will be the fallback font.</p>
+
+	<p>The 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.640xnvjfy5r">defaultFontFamily</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> field is used when the font is specified as 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.1asshzkmxiw">sans-serif</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>, 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.qgeqhjtkddi">serif</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> etc.</p>
+
+  <h4>Example</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">import</span> { svg2png, createSvg2png } 
+	<span class="hljs-keyword">from</span> 
+	<span class="hljs-string">'svg2png-wasm'</span>;
+
+
+	<span class="hljs-comment">// Prepare font data</span>
+
+	<span class="hljs-keyword">const</span> robotoFont = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+	<span class="hljs-string">'/assets/Roboto.ttf'</span>).
+	<span class="hljs-title function_">then</span>(
+	<span class="hljs-function">(
+	<span class="hljs-params">res</span>) =></span>
+  res.
+	<span class="hljs-title function_">arrayBuffer</span>(),
+);
+
+
+	<span class="hljs-comment">// convert directly</span>
+
+	<span class="hljs-keyword">const</span> png = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svg, {
+  
+	<span class="hljs-attr">fonts</span>: [
+	<span class="hljs-keyword">new</span> 
+	<span class="hljs-title class_">Uint8Array</span>(robotoFont)],
+  
+	<span class="hljs-attr">defaultFontFamily</span>: { 
+	<span class="hljs-attr">sansSerifFamily</span>: 
+	<span class="hljs-string">'Roboto'</span> },
+  
+	<span class="hljs-attr">scale</span>: 
+	<span class="hljs-number">2</span>,
+});
+
+
+	<span class="hljs-comment">// OR</span>
+
+	<span class="hljs-comment">// create font loaded svg2png</span>
+
+	<span class="hljs-keyword">const</span> fontLoadedSvg2png = 
+	<span class="hljs-title function_">createSvg2png</span>({
+  
+	<span class="hljs-attr">fonts</span>: [
+	<span class="hljs-keyword">new</span> 
+	<span class="hljs-title class_">Uint8Array</span>(robotoFont)],
+  
+	<span class="hljs-attr">defaultFontFamily</span>: { 
+	<span class="hljs-attr">sansSerifFamily</span>: 
+	<span class="hljs-string">'Roboto'</span> },
+});
+
+	<span class="hljs-comment">// convert</span>
+
+	<span class="hljs-keyword">const</span> png = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fontLoadedSvg2png</span>(svg, { 
+	<span class="hljs-attr">scale</span>: 
+	<span class="hljs-number">2</span> });
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+    </section><section class="svelte-hdmpdd"><h2 id="05-advanced-usage" class="title svelte-hdmpdd">Advanced usage
+        <a aria-hidden href="http://sveltekit-prerender/svg2png-wasm/docs#05-advanced-usage" class="header-anchor svelte-hdmpdd"># </a></h2>
+      <div class="container svelte-adwcon">
+  <h3>Initialize only once</h3>
+
+	<p>The 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.2hstizgu21h">initialize</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be called only once.</p>
+
+	<p>If it is called more than once, 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.24kdp1gs9lg">Promise</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> will be rejected.</p>
+
+  <h3>Initialize without buffer</h3>
+
+	<p>The argument of the 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.0q3jdbn94gf">initialize</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> function can be something other than a buffer.</p>
+
+  <h4>Types</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">export</span> type 
+	<span class="hljs-title class_">InitInput</span> =
+  | 
+	<span class="hljs-title class_">RequestInfo</span>
+  | 
+	<span class="hljs-variable constant_">URL</span>
+  | 
+	<span class="hljs-title class_">Response</span>
+  | 
+	<span class="hljs-title class_">BufferSource</span>
+  | 
+	<span class="hljs-title class_">WebAssembly</span>.
+	<span class="hljs-property">Module</span>;
+
+	<span class="hljs-keyword">export</span> 
+	<span class="hljs-keyword">const</span> 
+	<span class="hljs-attr">initialize</span>: 
+	<span class="hljs-function">(
+	<span class="hljs-params">mod: 
+	<span class="hljs-built_in">Promise</span>&lt;InitInput> | InitInput</span>) =></span> 
+	<span class="hljs-title class_">Promise</span>&lt;
+	<span class="hljs-keyword">void</span>>;
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>Examples</h4>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// full code (WebAsembly.Module)</span>
+
+	<span class="hljs-keyword">const</span> response = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+  
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>,
+);
+
+	<span class="hljs-keyword">const</span> buffer = 
+	<span class="hljs-keyword">await</span> response.
+	<span class="hljs-title function_">arrayBuffer</span>();
+
+	<span class="hljs-keyword">const</span> { 
+	<span class="hljs-variable language_">module</span> } = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title class_">WebAssembly</span>.
+	<span class="hljs-title function_">instantiate</span>(buffer);
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(
+	<span class="hljs-variable language_">module</span>);
+
+
+	<span class="hljs-comment">// BufferSource</span>
+
+	<span class="hljs-keyword">const</span> response = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+  
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>,
+);
+
+	<span class="hljs-keyword">const</span> buffer = 
+	<span class="hljs-keyword">await</span> response.
+	<span class="hljs-title function_">arrayBuffer</span>();
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(buffer);
+
+
+	<span class="hljs-comment">// Response</span>
+
+	<span class="hljs-keyword">const</span> response = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+  
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>,
+);
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(response);
+
+
+	<span class="hljs-comment">// Promise&lt;Response></span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(
+	<span class="hljs-title function_">fetch</span>(
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>));
+
+
+	<span class="hljs-comment">// in Deno (Promise&lt;BufferSource>)</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(
+	<span class="hljs-title class_">Deno</span>.
+	<span class="hljs-title function_">readFile</span>(
+	<span class="hljs-string">'./svg2png_wasm_bg.wasm'</span>));
+
+
+	<span class="hljs-comment">// in Deno and Browser (RequestInfo (=string/URL))</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">initialize</span>(
+	<span class="hljs-string">'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'</span>);
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h3>Convert options</h3>
+
+	<p>The output image can be adjusted by specifying an option as the second argument of the function 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.4kz993vvh3e">svg2png</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>.</p>
+
+  <h4>Size option</h4>
+
+	<p>You can specify output image size.</p>
+
+	<p>Specifying the width and height will not stretch the image.</p>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// 2x scale</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">scale</span>: 
+	<span class="hljs-number">2</span> });
+
+
+	<span class="hljs-comment">// Fit to 500px width</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">width</span>: 
+	<span class="hljs-number">500</span> });
+
+
+	<span class="hljs-comment">// Fit to 128px height</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">height</span>: 
+	<span class="hljs-number">128</span> });
+
+
+	<span class="hljs-comment">// Fit to 300px width (width and height have priority)</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">width</span>: 
+	<span class="hljs-number">300</span>, 
+	<span class="hljs-attr">scale</span>: 
+	<span class="hljs-number">10</span> });
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h4>Background color option</h4>
+
+	<p>You can specify background color of the output image when the SVG is transparent.</p>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-comment">// Compatible with CSS Color Module 3</span>
+
+	<span class="hljs-comment">// with color keyword</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">backgroundColor</span>: 
+	<span class="hljs-string">'lightskyblue'</span> });
+
+
+	<span class="hljs-comment">// with hex values</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">backgroundColor</span>: 
+	<span class="hljs-string">'#3cf'</span> });
+
+
+	<span class="hljs-comment">// with hsla</span>
+
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">svg2png</span>(svgData, { 
+	<span class="hljs-attr">backgroundColor</span>: 
+	<span class="hljs-string">'hsla(240, 100%, 50%, 0.5)'</span> });
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+
+  <h3>Custom svg2png</h3>
+
+	<p>You can create a custom svg2png function.</p>
+
+	<p>Basically, you can use 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.cbt1uhnzw86">svg2png</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> , but if you want to process a lot of data continuously, consider using 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.htcv595hnnd">createSvg2png</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> . It can reduce the overhead of font loading. Converters generated by 
+  
+<button type="button" aria-live="polite" class="bx--copy bx--btn--copy    bx--snippet bx--snippet--inline   "><code id="ccs-0.fxf5us60gjk">createSvg2png</code>
+      <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button> should be disposed of after use by calling the dispose method.</p>
+
+  
+  
+  
+  
+<div class="bx--snippet       bx--snippet--multi ">
+    <div aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>
+	<span class="hljs-keyword">const</span> svgs = [
+  
+	<span class="hljs-string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span>,
+  
+	<span class="hljs-string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span>,
+  
+	<span class="hljs-string">'&lt;svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... &lt;/svg>'</span>,
+  
+	<span class="hljs-comment">// and more ...</span>
+];
+
+	<span class="hljs-keyword">const</span> font = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title function_">fetch</span>(
+	<span class="hljs-string">'./Roboto.ttf'</span>).
+	<span class="hljs-title function_">then</span>(
+	<span class="hljs-function">(
+	<span class="hljs-params">res</span>) =></span> res.
+	<span class="hljs-title function_">arrayBuffer</span>());
+
+	<span class="hljs-keyword">const</span> svg2png = 
+	<span class="hljs-title function_">createSvg2png</span>({
+  
+	<span class="hljs-attr">fonts</span>: [
+	<span class="hljs-keyword">new</span> 
+	<span class="hljs-title class_">Uint8Array</span>(font)],
+});
+
+
+	<span class="hljs-keyword">const</span> pngs = 
+	<span class="hljs-keyword">await</span> 
+	<span class="hljs-title class_">Promise</span>.
+	<span class="hljs-title function_">all</span>(svgs.
+	<span class="hljs-title function_">map</span>(
+	<span class="hljs-function">(
+	<span class="hljs-params">svg</span>) =></span> 
+	<span class="hljs-title function_">svg2png</span>(svg, { 
+	<span class="hljs-attr">scale</span>: 
+	<span class="hljs-number">2</span> })));
+svg2png.
+	<span class="hljs-title function_">dispose</span>(); 
+	<span class="hljs-comment">// You should dispose svg2png, if you will not use it in the future</span>
+</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
+  <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
+    </div>
+</div>
+    </section>
+</main>
+
+<footer class="svelte-n46l58"></footer>
+
+
+			
+			<script>
+				{
+					__sveltekit_d0dtw4 = {
+						assets: "/svg2png-wasm",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,{"type":"data","data":{sections:[{meta:{title:"SVG Support"},slug:"01-svg-support",body:"svg2png-wasm uses [resvg](https://crates.io/crates/resvg) for SVG conversion.\n\nSo, please check [resvg document](https://crates.io/crates/resvg#svg-support) for SVG support status.\n"},{meta:{title:"Getting Started"},slug:"02-getting-started",body:"You can use this library in Node.js, Deno and Browser.\n\n### Node.js\n\n```\nnpm install svg2png-wasm\n# yarn add svg2png-wasm\n# pnpm add svg2png-wasm\n```\n\n### Deno\n\n```js\n// Skypack\nexport * from 'https://cdn.skypack.dev/svg2png-wasm?dts';\n// or\n// esm.sh\nexport * from 'https://esm.sh/svg2png-wasm';\n```\n\n### Browser\n\nYou can use npm (like Node.js) to bundle it with bundler (Webpack, Vite, etc.).\n\nIt can also be used directly as follows.\n\n```html\n\u003Cscript src=\"https://unpkg.com/svg2png-wasm\">\u003C/script>\n```\n\n```js\nconst { initialize, svg2png, createSvg2png } = svg2pngWasm;\n```\n"},{meta:{title:"Basic Usage"},slug:"03-basic-usage",body:"### 1. Prepare wasm\n\nYou will need to prepare a wasm module.\n\ne.g.\n\n```js\n// Node.js\nimport { readFileSync } from 'fs';\nconst wasm = readFileSync('./node_modules/svg2png-wasm/svg2png_wasm_bg.wasm');\n```\n\n```js\n// Deno (For example, fetch from unpkg CDN)\nconst wasm = await fetch(\n  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',\n).then((res) => res.arrayBuffer());\n```\n\n```js\n// browser (For example, we have a wasm file in the assets directory)\nconst wasm = await fetch('/assets/svg2png_wasm_bg.wasm').then((res) =>\n  res.arrayBuffer(),\n);\n```\n\n### 2. Initialize wasm\n\n```js\nimport { initialize } from 'svg2png-wasm';\nawait initialize(wasm);\n```\n\n### 3. Convert SVG\n\n```js\nimport { svg2png } from 'svg2png-wasm';\nconst png = await svg2png(svg);\n```\n"},{meta:{title:"Font Settings"},slug:"04-font-settings",body:"> If you want to use text in SVG, you need to check this section.\n\nWebAssembly is run in a sandbox for safety reasons. Therefore, WebAssembly does not have access to system information, for example, it cannot use the system fonts.\n\nFor this reason, you must pass the fonts when you want to use text in SVG.\n\nThe first entry in the `fonts` field array will be the fallback font.\n\nThe `defaultFontFamily` field is used when the font is specified as `sans-serif`, `serif` etc.\n\n### Example\n\n```js\nimport { svg2png, createSvg2png } from 'svg2png-wasm';\n\n// Prepare font data\nconst robotoFont = await fetch('/assets/Roboto.ttf').then((res) =>\n  res.arrayBuffer(),\n);\n\n// convert directly\nconst png = await svg2png(svg, {\n  fonts: [new Uint8Array(robotoFont)],\n  defaultFontFamily: { sansSerifFamily: 'Roboto' },\n  scale: 2,\n});\n\n// OR\n// create font loaded svg2png\nconst fontLoadedSvg2png = createSvg2png({\n  fonts: [new Uint8Array(robotoFont)],\n  defaultFontFamily: { sansSerifFamily: 'Roboto' },\n});\n// convert\nconst png = await fontLoadedSvg2png(svg, { scale: 2 });\n```\n"},{meta:{title:"Advanced usage"},slug:"05-advanced-usage",body:"## Initialize only once\n\nThe `initialize` function can be called only once.\n\nIf it is called more than once, `Promise` will be rejected.\n\n## Initialize without buffer\n\nThe argument of the `initialize` function can be something other than a buffer.\n\n### Types\n\n```js\nexport type InitInput =\n  | RequestInfo\n  | URL\n  | Response\n  | BufferSource\n  | WebAssembly.Module;\nexport const initialize: (mod: Promise\u003CInitInput> | InitInput) => Promise\u003Cvoid>;\n```\n\n### Examples\n\n```js\n// full code (WebAsembly.Module)\nconst response = await fetch(\n  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',\n);\nconst buffer = await response.arrayBuffer();\nconst { module } = await WebAssembly.instantiate(buffer);\nawait initialize(module);\n\n// BufferSource\nconst response = await fetch(\n  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',\n);\nconst buffer = await response.arrayBuffer();\nawait initialize(buffer);\n\n// Response\nconst response = await fetch(\n  'https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm',\n);\nawait initialize(response);\n\n// Promise\u003CResponse>\nawait initialize(fetch('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'));\n\n// in Deno (Promise\u003CBufferSource>)\nawait initialize(Deno.readFile('./svg2png_wasm_bg.wasm'));\n\n// in Deno and Browser (RequestInfo (=string/URL))\nawait initialize('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm');\n```\n\n## Convert options\n\nThe output image can be adjusted by specifying an option as the second argument of the function `svg2png`.\n\n### Size option\n\nYou can specify output image size.\n\nSpecifying the width and height will not stretch the image.\n\n```js\n// 2x scale\nawait svg2png(svgData, { scale: 2 });\n\n// Fit to 500px width\nawait svg2png(svgData, { width: 500 });\n\n// Fit to 128px height\nawait svg2png(svgData, { height: 128 });\n\n// Fit to 300px width (width and height have priority)\nawait svg2png(svgData, { width: 300, scale: 10 });\n```\n\n### Background color option\n\nYou can specify background color of the output image when the SVG is transparent.\n\n```js\n// Compatible with CSS Color Module 3\n// with color keyword\nawait svg2png(svgData, { backgroundColor: 'lightskyblue' });\n\n// with hex values\nawait svg2png(svgData, { backgroundColor: '#3cf' });\n\n// with hsla\nawait svg2png(svgData, { backgroundColor: 'hsla(240, 100%, 50%, 0.5)' });\n```\n\n## Custom svg2png\n\nYou can create a custom svg2png function.\n\nBasically, you can use `svg2png` , but if you want to process a lot of data continuously, consider using `createSvg2png` . It can reduce the overhead of font loading. Converters generated by `createSvg2png` should be disposed of after use by calling the dispose method.\n\n```js\nconst svgs = [\n  '\u003Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"> ... \u003C/svg>',\n  '\u003Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"> ... \u003C/svg>',\n  '\u003Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"> ... \u003C/svg>',\n  // and more ...\n];\nconst font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());\nconst svg2png = createSvg2png({\n  fonts: [new Uint8Array(font)],\n});\n\nconst pngs = await Promise.all(svgs.map((svg) => svg2png(svg, { scale: 2 })));\nsvg2png.dispose(); // You should dispose svg2png, if you will not use it in the future\n```\n"}]},"uses":{}}];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.08806cf8.js"),
+						import("./_app/immutable/entry/app.70e2454a.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

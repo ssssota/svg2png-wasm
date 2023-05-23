@@ -1,140 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<title>svg2png-wasm</title><meta name="description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment." data-svelte="svelte-10yub7g"><meta name="keywords" content="svg,png,wasm,convert,js,javascript" data-svelte="svelte-10yub7g"><meta property="og:type" content="website" data-svelte="svelte-10yub7g"><meta property="og:title" content="svg2png-wasm" data-svelte="svelte-10yub7g"><meta property="og:description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment." data-svelte="svelte-10yub7g"><meta property="og:image" content="https://ssssota.github.io/svg2png-wasm/ogp.png" data-svelte="svelte-10yub7g"><meta property="og:url" content="http://ssssota.github.io/svg2png-wasm/" data-svelte="svelte-10yub7g"><link rel="icon" href="/svg2png-wasm/favicon.png" data-svelte="svelte-10yub7g"><link rel="prefetch" href="/svg2png-wasm/svg2png.wasm" data-svelte="svelte-10yub7g"><link rel="prefetch" href="/svg2png-wasm/ogp.png" data-svelte="svelte-10yub7g"><link rel="preconnect" href="https://fonts.googleapis.com" data-svelte="svelte-10yub7g"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" data-svelte="svelte-10yub7g"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet" data-svelte="svelte-10yub7g">
-
-		
-
-		<link rel="modulepreload" href="/svg2png-wasm/_app/start-ec23382e.js">
-		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/vendor-01fa4947.js">
-		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/paths-28a87002.js">
-		<link rel="modulepreload" href="/svg2png-wasm/_app/pages/__layout.svelte-667219e9.js">
-		<link rel="modulepreload" href="/svg2png-wasm/_app/pages/index.svelte-dad42f83.js">
-		<link rel="modulepreload" href="/svg2png-wasm/_app/chunks/HighlightCodeSnippet-89559f69.js">
-		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/start-464e9d0a.css">
-		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/pages/__layout.svelte-5228deca.css">
-		<link rel="stylesheet" href="/svg2png-wasm/_app/assets/pages/index.svelte-3734e291.css">
-
-		<script type="module">
-			import { start } from "/svg2png-wasm/_app/start-ec23382e.js";
-			start({
-				target: document.querySelector("#svelte"),
-				paths: {"base":"/svg2png-wasm","assets":""},
-				session: {},
-				host: location.host,
-				route: true,
-				spa: false,
-				trailing_slash: "never",
-				hydrate: {
-					status: 200,
-					error: null,
-					nodes: [
-						import("/svg2png-wasm/_app/pages/__layout.svelte-667219e9.js"),
-						import("/svg2png-wasm/_app/pages/index.svelte-dad42f83.js")
-					],
-					page: {
-						host: location.host, // TODO this is redundant
-						path: "\u002F",
-						query: new URLSearchParams(""),
-						params: {}
-					}
-				}
-			});
-		</script>
-	</head>
-	<body>
-		<div id="svelte">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/0.79c4a7fb.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.75c37848.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Markdown.d8dcd10d.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.08806cf8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2d586ca1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.0cee51ab.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.4b6686a1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.f721dc0f.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.70e2454a.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.312ecb9d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Link.18096da4.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.29c6b359.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Markdown.665bb9b8.js"><title>svg2png-wasm</title><!-- HEAD_svelte-44y9q9_START --><meta name="description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."><meta name="keywords" content="svg,png,wasm,convert,js,javascript"><meta property="og:type" content="website"><meta property="og:title" content="svg2png-wasm"><meta property="og:description" content="svg2png-wasm is JS/WASM library. You can convert svg in the any environment."><meta property="og:image" content="https://ssssota.github.io/svg2png-wasm/ogp.png"><meta property="og:url" content="http://ssssota.github.io/svg2png-wasm/"><link rel="icon" href="/svg2png-wasm/favicon.png"><link rel="prefetch" href="/svg2png-wasm/svg2png.wasm"><link rel="prefetch" href="/svg2png-wasm/ogp.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet"><!-- HEAD_svelte-44y9q9_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
 
 
 
 
-<header class="svelte-q5gupp"><div class="svelte-q5gupp"><h1 class="svelte-q5gupp"><a href="/svg2png-wasm/"><img width="48" src="/svg2png-wasm/icon.svg" alt="svg2png-wasm icon"></a></h1>
-		<div class="spacer svelte-q5gupp"></div>
-		<nav class="svelte-q5gupp">
-<a href="/svg2png-wasm/docs" class="bx--link     bx--link--lg">Docs</a></nav>
-		<p class="svelte-q5gupp"><a href="https://github.com/ssssota/svg2png-wasm" target="_blank" rel="noopener noreferer">
-<svg data-carbon-icon="LogoGithub32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="32" height="32" preserveAspectRatio="xMidYMid meet" style="fill:#000" aria-hidden focusable="false"><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path>
-    
-  </svg></a></p></div>
+<header class="svelte-5lt74q"><div class="svelte-5lt74q"><h1 class="svelte-5lt74q"><a href="/svg2png-wasm/"><img width="48" src="/svg2png-wasm/icon.svg" alt="svg2png-wasm"></a></h1>
+    <div class="spacer svelte-5lt74q"></div>
+    <nav class="svelte-5lt74q">
+<a href="/svg2png-wasm/docs" class="bx--link     bx--link--lg">Docs
+    </a></nav>
+    <p class="svelte-5lt74q">
+<a rel="noopener noreferer" href="https://github.com/ssssota/svg2png-wasm" target="_blank" class="bx--link     "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="black" preserveAspectRatio="xMidYMid meet" width="32" height="32" aria-hidden><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path></svg>
+    </a></p></div>
 </header>
 
-<main class="svelte-fubwwx"><section class="svelte-fubwwx"><h1 class="main-title svelte-fubwwx">svg2png-wasm</h1>
-		<p>Convert svg to png using WebAssembly.</p>
-		<div class="svelte-tfikos">
+<main class="svelte-1dze10l"><section class="svelte-1dze10l"><h1 class="main-title svelte-1dze10l">svg2png-wasm</h1>
+    <p>Convert svg to png using WebAssembly.</p>
+    <div class="svelte-109r7w3">
 <div class="bx--form-item"><fieldset  class="bx--radio-button-group   bx--radio-button-group--label-right">
-    <div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.623j19zpxn9" name="" checked  value="npm" class="bx--radio-button">
-  <label for="ccs-0.623j19zpxn9" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+    <div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.44vouyflta" name="" checked   value="npm" class="bx--radio-button">
+  <label for="ccs-0.44vouyflta" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
     <span>
           npm
-        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.amrivop25x9" name=""   value="yarn" class="bx--radio-button">
-  <label for="ccs-0.amrivop25x9" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.9d6v65mzbdh" name=""    value="yarn" class="bx--radio-button">
+  <label for="ccs-0.9d6v65mzbdh" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
     <span>
           yarn
-        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.nt93fezi84j" name=""   value="pnpm" class="bx--radio-button">
-  <label for="ccs-0.nt93fezi84j" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
+        </span></label></div><div class="bx--radio-button-wrapper "><input type="radio" id="ccs-0.ikamu6asngk" name=""    value="pnpm" class="bx--radio-button">
+  <label for="ccs-0.ikamu6asngk" class="bx--radio-button__label"><span class="bx--radio-button__appearance"></span>
     <span>
           pnpm
         </span></label></div></fieldset></div>
 
-	
-<div class="bx--snippet     bx--snippet--single   "><div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>npm install svg2png-wasm</code></pre></div>
-    <button type="button" aria-live="polite" aria-label="Copy to clipboard" class="bx--copy-btn undefined bx--copy " title="Copy to clipboard">
-<svg data-carbon-icon="Copy16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" width="16" height="16" class="bx--snippet__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path>
-    
-  </svg>
+  
+<div class="bx--snippet     bx--snippet--single   ">
+    <div role="textbox" tabindex="0" aria-label="code-snippet" style="width: 100%; min-height: 48px; max-height: 240px" class="bx--snippet-container"><pre><code>npm install svg2png-wasm</code></pre></div>
+    <button type="button" aria-live="polite" aria-label="Copy to clipboard" title="Copy to clipboard" class="bx--copy-btn bx--copy   "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden class="bx--snippet__icon"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"></path><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"></path></svg>
   <span aria-hidden="true" class="bx--assistive-text bx--copy-btn__feedback">Copied!</span></button>
     </div>
 </div></section>
 
-	<section class="svelte-fubwwx"><h2>Demo</h2>
-		<div class="demos svelte-mzvxcn"><div class="svelte-mzvxcn"><p class="input"><img src="/svg2png-wasm/icon.svg" alt="/svg2png-wasm/icon.svg svg"></p>
-			<p>
+  <section class="svelte-1dze10l"><h2>Demo</h2>
+    <div class="demos svelte-1jx0ro6"><div class="svelte-1jx0ro6"><p class="input"><img src="/svg2png-wasm/icon.svg" alt="/svg2png-wasm/icon.svg svg"></p>
+      <p>
 <button type="button" tabindex="0" class="bx--btn bx--btn--primary">
     CONVERT
-				
-<svg data-carbon-icon="ArrowRight16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" class="bx--btn__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M9.3 3.7L13.1 7.5 1 7.5 1 8.5 13.1 8.5 9.3 12.3 10 13 15 8 10 3z"></path>
-    
-  </svg></button></p>
-			<p class="result svelte-mzvxcn"></p>
-		</div><div class="svelte-mzvxcn"><p class="input"><img src="/svg2png-wasm/gradient.svg" alt="/svg2png-wasm/gradient.svg svg"></p>
-			<p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></button></p>
+      <p class="result svelte-1jx0ro6"></p>
+    </div><div class="svelte-1jx0ro6"><p class="input"><img src="/svg2png-wasm/gradient.svg" alt="/svg2png-wasm/gradient.svg svg"></p>
+      <p>
 <button type="button" tabindex="0" class="bx--btn bx--btn--primary">
     CONVERT
-				
-<svg data-carbon-icon="ArrowRight16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" class="bx--btn__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M9.3 3.7L13.1 7.5 1 7.5 1 8.5 13.1 8.5 9.3 12.3 10 13 15 8 10 3z"></path>
-    
-  </svg></button></p>
-			<p class="result svelte-mzvxcn"></p>
-		</div><div class="svelte-mzvxcn"><p class="input"><img src="/svg2png-wasm/parrot.svg" alt="/svg2png-wasm/parrot.svg svg"></p>
-			<p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></button></p>
+      <p class="result svelte-1jx0ro6"></p>
+    </div><div class="svelte-1jx0ro6"><p class="input"><img src="/svg2png-wasm/parrot.svg" alt="/svg2png-wasm/parrot.svg svg"></p>
+      <p>
 <button type="button" tabindex="0" class="bx--btn bx--btn--primary">
     CONVERT
-				
-<svg data-carbon-icon="ArrowRight16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" class="bx--btn__icon" preserveAspectRatio="xMidYMid meet" aria-hidden focusable="false"><path d="M9.3 3.7L13.1 7.5 1 7.5 1 8.5 13.1 8.5 9.3 12.3 10 13 15 8 10 3z"></path>
-    
-  </svg></button></p>
-			<p class="result svelte-mzvxcn"></p>
-		</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" aria-hidden="true" class="bx--btn__icon"><path d="M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z"></path></svg></button></p>
+      <p class="result svelte-1jx0ro6"></p>
+    </div>
 </div></section>
 
-	<section class="svelte-fubwwx"><h2>Playground</h2>
-		<p>Runs in the browser, file is not sent to the server.</p>
-		<div><div class="bx--file"><label for="ccs-0.9nk5g7j5hhq" tabindex="0" class="bx--file-browse-btn"><div role="button" class="bx--file__drop-container">
+  <section class="svelte-1dze10l"><h2>Playground</h2>
+    <p>Runs in the browser, file is not sent to the server.</p>
+    <div><div class="bx--file">
+  <label for="ccs-0.o9idck3iil8" tabindex="0" class="bx--file-browse-btn"><div role="button" class="bx--file__drop-container">
         Drag and drop file here or click to upload svg
-      </div>
-    <input type="file" tabindex="-1" id="ccs-0.9nk5g7j5hhq"  accept=".svg" name="" multiple class="bx--file-input"></label></div>
-	
+      </div></label>
+  <input type="file" tabindex="-1" id="ccs-0.o9idck3iil8"  accept=".svg" name="" multiple class="bx--file-input"></div>
+  
 </div></section>
 </main>
 
-<footer class="svelte-17enh3x"></footer>
-
+<footer class="svelte-n46l58"></footer>
 
 
 			
+			<script>
+				{
+					__sveltekit_d0dtw4 = {
+						assets: "/svg2png-wasm",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.08806cf8.js"),
+						import("./_app/immutable/entry/app.70e2454a.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
 		</div>
-	</body>
+  </body>
 </html>

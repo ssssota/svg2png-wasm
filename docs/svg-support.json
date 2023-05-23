@@ -1,1 +1,0 @@
-{"body":"svg2png-wasm uses [resvg](https://crates.io/crates/resvg) for SVG conversion.\n\nSo, please check [resvg document](https://crates.io/crates/resvg#svg-support) for SVG support status.\n","metadata":{"slug":"svg-support","title":"SVG Support"}}
