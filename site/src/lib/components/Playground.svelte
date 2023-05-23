@@ -47,9 +47,10 @@
         <SkeletonPlaceholder />
       {:then buf}
         {#if browser}
-          <!-- svelte-ignore missing-declaration -->
           <img
-            src={URL.createObjectURL(new Blob([buf], { type: 'image/png' }))}
+            src={URL.createObjectURL(
+              new window.Blob([buf], { type: 'image/png' }),
+            )}
             alt={name}
           />
         {/if}
