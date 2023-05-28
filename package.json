@@ -65,8 +65,8 @@
   },
   "homepage": "https://ssssota.github.io/svg2png-wasm/",
   "devDependencies": {
-    "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
     "@types/glob": "^7.2.0",
     "copyfiles": "^2.4.1",
     "dts-bundle-generator": "^6.13.0",
