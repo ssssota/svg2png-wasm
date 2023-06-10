@@ -51,8 +51,8 @@ importers:
         specifier: ^0.17.7
         version: 0.17.7
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^5.0.0
+        version: 5.0.0
       semantic-release:
         specifier: ^19.0.5
         version: 19.0.5
@@ -6547,6 +6547,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf@5.0.0:
+    resolution: {integrity: sha512-Jf9llaP+RvaEVS5nPShYFhtXIrb3LRKP281ib3So0KkeZKo2wIKyq0Re7TOSwanasA423PSr6CCIL4bP6T040g==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      glob: 10.2.7
     dev: true
 
   /rollup@3.23.0:
