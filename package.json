@@ -68,7 +68,7 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "copyfiles": "^2.4.1",
-    "dts-bundle-generator": "^6.13.0",
+    "dts-bundle-generator": "^8.0.0",
     "esbuild": "^0.18.0",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
