@@ -11,8 +11,8 @@ importers:
         specifier: ^17.0.0
         version: 17.0.0
       '@types/glob':
-        specifier: ^7.2.0
-        version: 7.2.0
+        specifier: ^8.0.0
+        version: 8.0.0
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
@@ -1706,8 +1706,8 @@ packages:
     resolution: {integrity: sha1-GRXfgsFtY36SFGZFxw25Ng6wmcY=}
     dev: true
 
-  /@types/glob@7.2.0:
-    resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
+  /@types/glob@8.0.0:
+    resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
       '@types/node': 20.2.3
