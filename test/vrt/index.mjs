@@ -1,6 +1,6 @@
 // @ts-check
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
-import glob from 'glob';
+import { glob } from 'glob';
 import { dirname, join } from 'path';
 import { exit } from 'process';
 import { fileURLToPath } from 'url';
@@ -34,7 +34,9 @@ const convert =
 
 const main = async () => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  const fontPaths = glob.sync(join(__dirname, '../data/**/*.@(ttf|otf)'));
+  const fontPaths = glob
+    .sync(join(__dirname, '../data/**/*.@(ttf|otf)'))
+    .sort();
   const svgs = glob.sync(join(__dirname, '../data/**/*.svg'));
 
   await initialize(readFileSync('./svg2png_wasm_bg.wasm'));
