@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/envinfo": "^7.8.1",
-    "esbuild": "^0.14.10",
+    "esbuild": "^0.18.0",
     "typescript": "^4.5.4"
   }
 }
