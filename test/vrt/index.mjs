@@ -1,6 +1,6 @@
 // @ts-check
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
-import glob from 'glob';
+import { glob } from 'glob';
 import { dirname, join } from 'path';
 import { exit } from 'process';
 import { fileURLToPath } from 'url';
