@@ -14,8 +14,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       dts-bundle-generator:
-        specifier: ^6.13.0
-        version: 6.13.0
+        specifier: ^8.0.0
+        version: 8.0.0
       esbuild:
         specifier: ^0.18.0
         version: 0.18.0
@@ -3206,12 +3206,12 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dts-bundle-generator@6.13.0:
-    resolution: {integrity: sha512-v4mXZ08dnKO4RKUW2x4DNrb1cJyvtmxAzreV/zF1CZIXMKfe8GrQg6JDmTcikrK05/LMkdMuUrDe8N6w+6krsw==}
-    engines: {node: '>=12.0.0'}
+  /dts-bundle-generator@8.0.0:
+    resolution: {integrity: sha512-9Du4uQLRs/doabHzVDFIKsbUA9KHdPkfd0YRgsJ7rXtVSKCfuW0EsM/d2AoXw2fNgxcSfJ01/8szOy4u6ze/2g==}
+    engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
-      typescript: 4.9.5
+      typescript: 5.0.4
       yargs: 17.7.2
     dev: true
 
