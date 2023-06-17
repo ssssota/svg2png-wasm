@@ -86,7 +86,7 @@
     "tslib": "^2.5.2",
     "typescript": "^4.9.5",
     "vitest": "^0.32.0",
-    "wasm-pack": "^0.11.1"
+    "wasm-pack": "^0.12.0"
   },
   "type": "module",
   "packageManager": "pnpm@8.6.2"

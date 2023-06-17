@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -72,8 +72,8 @@ importers:
         specifier: ^0.32.0
         version: 0.32.0
       wasm-pack:
-        specifier: ^0.11.1
-        version: 0.11.1
+        specifier: ^0.12.0
+        version: 0.12.0
 
   benchmark:
     dependencies:
@@ -7875,8 +7875,8 @@ packages:
       - terser
     dev: true
 
-  /wasm-pack@0.11.1:
-    resolution: {integrity: sha512-0BKEioKJY/SMqahDEoaUUR8jrRkHO0cdYhRqqHKQMY3Bac6Eep3ZRsTlpFSSwS4LYPxd+Tb5KFFNhUikCkq8Yg==}
+  /wasm-pack@0.12.0:
+    resolution: {integrity: sha512-2MuRmArr8x0S6GAQKJtToH2tJ9rM8nJ2yy6J+ueMm2v4deKAh0uAOT2BwJlLoZ0VnELtKBDjJ17NV/RFDt/QpA==}
     hasBin: true
     requiresBuild: true
     dependencies:
