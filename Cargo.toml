@@ -14,7 +14,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 resvg = { version = "0.33.0", default-features = false, features = ["text", "raster-images"] }
-usvg = { version = "0.33.0", default-features = false, features = ["text"] }
+usvg = { version = "0.35.0", default-features = false, features = ["text"] }
 svgtypes = "0.11.0"
 
 tiny-skia = "0.11.0"
