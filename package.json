@@ -89,5 +89,5 @@
     "wasm-pack": "^0.12.0"
   },
   "type": "module",
-  "packageManager": "pnpm@8.6.5"
+  "packageManager": "pnpm@8.6.6"
 }
