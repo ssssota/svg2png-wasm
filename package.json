@@ -80,7 +80,7 @@
     "prettier-plugin-svelte": "^2.10.0",
     "reg-cli": "^0.17.7",
     "rimraf": "^5.0.0",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^22.0.0",
     "serve": "^13.0.4",
     "svelte": "^3.59.1",
     "tslib": "^2.5.2",
