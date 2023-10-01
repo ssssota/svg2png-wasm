@@ -17,7 +17,7 @@ resvg = { version = "0.33.0", default-features = false, features = ["text", "ras
 usvg = { version = "0.33.0", default-features = false, features = ["text"] }
 svgtypes = "0.11.0"
 
-tiny-skia = "0.11.0"
+tiny-skia = "0.11.2"
 wasm-bindgen = "0.2.86"
 
 console_error_panic_hook = {version = "0.1.7", optional = true}
