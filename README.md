@@ -2,19 +2,14 @@
 
 svg2png-wasm
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/ssssota/svg2png-wasm/Checks/main)](https://github.com/ssssota/svg2png-wasm/actions/workflows/checks.yml)
-[![npm](https://img.shields.io/npm/v/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
-[![NPM](https://img.shields.io/npm/l/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
+[![](https://img.shields.io/npm/v/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
+[![](https://img.shields.io/npm/l/svg2png-wasm)](https://npmjs.com/svg2png-wasm)
 
 **[Demo site](https://ssssota.github.io/svg2png-wasm/)**
 
 SVG to PNG converter JS library made with WASM + [resvg](https://crates.io/crates/resvg).
 
 See [resvg](https://github.com/RazrFalcon/resvg#svg-support) for SVG support status.
-
-## 📊 Benchmark
-
-[Benchmark result](./benchmark/README.md)
 
 ## 💻 Usage
 
