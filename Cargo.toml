@@ -15,13 +15,13 @@ default = ["console_error_panic_hook"]
 [dependencies]
 resvg = { version = "0.36.0", default-features = false, features = ["text", "raster-images"] }
 svgtypes = "0.12.0"
-wasm-bindgen = "0.2.86"
+wasm-bindgen = "0.2.87"
 
 console_error_panic_hook = {version = "0.1.7", optional = true}
 wee_alloc = {version = "0.4.5", optional = true}
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.36"
+wasm-bindgen-test = "0.3.37"
 
 # ref. https://github.com/yisibl/resvg-js
 [profile.release]
