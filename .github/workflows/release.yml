@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-
+      - uses: ./.github/actions/build
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
