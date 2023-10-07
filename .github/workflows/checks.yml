@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build
       - uses: ./.github/actions/upload-pkg
@@ -27,7 +27,7 @@ jobs:
         node-version: [16, 18, 20]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
@@ -41,7 +41,7 @@ jobs:
     env:
       WORKING_DIR_SITE: site
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/download-pkg
 
