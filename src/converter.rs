@@ -45,7 +45,7 @@ impl Converter {
         let default_font_family = if fontdb.is_empty() {
             "sans-serif".to_string()
         } else {
-            faces.next().clone().unwrap().families[0].0.to_string()
+            faces.next().unwrap().families[0].0.to_string()
         };
         let svg_options = Options {
             resources_dir: None,
@@ -57,8 +57,8 @@ impl Converter {
             text_rendering: resvg::usvg::TextRendering::OptimizeLegibility,
             image_rendering: resvg::usvg::ImageRendering::OptimizeQuality,
             default_size: Size::from_wh(
-                width.unwrap_or(100.0).into(),
-                height.unwrap_or(100.0).into(),
+                width.unwrap_or(100.0),
+                height.unwrap_or(100.0),
             )
             .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
             image_href_resolver: resvg::usvg::ImageHrefResolver::default(),
@@ -74,10 +74,10 @@ impl Converter {
             (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
             (Some(w), _) => (
                 w.round() as u32,
-                (svg_size.height() * ((w) / svg_size.width())) as u32,
+                (svg_size.height() * (w / svg_size.width())) as u32,
             ),
             (_, Some(h)) => (
-                (svg_size.width() * ((h) / svg_size.height())) as u32,
+                (svg_size.width() * (h / svg_size.height())) as u32,
                 h.round() as u32,
             ),
             _ => (
@@ -119,7 +119,6 @@ impl Converter {
     pub fn list_fonts(&self) -> Box<[JsValue]> {
         load_fonts(&self.fonts, None, None, None, None, None)
             .faces()
-            .into_iter()
             .map(|f| &f.families[0].0)
             .collect::<HashSet<&String>>()
             .iter()
