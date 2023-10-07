@@ -41,7 +41,8 @@
     "vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
     "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
     "vrt-update": "run-s vrt:clean vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
-    "semantic-release": "semantic-release",
+    "changeset": "changeset",
+    "release": "pnpm prepack && pnpm changeset publish",
     "prepare": "husky install"
   },
   "repository": {
@@ -65,6 +66,8 @@
   },
   "homepage": "https://ssssota.github.io/svg2png-wasm/",
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "copyfiles": "^2.4.1",
@@ -80,7 +83,6 @@
     "prettier-plugin-svelte": "^2.10.0",
     "reg-cli": "^0.17.7",
     "rimraf": "^5.0.0",
-    "semantic-release": "^19.0.5",
     "serve": "^13.0.4",
     "svelte": "^3.59.1",
     "tslib": "^2.5.2",
@@ -89,5 +91,5 @@
     "wasm-pack": "^0.12.0"
   },
   "type": "module",
-  "packageManager": "pnpm@8.6.6"
+  "packageManager": "pnpm@8.8.0"
 }
