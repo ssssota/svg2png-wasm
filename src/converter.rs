@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 use std::str::FromStr;
 
-use resvg::tiny_skia::{Color, Pixmap, Transform, IntSize};
+use resvg::tiny_skia::{Color, IntSize, Pixmap, Transform};
 use resvg::usvg::fontdb::Database;
 use resvg::usvg::{Options, Size, Tree, TreeParsing, TreeTextToPath};
 use wasm_bindgen::prelude::*;
@@ -56,11 +56,8 @@ impl Converter {
             shape_rendering: resvg::usvg::ShapeRendering::GeometricPrecision,
             text_rendering: resvg::usvg::TextRendering::OptimizeLegibility,
             image_rendering: resvg::usvg::ImageRendering::OptimizeQuality,
-            default_size: Size::from_wh(
-                width.unwrap_or(100.0),
-                height.unwrap_or(100.0),
-            )
-            .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
+            default_size: Size::from_wh(width.unwrap_or(100.0), height.unwrap_or(100.0))
+                .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
             image_href_resolver: resvg::usvg::ImageHrefResolver::default(),
         };
 
