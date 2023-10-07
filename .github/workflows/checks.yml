@@ -40,7 +40,6 @@ jobs:
     needs: [setup]
     env:
       WORKING_DIR_SITE: site
-      WORKING_DIR_BENCH: benchmark
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
@@ -51,8 +50,3 @@ jobs:
         working-directory: ${{ env.WORKING_DIR_SITE }}
       - run: pnpm build
         working-directory: ${{ env.WORKING_DIR_SITE }}
-      # bench checks
-      - run: pnpm check
-        working-directory: ${{ env.WORKING_DIR_BENCH }}
-      - run: pnpm build
-        working-directory: ${{ env.WORKING_DIR_BENCH }}
