@@ -1,10 +1,9 @@
 use std::collections::HashSet;
 use std::str::FromStr;
 
-use resvg::tiny_skia::{Color, Pixmap, Transform};
-use usvg::fontdb::Database;
-use usvg::{Options, Size, Tree};
-use usvg::{TreeParsing, TreeTextToPath};
+use resvg::tiny_skia::{Color, Pixmap, Transform, IntSize};
+use resvg::usvg::fontdb::Database;
+use resvg::usvg::{Options, Size, Tree, TreeParsing, TreeTextToPath};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -54,15 +53,15 @@ impl Converter {
             font_family: default_font_family.clone(),
             font_size: 12.0,
             languages: vec!["en".to_string()],
-            shape_rendering: usvg::ShapeRendering::GeometricPrecision,
-            text_rendering: usvg::TextRendering::OptimizeLegibility,
-            image_rendering: usvg::ImageRendering::OptimizeQuality,
-            default_size: Size::new(
+            shape_rendering: resvg::usvg::ShapeRendering::GeometricPrecision,
+            text_rendering: resvg::usvg::TextRendering::OptimizeLegibility,
+            image_rendering: resvg::usvg::ImageRendering::OptimizeQuality,
+            default_size: Size::from_wh(
                 width.unwrap_or(100.0).into(),
                 height.unwrap_or(100.0).into(),
             )
             .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
-            image_href_resolver: usvg::ImageHrefResolver::default(),
+            image_href_resolver: resvg::usvg::ImageHrefResolver::default(),
         };
 
         let scale = scale.unwrap_or(1.0);
@@ -75,10 +74,10 @@ impl Converter {
             (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
             (Some(w), _) => (
                 w.round() as u32,
-                (svg_size.height() * ((w as f64) / svg_size.width())) as u32,
+                (svg_size.height() * ((w) / svg_size.width())) as u32,
             ),
             (_, Some(h)) => (
-                (svg_size.width() * ((h as f64) / svg_size.height())) as u32,
+                (svg_size.width() * ((h) / svg_size.height())) as u32,
                 h.round() as u32,
             ),
             _ => (
@@ -96,9 +95,9 @@ impl Converter {
 
         let rtree = resvg::Tree::from_usvg(&tree);
 
-        let size = resvg::IntSize::from_usvg(tree.size);
+        let size = tree.size.to_int_size();
         let size1 = size.to_size();
-        let fit_to_size = resvg::IntSize::new(width, height).map(|s| size.scale_to(s));
+        let fit_to_size = IntSize::from_wh(width, height).map(|s| size.scale_to(s));
         let size2 = match fit_to_size {
             Some(v) => v.to_size(),
             None => size.to_size(),
