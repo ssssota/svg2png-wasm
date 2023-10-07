@@ -87,7 +87,7 @@
     "svelte": "^3.59.1",
     "tslib": "^2.5.2",
     "typescript": "^5.0.0",
-    "vitest": "^0.32.0",
+    "vitest": "^0.34.0",
     "wasm-pack": "^0.12.0"
   },
   "type": "module",
