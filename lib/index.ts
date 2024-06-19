@@ -44,11 +44,10 @@ export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
     converter.registerFont(font);
   }
 
-  const svg2png = (svg: string, options?: ConvertOptions) =>
+  const svg2png = (options?: ConvertOptions) =>
     new Promise<Uint8Array>((resolve, reject) => {
       try {
         const result = converter?.convert(
-          svg,
           options?.scale,
           options?.width,
           options?.height,
@@ -66,16 +65,17 @@ export const createSvg2png = (opts?: ConverterOptions): Svg2png => {
     converter = undefined;
   };
   svg2png.getLoadedFontFamilies = () => converter?.list_fonts() ?? [];
+  svg2png.parse = (svg: string) => converter?.parse_tree(svg);
+  svg2png.getBBox = () => converter?.getBBox();
 
   return svg2png;
 };
 
 export const svg2png = (
-  svg: string,
   opts?: ConverterOptions & ConvertOptions,
 ): Promise<Uint8Array> => {
   const convert = createSvg2png(opts);
-  return convert(svg, opts).finally(() => convert.dispose());
+  return convert(opts).finally(() => convert.dispose());
 };
 
 // types re-export

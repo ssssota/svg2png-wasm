@@ -1,10 +1,20 @@
 use std::collections::HashSet;
 use std::str::FromStr;
 
-use resvg::tiny_skia::{Color, IntSize, Pixmap, Transform};
-use resvg::usvg::fontdb::Database;
-use resvg::usvg::{Options, Size, Tree, TreeParsing, TreeTextToPath};
+use resvg::usvg::NodeExt;
+use resvg::{
+    tiny_skia::{Color, IntSize, Pixmap, Transform},
+    usvg::{fontdb::Database, Options, Size, Tree, TreeParsing, TreeTextToPath},
+};
 use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub struct BBox {
+    pub x: f64,
+    pub y: f64,
+    pub width: f64,
+    pub height: f64,
+}
 
 #[wasm_bindgen]
 #[derive(Clone)]
@@ -15,6 +25,7 @@ pub struct Converter {
     cursive_family: Option<String>,
     fantasy_family: Option<String>,
     monospace_family: Option<String>,
+    tree: Option<Box<Tree>>,
 }
 
 #[wasm_bindgen]
@@ -24,15 +35,10 @@ impl Converter {
         self.fonts.push(font.to_vec());
     }
 
+    // Side-effectful method which parses the SVG into a tree and stores the returned
+    // mutable reference on the Converter
     #[wasm_bindgen]
-    pub fn convert(
-        &self,
-        svg: &str,
-        scale: Option<f32>,
-        width: Option<f32>,
-        height: Option<f32>,
-        background: Option<String>,
-    ) -> Result<Vec<u8>, JsValue> {
+    pub fn parse_tree(&mut self, svg: &str) {
         let fontdb = load_fonts(
             &self.fonts,
             self.serif_family.as_deref(),
@@ -56,17 +62,33 @@ impl Converter {
             shape_rendering: resvg::usvg::ShapeRendering::GeometricPrecision,
             text_rendering: resvg::usvg::TextRendering::OptimizeLegibility,
             image_rendering: resvg::usvg::ImageRendering::OptimizeQuality,
-            default_size: Size::from_wh(width.unwrap_or(100.0), height.unwrap_or(100.0))
-                .ok_or_else(|| JsValue::from_str("Invalid width or height"))?,
+            default_size: Size::from_wh(100.0, 100.0).unwrap(),
             image_href_resolver: resvg::usvg::ImageHrefResolver::default(),
         };
 
-        let scale = scale.unwrap_or(1.0);
-        let mut tree =
-            Tree::from_str(svg, &svg_options).map_err(|e| JsValue::from_str(&e.to_string()))?;
-        tree.convert_text(&fontdb);
+        let mut tree = Tree::from_str(svg, &svg_options)
+            .map_err(|e| JsValue::from_str(&e.to_string()))
+            .unwrap_throw();
 
+        tree.convert_text(&fontdb);
+        self.tree = Some(Box::new(tree));
+    }
+
+    #[wasm_bindgen]
+    pub fn convert(
+        &self,
+        scale: Option<f32>,
+        width: Option<f32>,
+        height: Option<f32>,
+        background: Option<String>,
+    ) -> Result<Vec<u8>, JsValue> {
+        let tree = self
+            .tree
+            .as_ref()
+            .ok_or_else(|| JsValue::from_str("Tree not parsed"))?;
+        let scale = scale.unwrap_or(1.0);
         let svg_size = tree.size;
+
         let (width, height) = match (width, height) {
             (Some(w), Some(h)) => (w.round() as u32, h.round() as u32),
             (Some(w), _) => (
@@ -123,6 +145,21 @@ impl Converter {
             .collect::<Vec<JsValue>>()
             .into_boxed_slice()
     }
+
+    #[wasm_bindgen(js_name = getBBox)]
+    /// Calculate a maximum bounding box of all visible elements in this SVG.
+    /// This will first apply transform.
+    /// Similar to `SVGGraphicsElement.getBBox()` DOM API.
+    pub fn get_bbox(&self) -> Option<BBox> {
+        let tree = self.tree.as_ref().unwrap();
+        let bbox = tree.root.calculate_bbox()?;
+        Some(BBox {
+            x: bbox.x() as f64,
+            y: bbox.y() as f64,
+            width: bbox.width() as f64,
+            height: bbox.height() as f64,
+        })
+    }
 }
 
 #[wasm_bindgen(js_name = createConverter)]
@@ -140,6 +177,7 @@ pub fn create_converter(
         cursive_family: default_cursive_family,
         fantasy_family: default_fantasy_family,
         monospace_family: default_monospace_family,
+        tree: None, // Tree is not initialised until parse_tree() is called
     }
 }
 

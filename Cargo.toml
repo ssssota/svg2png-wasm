@@ -16,9 +16,10 @@ default = ["console_error_panic_hook"]
 resvg = { version = "0.36.0", default-features = false, features = ["text", "raster-images"] }
 svgtypes = "0.12.0"
 wasm-bindgen = "0.2.87"
-
 console_error_panic_hook = {version = "0.1.7", optional = true}
 wee_alloc = {version = "0.4.5", optional = true}
+pathfinder_geometry = "0.5.1"
+pathfinder_content = { version = "0.5.0", default-features = false }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.37"
