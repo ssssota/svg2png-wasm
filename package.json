@@ -72,7 +72,7 @@
     "@commitlint/config-conventional": "^17.0.0",
     "copyfiles": "^2.4.1",
     "dts-bundle-generator": "^8.0.0",
-    "esbuild": "^0.18.0",
+    "esbuild": "^0.24.0",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-svelte3": "^4.0.0",
