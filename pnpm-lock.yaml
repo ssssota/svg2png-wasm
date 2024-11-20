@@ -109,8 +109,8 @@ importers:
         specifier: ^6.0.0
         version: 6.7.4(eslint@8.41.0)(typescript@5.0.4)
       carbon-components-svelte:
-        specifier: ^0.75.0
-        version: 0.75.0
+        specifier: ^0.86.0
+        version: 0.86.0
       carbon-icons-svelte:
         specifier: ^11.4.0
         version: 11.4.0
@@ -1215,6 +1215,11 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@ibm/telemetry-js@1.8.0:
+    resolution: {integrity: sha512-1u/8f5TtDHXWNQe+YfIESesZGX2PmhEfyU0znlyFvATch+xc5fPYjXj2gWKMTmdKsDawqAm/BkJBQjx2CDlZww==}
+    hasBin: true
+    dev: true
+
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -2124,9 +2129,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /carbon-components-svelte@0.75.0:
-    resolution: {integrity: sha512-0KWqs5rgN0eBhFdTTHkzOM7HAiqBBg3gE4k6eYz49pBdcGt4z/BIzpCBjKhQHd+QdfYF6Tba70EXvZG8fOGqbw==}
+  /carbon-components-svelte@0.86.0:
+    resolution: {integrity: sha512-GThXFytKnMS8GXobVU70jS7/t8Kxp2jMW/FpvHZAJozcM96Y1w0sfUSHMsZIeD8Lf96FLdMlLdRK8ER7Zx1rbQ==}
+    requiresBuild: true
     dependencies:
+      '@ibm/telemetry-js': 1.8.0
       flatpickr: 4.6.9
     dev: true
 
