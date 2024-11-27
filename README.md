@@ -86,7 +86,7 @@ writeFileSync('./output.png', png);
 import { createSvg2png, initialize } from 'svg2png-wasm';
 
 // put wasm to your assets directory
-await initialize(fetch('/assets/svg2png_wasm_bg.wasm').then((res) => res.arrayBuffer()));
+await initialize(fetch('/assets/svg2png_wasm_bg.wasm'));
 const svgs = [
   '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
   '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
@@ -109,7 +109,7 @@ Or, using a script tag in the browser and load from esm.sh.
 <script type="module">
   import * as svg2pngWasm from 'https://esm.sh/svg2png-wasm@0.6.1'
 
-  await svg2pngWasm.initialize(fetch('https://esm.sh/svg2png-wasm@0.6.1/svg2png_wasm_bg.wasm').then(x => x.arrayBuffer()))
+  await svg2pngWasm.initialize(fetch('https://esm.sh/svg2png-wasm@0.6.1/svg2png_wasm_bg.wasm'))
 
   /** @type {Uint8Array} */
   const png = await svg2pngWasm.svg2png(
