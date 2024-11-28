@@ -107,9 +107,9 @@ Or, using a script tag in the browser and load from esm.sh.
 ```html
 <img id="output">
 <script type="module">
-  import * as svg2pngWasm from 'https://esm.sh/svg2png-wasm@0.6.1'
+  import * as svg2pngWasm from 'https://esm.sh/svg2png-wasm@0.6.1';
 
-  await svg2pngWasm.initialize(fetch('https://esm.sh/svg2png-wasm@0.6.1/svg2png_wasm_bg.wasm'))
+  await svg2pngWasm.initialize(fetch('https://esm.sh/svg2png-wasm@0.6.1/svg2png_wasm_bg.wasm'));
 
   /** @type {Uint8Array} */
   const png = await svg2pngWasm.svg2png(
