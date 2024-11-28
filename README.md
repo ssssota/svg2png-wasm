@@ -102,13 +102,17 @@ const pngs = await Promise.all(svgs.map((svg) => svg2png(svg, { scale: 2 })));
 svg2png.dispose(); // You should dispose svg2png, if you will not use it in the future
 ```
 
-Or, using a script tag in the browser and load from unpkg.
+Or, using a script tag in the browser and load from esm.sh.
 
 ```html
-<script src="https://unpkg.com/svg2png-wasm"></script>
-<script>
-  await svg2pngWasm.initialize(fetch('https://unpkg.com/svg2png-wasm/svg2png_wasm_bg.wasm'))
-  const font = await fetch('./Roboto.ttf').then((res) => res.arrayBuffer());
+<img id="output" />
+<script type="module">
+  import * as svg2pngWasm from 'https://esm.sh/svg2png-wasm@0.6.1';
+
+  await svg2pngWasm.initialize(
+    fetch('https://esm.sh/svg2png-wasm@0.6.1/svg2png_wasm_bg.wasm'),
+  );
+
   /** @type {Uint8Array} */
   const png = await svg2pngWasm.svg2png(
     '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"> ... </svg>',
