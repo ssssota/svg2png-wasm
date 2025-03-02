@@ -1,35 +1,28 @@
 // @ts-check
-import { buildSync } from 'esbuild';
-import { readFileSync } from 'fs';
+import { buildSync } from "esbuild";
 
 /** @type {import('esbuild').BuildOptions} */
 const commonOptions = {
   bundle: true,
-  logLevel: 'error',
-  entryPoints: ['lib/index.ts'],
-  define: { 'import.meta.url': 'undefined' },
-  banner: {
-    js: `/**\n * @file ${readFileSync('./NOTICE', 'utf8')
-      .trim()
-      .split('\n')
-      .join(' ')}\n */`,
-  },
+  logLevel: "error",
+  entryPoints: ["lib/index.ts"],
+  define: { "import.meta.url": "undefined" },
 };
 
 buildSync({
   ...commonOptions,
-  format: 'cjs',
-  outfile: 'dist/index.cjs',
+  format: "cjs",
+  outfile: "dist/index.cjs",
 });
 buildSync({
   ...commonOptions,
-  format: 'esm',
-  outfile: 'dist/index.mjs',
+  format: "esm",
+  outfile: "dist/index.mjs",
 });
 buildSync({
   ...commonOptions,
-  format: 'iife',
+  format: "iife",
   minify: true,
-  globalName: 'svg2pngWasm',
-  outfile: 'dist/index.min.js',
+  globalName: "svg2pngWasm",
+  outfile: "dist/index.min.js",
 });
