@@ -75,7 +75,7 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3(svelte@5.20.5)
       svg2png-wasm:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:..
     devDependencies:
       '@sveltejs/adapter-auto':
