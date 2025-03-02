@@ -1,9 +1,9 @@
 import init, {
-	Converter,
+	type Converter,
 	createConverter,
-	InitInput,
+	type InitInput,
 } from "../dist-wasm/svg2png_wasm";
-import { ConverterOptions, ConvertOptions, Svg2png } from "./types";
+import { ConvertOptions, ConverterOptions, Svg2png } from "./types";
 
 let initialized = false;
 

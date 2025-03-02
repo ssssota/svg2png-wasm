@@ -1,6 +1,6 @@
-import type { PageServerLoad } from "./$types";
-import frontMatter from "front-matter";
 import fs from "node:fs";
+import frontMatter from "front-matter";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
 	const files = fs

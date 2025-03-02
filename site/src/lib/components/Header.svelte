@@ -1,7 +1,7 @@
 <script lang="ts">
 import { base } from "$app/paths";
-import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
 import { Link } from "carbon-components-svelte";
+import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
 import type { ComponentType, SvelteComponentTyped } from "svelte";
 // HACK: type error
 const LogoGithubTyped = LogoGithub as ComponentType<

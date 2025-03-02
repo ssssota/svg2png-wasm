@@ -1,5 +1,5 @@
-import { writable } from "svelte/store";
 import { browser } from "$app/environment";
+import { writable } from "svelte/store";
 
 export const packageManagers = ["npm", "yarn", "pnpm"] as const;
 

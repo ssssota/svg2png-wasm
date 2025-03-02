@@ -1,7 +1,7 @@
-import type { ConverterOptions, ConvertOptions } from "svg2png-wasm";
-import type { Svg2pngResponse, Svg2pngRequest } from "./worker";
-import Svg2pngWorker from "./worker?worker";
 import { base } from "$app/paths";
+import type { ConvertOptions, ConverterOptions } from "svg2png-wasm";
+import type { Svg2pngRequest, Svg2pngResponse } from "./worker";
+import Svg2pngWorker from "./worker?worker";
 
 export const createSvg2png = (
 	options?: ConverterOptions,

@@ -1,5 +1,5 @@
 import { createSvg2png, initialize } from "svg2png-wasm";
-import type { ConverterOptions, ConvertOptions, Svg2png } from "svg2png-wasm";
+import type { ConvertOptions, ConverterOptions, Svg2png } from "svg2png-wasm";
 
 console.log("worker initializing");
 export type Svg2pngRequest =

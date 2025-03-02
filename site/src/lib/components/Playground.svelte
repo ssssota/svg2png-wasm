@@ -1,11 +1,11 @@
 <script lang="ts">
+import { browser } from "$app/environment";
+import { svg2png } from "$lib/stores";
 import {
-	FileUploaderItem,
 	FileUploaderDropContainer,
+	FileUploaderItem,
 	SkeletonPlaceholder,
 } from "carbon-components-svelte";
-import { svg2png } from "$lib/stores";
-import { browser } from "$app/environment";
 
 let inputElement: HTMLInputElement;
 

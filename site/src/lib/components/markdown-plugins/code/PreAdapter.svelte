@@ -1,14 +1,14 @@
 <script lang="ts">
-import Pre from "./Pre.svelte";
-import type { HastNode } from "svelte-exmarkdown/types";
 import Children from "svelte-exmarkdown/renderer/Children.svelte";
+import type { HastNode } from "svelte-exmarkdown/types";
+import Pre from "./Pre.svelte";
 export let tagName: string;
 export let children: HastNode[] | undefined;
 export let properties: Record<string, unknown>;
 
-export let type: unknown = undefined;
-export let position: unknown = undefined;
-export let __index: unknown = undefined;
+export const type: unknown = undefined;
+export const position: unknown = undefined;
+export const __index: unknown = undefined;
 // HACK: ignore `unused-export-let`
 tagName && type && position && __index;
 </script>

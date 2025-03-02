@@ -6,9 +6,9 @@ import {
 } from "carbon-components-svelte";
 import HighlightCodeSnippet from "./HighlightCodeSnippet.svelte";
 
-export let highlight: { language: string } | undefined = undefined;
+export const highlight: { language: string } | undefined = undefined;
 export let titleValueMap: Record<string, string>;
-export let selectedTitle: string = Object.keys(titleValueMap)[0];
+export const selectedTitle: string = Object.keys(titleValueMap)[0];
 </script>
 
 <div>

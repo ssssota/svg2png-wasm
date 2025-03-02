@@ -1,7 +1,7 @@
 import { sveltekit } from "@sveltejs/kit/vite";
+import fsp from "fs/promises";
 import { defineConfig } from "vite";
 import type { Plugin } from "vite";
-import fsp from "fs/promises";
 
 const postfixRE = /[?#].*$/s;
 function cleanUrl(url: string): string {

@@ -1,7 +1,7 @@
-import { beforeAll, it, expect, describe } from "vitest";
-import { initialize, svg2png, createSvg2png } from "../..";
 import { readFileSync } from "fs";
 import { resolve } from "path";
+import { beforeAll, describe, expect, it } from "vitest";
+import { createSvg2png, initialize, svg2png } from "../..";
 
 beforeAll(async () => {
 	await initialize(readFileSync("./svg2png_wasm_bg.wasm"));

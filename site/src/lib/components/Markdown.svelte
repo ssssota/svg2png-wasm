@@ -2,7 +2,7 @@
 import Markdown from "svelte-exmarkdown";
 import { codePlugin, highlightPlugin } from "./markdown-plugins";
 
-export let md = "";
+export const md = "";
 const plugins = [highlightPlugin, codePlugin];
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-import { base } from "$app/paths";
 import { browser } from "$app/environment";
+import { base } from "$app/paths";
 import { svg2png } from "$lib/stores";
 import { Button, SkeletonPlaceholder } from "carbon-components-svelte";
 import ArrowRight from "carbon-icons-svelte/lib/ArrowRight.svelte";

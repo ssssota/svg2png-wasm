@@ -1,7 +1,7 @@
-import type { RequestHandler } from "./$types";
 import fs from "node:fs";
 import { initialize, svg2png } from "svg2png-wasm";
 import wasm from "svg2png-wasm/svg2png_wasm_bg.wasm?u8";
+import type { RequestHandler } from "./$types";
 
 const svgPromise = fs.readFileSync("../logo.svg", "utf8");
 

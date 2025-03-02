@@ -1,8 +1,8 @@
 import type { Plugin } from "svelte-exmarkdown";
-import Pre from "./PreAdapter.svelte";
-import Code from "./CodeAdapter.svelte";
 import Blockquote from "./BlockquoteAdapter.svelte";
+import Code from "./CodeAdapter.svelte";
 import { H1, H2, H3, H4, H5 } from "./Heading";
+import Pre from "./PreAdapter.svelte";
 
 export const codePlugin: Plugin = {
 	renderer: {

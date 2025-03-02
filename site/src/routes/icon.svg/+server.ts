@@ -1,5 +1,5 @@
-import type { RequestHandler } from "./$types";
 import fs from "node:fs";
+import type { RequestHandler } from "./$types";
 
 const svgPromise = fs.readFileSync("../logo.svg", "utf8");
 
