@@ -1,9 +1,6 @@
 <script lang="ts">
-import Markdown from "./Markdown.svelte";
-export let code: string;
-export const language = "";
-let md = "";
-$: md = `\`\`\`${language}\n${code}\n\`\`\``;
+  import Markdown from "./Markdown.svelte";
+  let { code, language = "" }: { code: string; language: string } = $props();
 </script>
 
-<Markdown {md} />
+<Markdown md={`\`\`\`${language}\n${code}\n\`\`\``} />

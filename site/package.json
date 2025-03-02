@@ -1,41 +1,32 @@
 {
 	"name": "site",
-	"version": "0.0.1",
 	"private": true,
+	"version": "0.0.1",
+	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"dependencies": {
 		"front-matter": "^4.0.2",
-		"highlight.js": "^11.8.0",
-		"rehype-highlight": "^6.0.0",
-		"svelte-exmarkdown": "^2.0.0",
-		"svg2png-wasm": "workspace:.."
+		"highlight.js": "^11.11.1",
+		"rehype-highlight": "^7.0.2",
+		"svelte-exmarkdown": "^4.0.3",
+		"svg2png-wasm": "workspace:*"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^2.0.2",
-		"@sveltejs/kit": "^1.18.0",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
-		"carbon-components-svelte": "^0.75.0",
-		"carbon-icons-svelte": "^11.4.0",
-		"carbon-preprocess-svelte": "^0.9.1",
-		"eslint": "^8.41.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.29.0",
-		"prettier": "^2.8.8",
-		"prettier-plugin-svelte": "^2.10.0",
-		"svelte": "^3.59.1",
-		"svelte-check": "^3.3.2",
-		"tslib": "^2.5.2",
-		"typescript": "^5.0.4",
-		"vite": "^4.3.8"
-	},
-	"type": "module"
+		"@sveltejs/adapter-auto": "^4.0.0",
+		"@sveltejs/kit": "^2.17.3",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"carbon-components-svelte": "^0.87.6",
+		"carbon-icons-svelte": "^13.3.0",
+		"svelte": "^5.20.5",
+		"svelte-check": "^4.1.4",
+		"typescript": "^5.8.2",
+		"vite": "^6.2.0"
+	}
 }

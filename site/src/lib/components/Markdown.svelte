@@ -1,9 +1,8 @@
 <script lang="ts">
-import Markdown from "svelte-exmarkdown";
-import { codePlugin, highlightPlugin } from "./markdown-plugins";
-
-export const md = "";
-const plugins = [highlightPlugin, codePlugin];
+  import Markdown from "svelte-exmarkdown";
+  import { codePlugin, highlightPlugin } from "./markdown-plugins";
+  let { md }: { md: string } = $props();
+  const plugins = [highlightPlugin, codePlugin];
 </script>
 
 <div class="container">
