@@ -3,7 +3,7 @@ description: Upload svg2png-wasm files as artifact
 runs:
   using: 'composite'
   steps:
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: build-artifact
         path: |

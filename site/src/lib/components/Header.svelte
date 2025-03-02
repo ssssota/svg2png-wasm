@@ -1,16 +1,7 @@
 <script lang="ts">
-  import { base } from '$app/paths';
-  import LogoGithub from 'carbon-icons-svelte/lib/LogoGithub.svelte';
-  import { Link } from 'carbon-components-svelte';
-  import type { ComponentType, SvelteComponentTyped } from 'svelte';
-  // HACK: type error
-  const LogoGithubTyped = LogoGithub as ComponentType<
-    SvelteComponentTyped<
-      (typeof LogoGithub)['prototype']['props'],
-      (typeof LogoGithub)['prototype']['events'],
-      (typeof LogoGithub)['prototype']['slots']
-    >
-  >;
+  import { base } from "$app/paths";
+  import { Link } from "carbon-components-svelte";
+  import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
 </script>
 
 <header>
@@ -20,7 +11,7 @@
         <img width="48" src="{base}/icon.svg" alt="svg2png-wasm" />
       </a>
     </h1>
-    <div class="spacer" />
+    <div class="spacer"></div>
     <nav>
       <Link href="{base}/docs" size="lg">Docs</Link>
     </nav>
@@ -30,7 +21,7 @@
         target="_blank"
         rel="noopener noreferer"
       >
-        <LogoGithubTyped fill="black" size={32} />
+        <LogoGithub fill="black" size={32} />
       </Link>
     </p>
   </div>

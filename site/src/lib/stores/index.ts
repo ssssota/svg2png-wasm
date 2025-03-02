@@ -1,2 +1,2 @@
-export * from './packageManager';
-export * from './svg2png';
+export * from "./packageManager";
+export * from "./svg2png";

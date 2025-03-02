@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Demos from '$lib/components/Demos.svelte';
-  import Playground from '$lib/components/Playground.svelte';
-  import InstallCommands from '$lib/components/InstallCommand.svelte';
+import Demos from "$lib/components/Demos.svelte";
+import InstallCommands from "$lib/components/InstallCommand.svelte";
+import Playground from "$lib/components/Playground.svelte";
 </script>
 
 <main>

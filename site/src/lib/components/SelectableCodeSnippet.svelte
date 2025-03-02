@@ -3,12 +3,15 @@
     CodeSnippet,
     RadioButton,
     RadioButtonGroup,
-  } from 'carbon-components-svelte';
-  import HighlightCodeSnippet from './HighlightCodeSnippet.svelte';
+  } from "carbon-components-svelte";
+  import HighlightCodeSnippet from "./HighlightCodeSnippet.svelte";
 
-  export let highlight: { language: string } | undefined = undefined;
-  export let titleValueMap: Record<string, string>;
-  export let selectedTitle: string = Object.keys(titleValueMap)[0];
+  type Props = {
+    highlight?: { language: string };
+    titleValueMap: Record<string, string>;
+    selectedTitle: string;
+  };
+  let { highlight, titleValueMap, selectedTitle }: Props = $props();
 </script>
 
 <div>
@@ -19,7 +22,10 @@
   </RadioButtonGroup>
 
   {#if highlight !== undefined}
-    <HighlightCodeSnippet code={titleValueMap[selectedTitle]} {...highlight} />
+    <HighlightCodeSnippet
+      code={titleValueMap[selectedTitle]}
+      language={highlight?.language}
+    />
   {:else}
     <CodeSnippet code={titleValueMap[selectedTitle]} />
   {/if}

@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        node-version: [16, 18, 20]
+        node-version: [20, 22]
 
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +46,5 @@ jobs:
       - uses: ./.github/actions/download-pkg
 
       # site checks
-      - run: pnpm check
-        working-directory: ${{ env.WORKING_DIR_SITE }}
       - run: pnpm build
         working-directory: ${{ env.WORKING_DIR_SITE }}

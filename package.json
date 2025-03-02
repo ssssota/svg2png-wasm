@@ -1,95 +1,83 @@
 {
-  "name": "svg2png-wasm",
-  "version": "1.4.1",
-  "description": "A svg to png converter made with wasm.",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "unpkg": "dist/index.min.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "node": "./dist/index.mjs",
-      "default": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./svg2png_wasm_bg.wasm": "./svg2png_wasm_bg.wasm"
-  },
-  "scripts": {
-    "prepack": "run-s clean build",
-    "build": "run-s build:*",
-    "build:wasm": "wasm-pack build --target web --out-dir dist-wasm && npm run copy-wasm",
-    "build:ts": "run-s bundle",
-    "bundle": "run-p bundle:*",
-    "bundle:js": "node bundle",
-    "bundle:dts": "dts-bundle-generator --no-banner --external-types -o dist/index.d.ts lib/index.ts",
-    "clean": "run-p clean:*",
-    "clean:wasm": "rimraf dist-wasm svg2png_wasm_bg.wasm",
-    "clean:bundle": "rimraf dist",
-    "copy-wasm": "copyfiles -f dist-wasm/svg2png_wasm_bg.wasm .",
-    "format": "run-p format:*",
-    "format:all": "prettier --write --plugin-search-dir=. .",
-    "format:rust": "cargo fmt",
-    "lint": "run-p lint:*",
-    "lint:js": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
-    "lint:rust": "cargo fmt -- --check && cargo clippy",
-    "test": "run-p test:vrt test:node",
-    "test:node": "vitest",
-    "test:vrt": "run-s vrt:gen vrt:comp",
-    "vrt:gen": "node test/vrt/index.mjs",
-    "vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
-    "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
-    "vrt-update": "run-s vrt:clean vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
-    "changeset": "changeset",
-    "release": "pnpm prepack && pnpm changeset publish",
-    "prepare": "husky install"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ssssota/svg2png-wasm.git"
-  },
-  "keywords": [
-    "wasm",
-    "svg",
-    "png"
-  ],
-  "files": [
-    "svg2png_wasm_bg.wasm",
-    "dist",
-    "NOTICE"
-  ],
-  "author": "ssssota",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ssssota/svg2png-wasm/issues"
-  },
-  "homepage": "https://ssssota.github.io/svg2png-wasm/",
-  "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.2",
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
-    "copyfiles": "^2.4.1",
-    "dts-bundle-generator": "^8.0.0",
-    "esbuild": "^0.18.0",
-    "eslint": "^8.41.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-svelte3": "^4.0.0",
-    "glob": "^10.2.7",
-    "husky": "^8.0.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
-    "prettier-plugin-svelte": "^2.10.0",
-    "reg-cli": "^0.17.7",
-    "rimraf": "^5.0.0",
-    "serve": "^13.0.4",
-    "svelte": "^3.59.1",
-    "tslib": "^2.5.2",
-    "typescript": "^5.0.0",
-    "vitest": "^0.34.0",
-    "wasm-pack": "^0.12.0"
-  },
-  "type": "module",
-  "packageManager": "pnpm@8.8.0"
+	"name": "svg2png-wasm",
+	"version": "1.4.1",
+	"description": "A svg to png converter made with wasm.",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"unpkg": "dist/index.min.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"node": "./dist/index.mjs",
+			"default": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
+		},
+		"./svg2png_wasm_bg.wasm": "./svg2png_wasm_bg.wasm"
+	},
+	"scripts": {
+		"prepack": "pnpm clean && pnpm build",
+		"build": "pnpm build:wasm && pnpm build:ts",
+		"build:wasm": "wasm-pack build --target web --out-dir dist-wasm && npm run copy-wasm",
+		"build:ts": "pnpm bundle",
+		"bundle": "pnpm bundle:js && pnpm bundle:dts",
+		"bundle:js": "node bundle",
+		"bundle:dts": "dts-bundle-generator --no-banner --external-types -o dist/index.d.ts lib/index.ts",
+		"clean": "pnpm clean:wasm && pnpm clean:bundle",
+		"clean:wasm": "rimraf dist-wasm svg2png_wasm_bg.wasm",
+		"clean:bundle": "rimraf dist",
+		"copy-wasm": "copyfiles -f dist-wasm/svg2png_wasm_bg.wasm .",
+		"format": "pnpm format:all && pnpm format:rust",
+		"format:all": "biome check --write --unsafe .",
+		"format:rust": "cargo fmt",
+		"lint": "pnpm lint:js && pnpm lint:rust",
+		"lint:js": "biome check .",
+		"lint:rust": "cargo fmt -- --check && cargo clippy",
+		"test": "pnpm test:vrt && pnpm test:node",
+		"test:node": "vitest",
+		"test:vrt": "pnpm vrt:gen && pnpm vrt:comp",
+		"vrt:gen": "node test/vrt/index.mjs",
+		"vrt:comp": "reg-cli test/vrt/actual test/vrt/expected test/vrt/diff",
+		"vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
+		"vrt-update": "pnpm vrt:clean && pnpm vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
+		"changeset": "changeset",
+		"release": "pnpm prepack && pnpm changeset publish"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ssssota/svg2png-wasm.git"
+	},
+	"keywords": ["wasm", "svg", "png"],
+	"files": ["svg2png_wasm_bg.wasm", "dist"],
+	"author": "ssssota",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ssssota/svg2png-wasm/issues"
+	},
+	"homepage": "https://ssssota.github.io/svg2png-wasm/",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@changesets/changelog-github": "^0.5.1",
+		"@changesets/cli": "^2.28.1",
+		"@commitlint/cli": "^19.7.1",
+		"@commitlint/config-conventional": "^19.7.1",
+		"copyfiles": "^2.4.1",
+		"dts-bundle-generator": "^9.5.1",
+		"esbuild": "^0.25.0",
+		"glob": "^11.0.1",
+		"reg-cli": "^0.18.10",
+		"rimraf": "^6.0.1",
+		"serve": "^14.2.4",
+		"svelte": "^5.20.5",
+		"tslib": "^2.8.1",
+		"typescript": "^5.8.2",
+		"vitest": "^3.0.7",
+		"wasm-pack": "^0.13.1"
+	},
+	"type": "module",
+	"packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
+	"pnpm": {
+		"onlyBuiltDependencies": ["esbuild"]
+	}
 }
