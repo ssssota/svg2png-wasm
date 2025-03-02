@@ -14,7 +14,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 resvg = { version = "0.36.0", default-features = false, features = ["text", "raster-images"] }
-svgtypes = "0.12.0"
+svgtypes = "0.15.0"
 wasm-bindgen = "0.2.87"
 
 console_error_panic_hook = {version = "0.1.7", optional = true}
