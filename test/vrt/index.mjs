@@ -1,9 +1,15 @@
 // @ts-check
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import {
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	rmSync,
+	writeFileSync,
+} from "node:fs";
+import { dirname, join } from "node:path";
+import { exit } from "node:process";
+import { fileURLToPath } from "node:url";
 import { glob } from "glob";
-import { exit } from "process";
 import { createSvg2png, initialize } from "../../dist/index.mjs";
 
 /**

@@ -1,5 +1,5 @@
+import fsp from "node:fs/promises";
 import { sveltekit } from "@sveltejs/kit/vite";
-import fsp from "fs/promises";
 import { defineConfig } from "vite";
 import type { Plugin } from "vite";
 

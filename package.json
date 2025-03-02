@@ -29,7 +29,7 @@
 		"clean:bundle": "rimraf dist",
 		"copy-wasm": "copyfiles -f dist-wasm/svg2png_wasm_bg.wasm .",
 		"format": "pnpm format:all && pnpm format:rust",
-		"format:all": "biome check --write .",
+		"format:all": "biome check --write --unsafe .",
 		"format:rust": "cargo fmt",
 		"lint": "pnpm lint:js && pnpm lint:rust",
 		"lint:js": "biome check .",
