@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Markdown from 'svelte-exmarkdown';
-  import { codePlugin, highlightPlugin } from './markdown-plugins';
+import Markdown from "svelte-exmarkdown";
+import { codePlugin, highlightPlugin } from "./markdown-plugins";
 
-  export let md = '';
-  const plugins = [highlightPlugin, codePlugin];
+export let md = "";
+const plugins = [highlightPlugin, codePlugin];
 </script>
 
 <div class="container">

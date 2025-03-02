@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { base } from '$app/paths';
-  import LogoGithub from 'carbon-icons-svelte/lib/LogoGithub.svelte';
-  import { Link } from 'carbon-components-svelte';
-  import type { ComponentType, SvelteComponentTyped } from 'svelte';
-  // HACK: type error
-  const LogoGithubTyped = LogoGithub as ComponentType<
-    SvelteComponentTyped<
-      (typeof LogoGithub)['prototype']['props'],
-      (typeof LogoGithub)['prototype']['events'],
-      (typeof LogoGithub)['prototype']['slots']
-    >
-  >;
+import { base } from "$app/paths";
+import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
+import { Link } from "carbon-components-svelte";
+import type { ComponentType, SvelteComponentTyped } from "svelte";
+// HACK: type error
+const LogoGithubTyped = LogoGithub as ComponentType<
+	SvelteComponentTyped<
+		(typeof LogoGithub)["prototype"]["props"],
+		(typeof LogoGithub)["prototype"]["events"],
+		(typeof LogoGithub)["prototype"]["slots"]
+	>
+>;
 </script>
 
 <header>

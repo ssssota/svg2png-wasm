@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { base } from '$app/paths';
-  import Header from '$lib/components/Header.svelte';
-  import 'carbon-components-svelte/css/white.css';
-  import '../app.css';
+import { base } from "$app/paths";
+import Header from "$lib/components/Header.svelte";
+import "carbon-components-svelte/css/white.css";
+import "../app.css";
 </script>
 
 <svelte:head>

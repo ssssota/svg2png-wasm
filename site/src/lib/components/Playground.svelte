@@ -1,33 +1,33 @@
 <script lang="ts">
-  import {
-    FileUploaderItem,
-    FileUploaderDropContainer,
-    SkeletonPlaceholder,
-  } from 'carbon-components-svelte';
-  import { svg2png } from '$lib/stores';
-  import { browser } from '$app/environment';
+import {
+	FileUploaderItem,
+	FileUploaderDropContainer,
+	SkeletonPlaceholder,
+} from "carbon-components-svelte";
+import { svg2png } from "$lib/stores";
+import { browser } from "$app/environment";
 
-  let inputElement: HTMLInputElement;
+let inputElement: HTMLInputElement;
 
-  type FileInfo = {
-    id: string;
-    name: string;
-    value: Promise<string>;
-  };
+type FileInfo = {
+	id: string;
+	name: string;
+	value: Promise<string>;
+};
 
-  let fileInfoList: FileInfo[] = [];
-  const fileSelected = ({ detail }: CustomEvent<readonly File[]>) => {
-    fileInfoList = [
-      ...Array.from(detail)
-        .filter((f) => f.type === 'image/svg+xml')
-        .map((f) => ({
-          id: `file-${Math.random().toString(36)}`,
-          name: f.name,
-          value: f.text(),
-        })),
-      ...fileInfoList,
-    ];
-  };
+let fileInfoList: FileInfo[] = [];
+const fileSelected = ({ detail }: CustomEvent<readonly File[]>) => {
+	fileInfoList = [
+		...Array.from(detail)
+			.filter((f) => f.type === "image/svg+xml")
+			.map((f) => ({
+				id: `file-${Math.random().toString(36)}`,
+				name: f.name,
+				value: f.text(),
+			})),
+		...fileInfoList,
+	];
+};
 </script>
 
 <div>

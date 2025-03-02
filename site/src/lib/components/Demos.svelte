@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { base } from '$app/paths';
-  import { browser } from '$app/environment';
-  import { svg2png } from '$lib/stores';
-  import { Button, SkeletonPlaceholder } from 'carbon-components-svelte';
-  import ArrowRight from 'carbon-icons-svelte/lib/ArrowRight.svelte';
+import { base } from "$app/paths";
+import { browser } from "$app/environment";
+import { svg2png } from "$lib/stores";
+import { Button, SkeletonPlaceholder } from "carbon-components-svelte";
+import ArrowRight from "carbon-icons-svelte/lib/ArrowRight.svelte";
 
-  const imagesPromiseMap: Record<string, Promise<Uint8Array>[]> = {
-    [`${base}/icon.svg`]: [],
-    [`${base}/gradient.svg`]: [],
-    [`${base}/parrot.svg`]: [],
-  };
+const imagesPromiseMap: Record<string, Promise<Uint8Array>[]> = {
+	[`${base}/icon.svg`]: [],
+	[`${base}/gradient.svg`]: [],
+	[`${base}/parrot.svg`]: [],
+};
 </script>
 
 <div class="demos">

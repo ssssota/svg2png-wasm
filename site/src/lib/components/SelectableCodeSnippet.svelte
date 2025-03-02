@@ -1,14 +1,14 @@
 <script lang="ts">
-  import {
-    CodeSnippet,
-    RadioButton,
-    RadioButtonGroup,
-  } from 'carbon-components-svelte';
-  import HighlightCodeSnippet from './HighlightCodeSnippet.svelte';
+import {
+	CodeSnippet,
+	RadioButton,
+	RadioButtonGroup,
+} from "carbon-components-svelte";
+import HighlightCodeSnippet from "./HighlightCodeSnippet.svelte";
 
-  export let highlight: { language: string } | undefined = undefined;
-  export let titleValueMap: Record<string, string>;
-  export let selectedTitle: string = Object.keys(titleValueMap)[0];
+export let highlight: { language: string } | undefined = undefined;
+export let titleValueMap: Record<string, string>;
+export let selectedTitle: string = Object.keys(titleValueMap)[0];
 </script>
 
 <div>

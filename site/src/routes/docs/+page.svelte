@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Markdown from '$lib/components/Markdown.svelte';
-  import { Link, ListItem, UnorderedList } from 'carbon-components-svelte';
-  import { page } from '$app/stores';
+import Markdown from "$lib/components/Markdown.svelte";
+import { Link, ListItem, UnorderedList } from "carbon-components-svelte";
+import { page } from "$app/stores";
 
-  export let data: {
-    sections: { meta: { title: string }; body: string; slug: string }[];
-  };
+export let data: {
+	sections: { meta: { title: string }; body: string; slug: string }[];
+};
 </script>
 
 <main>
