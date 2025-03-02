@@ -1,11 +1,10 @@
 <script lang="ts">
-import { page } from "$app/stores";
-import Markdown from "$lib/components/Markdown.svelte";
-import { Link, ListItem, UnorderedList } from "carbon-components-svelte";
+  import { page } from "$app/stores";
+  import Markdown from "$lib/components/Markdown.svelte";
+  import { Link, ListItem, UnorderedList } from "carbon-components-svelte";
+  import type { PageProps } from "./$types";
 
-export let data: {
-	sections: { meta: { title: string }; body: string; slug: string }[];
-};
+  let { data }: PageProps = $props();
 </script>
 
 <main>
@@ -22,7 +21,9 @@ export let data: {
     <section>
       <h2 id={slug} class="title">
         {meta.title}
-        <a aria-hidden href="{$page.url}#{slug}" class="header-anchor"> # </a>
+        <a aria-hidden={true} href="{$page.url}#{slug}" class="header-anchor">
+          #
+        </a>
       </h2>
       <Markdown md={body} />
     </section>

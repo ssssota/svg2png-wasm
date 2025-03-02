@@ -1,8 +1,11 @@
 <script lang="ts">
-import { base } from "$app/paths";
-import Header from "$lib/components/Header.svelte";
-import "carbon-components-svelte/css/white.css";
-import "../app.css";
+  import { base } from "$app/paths";
+  import Header from "$lib/components/Header.svelte";
+  import "carbon-components-svelte/css/white.css";
+  import "../app.css";
+  import type { Snippet } from "svelte";
+
+  let { children }: { children?: Snippet } = $props();
 </script>
 
 <svelte:head>
@@ -43,18 +46,18 @@ import "../app.css";
 
 <Header />
 
-<slot />
+{@render children?.()}
 
-<footer />
+<footer></footer>
 
 <style>
   :root {
-    font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana,
+    font-family: "IBM Plex Sans", "Segoe UI", Tahoma, Geneva, Verdana,
       sans-serif;
   }
   :global(pre),
   :global(code) {
-    font-family: 'IBM Plex Mono', Menlo, Consolas, 'Courier New', Courier,
+    font-family: "IBM Plex Mono", Menlo, Consolas, "Courier New", Courier,
       monospace;
   }
 

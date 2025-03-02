@@ -8,7 +8,7 @@ export const load: PageServerLoad = async () => {
 		.filter((dirent) => dirent.isFile())
 		.map((dirent) => {
 			const content = fs.readFileSync(`../docs/${dirent.name}`, "utf-8");
-			const { attributes, body } = frontMatter(content);
+			const { attributes, body } = frontMatter<Record<string, string>>(content);
 			return {
 				meta: attributes,
 				slug: dirent.name.replace(/\.md$/, ""),
