@@ -42,8 +42,7 @@
     "vrt:clean": "rimraf test/vrt/diff test/vrt/actual",
     "vrt-update": "pnpm vrt:clean && pnpm vrt:gen && reg-cli test/vrt/actual test/vrt/expected test/vrt/diff -U",
     "changeset": "changeset",
-    "release": "pnpm prepack && pnpm changeset publish",
-    "prepare": "husky install"
+    "release": "pnpm prepack && pnpm changeset publish"
   },
   "repository": {
     "type": "git",
@@ -74,7 +73,6 @@
     "dts-bundle-generator": "^9.5.1",
     "esbuild": "^0.25.0",
     "glob": "^11.0.1",
-    "husky": "^9.1.7",
     "reg-cli": "^0.18.10",
     "rimraf": "^6.0.1",
     "serve": "^14.2.4",
