@@ -89,7 +89,7 @@ importers:
         version: 5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(sass@1.85.1))
       carbon-components-svelte:
         specifier: ^0.87.6
-        version: 0.87.6
+        version: 0.87.7
       carbon-icons-svelte:
         specifier: ^13.3.0
         version: 13.3.0
@@ -941,8 +941,8 @@ packages:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
 
-  carbon-components-svelte@0.87.6:
-    resolution: {integrity: sha512-AZ2Z5iGpfKyasVVX5Cb02lhButeQMUbODzOuLUzvKHnlqhmN8H0rike54MPQ3sbyYJHwtADH78nIZQhv2ezjlw==}
+  carbon-components-svelte@0.87.7:
+    resolution: {integrity: sha512-c9CJdZZZIzqEm7gaJu0Gvw2ZbEM5DZ9WrzA9Gp6bOhoqMGFKU8NRHK10Dj5ZsxuDJ3IgR4zy2/qTZi9q8TvDbQ==}
 
   carbon-icons-svelte@13.3.0:
     resolution: {integrity: sha512-pwOVRMYyct0KyzLPCwB7BdeO50lo3I3FclasSPgJiADm49YjYClewHnBsQOM2luu2JCLTdBnadtbVvWSpv+k+Q==}
@@ -3479,7 +3479,7 @@ snapshots:
 
   camelcase@7.0.1: {}
 
-  carbon-components-svelte@0.87.6:
+  carbon-components-svelte@0.87.7:
     dependencies:
       '@ibm/telemetry-js': 1.9.1
       flatpickr: 4.6.9
