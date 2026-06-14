@@ -64,7 +64,7 @@
 		"@commitlint/config-conventional": "^19.7.1",
 		"copyfiles": "^2.4.1",
 		"dts-bundle-generator": "^9.5.1",
-		"esbuild": "^0.25.0",
+		"esbuild": "^0.28.0",
 		"glob": "^11.0.1",
 		"reg-cli": "^0.18.10",
 		"rimraf": "^6.0.1",
